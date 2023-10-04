@@ -1,26 +1,27 @@
 import 'package:shared_preferences/shared_preferences.dart';
+import 'service_locator.dart';
 
-void writeStringToCache(String key, String value) async {
-  final sharedPref = await SharedPreferences.getInstance();
+void saveStringToCache(String key, String value) async {
+  final sharedPref = sl<SharedPreferences>();
 
   await sharedPref.setString(key, value);
 }
 
 Future<dynamic> readFromCache(String key) async {
-  final sharedPref = await SharedPreferences.getInstance();
+  final sharedPref = sl<SharedPreferences>();
 
-  return sharedPref.get(key);
+  return sharedPref.get(key) ?? '';
 }
 
 void removeFromCache(String key) async {
-  final sharedPref = await SharedPreferences.getInstance();
+  final sharedPref = sl<SharedPreferences>();
   await sharedPref.remove(key);
 }
 
-
 //potential key store
-// 
+//
 //oauth_code
 //id_token
 //token_resp
-
+//seniority_list
+//profile_resp

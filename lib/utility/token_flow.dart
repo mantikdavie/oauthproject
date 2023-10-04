@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:convert';
+// import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
@@ -39,16 +39,19 @@ Future<bool> checkCachedToken() async {
 
   final isTokenValid = JwtDecoder.isExpired(idToken);
   if (!isTokenValid) {
+    debugPrint('debug msg: id token is valid');
     return true;
   } else {
-    debugPrint('requesting from refresh token');
-    final newTokenResp = await requestFromRefreshToken(refreshToken);
-    if (newTokenResp.isNotEmpty) {
-      debugPrint('newTokenResp: $newTokenResp');
-      return true;
-    } else {
-      return false;
-    }
+    // debugPrint('requesting from refresh token');
+    // final newTokenResp = await requestFromRefreshToken(refreshToken);
+    // if (newTokenResp.isNotEmpty) {
+    //   debugPrint('newTokenResp: $newTokenResp');
+    //   return true;
+    // } else {
+    //   return false;
+    // }
+    debugPrint('debug msg: id token is expired');
+    return false;
   }
 }
 
@@ -60,7 +63,7 @@ FutureOr<String> requestCodeFromOauth() async {
       customParams: {'response_mode': 'query'});
 
   debugPrint("Oauth Code: ${resp.code}");
-  writeStringToCache('oauth_code', resp.code.toString());
+  saveStringToCache('oauth_code', resp.code.toString());
   return resp.code.toString();
 }
 
@@ -72,18 +75,23 @@ FutureOr<String> requestTokenFromCode(String code) async {
     // customParams: {'response_mode': 'query'},
   );
   final respMap = resp.toMap();
+  final idToken = respMap["id_token"];
+  final decodeToken = JwtDecoder.decode(idToken.toString());
+
   debugPrint(respMap.toString());
   debugPrint("id token: ${respMap["id_token"]}");
   debugPrint("refresh_token: ${respMap["refresh_token"]}");
-  writeStringToCache('token_resp', respMap.toString());
-  writeStringToCache('access_token', respMap["access_token"]);
-  writeStringToCache('refresh_token', respMap["refresh_token"]);
-  writeStringToCache('id_token', respMap["id_token"]);
+  saveStringToCache('token_resp', respMap.toString());
+  saveStringToCache('access_token', respMap["access_token"]);
+  saveStringToCache('refresh_token', respMap["refresh_token"]);
+  saveStringToCache('id_token', respMap["id_token"]);
+  saveStringToCache('ern', decodeToken['cpaern']);
+  saveStringToCache('crew_id', decodeToken['sAMAccountName']);
 
   return respMap["id_token"];
 }
 
-FutureOr<String> requestFromRefreshToken(String refreshToken) async {
+Future<String> requestFromRefreshToken(String refreshToken) async {
   // final resp = await client.requestAccessToken(
   //     code: refreshToken,
   //     clientId: 'f249d3fd-6586-4cde-a844-59f984c2dcbb',
@@ -98,10 +106,10 @@ FutureOr<String> requestFromRefreshToken(String refreshToken) async {
   debugPrint("respMap: ${respMap.toString()}");
   debugPrint("new refresh token from refresh: ${respMap["refresh_token"]}");
   debugPrint("new id token from refresh: ${respMap["id_token"]}");
-  writeStringToCache('token_resp', respMap.toString());
-  writeStringToCache('access_token', respMap["access_token"]);
-  writeStringToCache('refresh_token', respMap["refresh_token"]);
-  writeStringToCache('id_token', respMap["id_token"]);
+  saveStringToCache('token_resp', respMap.toString());
+  saveStringToCache('access_token', respMap["access_token"]);
+  saveStringToCache('refresh_token', respMap["refresh_token"]);
+  saveStringToCache('id_token', respMap["id_token"]);
 
   return respMap["id_token"];
 }

@@ -58,7 +58,7 @@ class Oauth2ClientLoginUI extends StatelessWidget {
                       customParams: {'response_mode': 'query'});
 
                   // debugPrint(result.code);
-                  writeStringToCache('oauth_code', result.code.toString());
+                  saveStringToCache('oauth_code', result.code.toString());
 
                   // }
                 },
@@ -80,8 +80,8 @@ class Oauth2ClientLoginUI extends StatelessWidget {
                     debugPrint(respMap.toString());
                     debugPrint(respMap["id_token"]);
 
-                    writeStringToCache('token_resp', respMap.toString());
-                    writeStringToCache('id_token', respMap["id_token"]);
+                    saveStringToCache('token_resp', respMap.toString());
+                    saveStringToCache('id_token', respMap["id_token"]);
                   }
                 },
                 child: const Text("Get Token"))

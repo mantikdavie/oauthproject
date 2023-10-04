@@ -1,9 +1,10 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:oauthproject/utility/constants.dart';
 // ignore: depend_on_referenced_packages
-import 'package:meta/meta.dart';
 import 'package:oauthproject/utility/local_storage.dart';
 import 'package:oauthproject/utility/token_flow.dart';
 
@@ -15,6 +16,8 @@ class AuthStatusBloc extends Bloc<AuthStatusEvent, AuthStatusState> {
     on<AuthStatusChecking>(_mapAuthStatusCheckingToState);
     on<AuthStatusRequestCode>(_mapAuthStatusRequestCodeToState);
     on<AuthStatusRequestToken>(_mapAuthStatusRequestTokenToState);
+    on<AuthStatusRefreshToken>(_mapAuthStatusRefreshTokenToState);
+    on<AuthStatusVoidToken>(_mapAuthStatusVoidTokenToState);
   }
 
   void _mapAuthStatusCheckingToState(
@@ -22,23 +25,22 @@ class AuthStatusBloc extends Bloc<AuthStatusEvent, AuthStatusState> {
     await Future.delayed(const Duration(milliseconds: 2000));
     emit(AuthStatusCheckInProgess());
     try {
-      await Future.delayed(const Duration(milliseconds: 2000));
+      // await Future.delayed(const Duration(milliseconds: 2000));
       final hasToken = await readFromCache('id_token');
-      if (hasToken != null) {
+      if (hasToken != null || hasToken != '') {
         final isTokenValid = await checkCachedToken();
         if (isTokenValid) {
           emit(AuthStatusAuthenticated());
         } else {
-          emit(AuthStatusUnauthenticated());
+          emit(AuthStatusTokenExpired());
         }
       }
     } catch (e) {
       emit(AuthStatusUnkownError());
-      print('Error msg: $e');
+      debugPrint('Error msg: $e');
       await Future.delayed(const Duration(milliseconds: 2000));
       emit(AuthStatusUnauthenticated());
     }
-    
   }
 
   void _mapAuthStatusRequestCodeToState(
@@ -52,10 +54,33 @@ class AuthStatusBloc extends Bloc<AuthStatusEvent, AuthStatusState> {
       emit(AuthStatusUnkownError());
       await Future.delayed(const Duration(milliseconds: 2000));
       emit(AuthStatusUnauthenticated());
-      print('Error msg: $e');
+      debugPrint('Error msg: $e');
     }
   }
 
   void _mapAuthStatusRequestTokenToState(
       AuthStatusRequestToken event, Emitter<AuthStatusState> emit) async {}
+
+  void _mapAuthStatusRefreshTokenToState(
+      AuthStatusRefreshToken event, Emitter<AuthStatusState> emit) async {
+    emit(AuthStatusRefeshingToken());
+    try {
+      final refreshToken = await readFromCache('refresh_token');
+      if (refreshToken != null || refreshToken != '') {
+        final idToken = await requestFromRefreshToken(refreshToken);
+        if (!JwtDecoder.isExpired(idToken)) emit(AuthStatusAuthenticated());
+      }
+    } catch (e) {
+      emit(AuthStatusUnkownError());
+      // await Future.delayed(const Duration(milliseconds: 2000));
+      emit(AuthStatusUnauthenticated());
+      debugPrint('Error msg: $e');
+    }
+  }
+
+  void _mapAuthStatusVoidTokenToState(
+      AuthStatusVoidToken event, Emitter<AuthStatusState> emit) async {
+    // emit(AuthStatusTokenExpired());
+    saveStringToCache('id_token', expiredIdToken);
+  }
 }

@@ -1,0 +1,21 @@
+{
+    "status": "OK",
+    "result": {
+        "requestType": "CRW08",
+        "respCode": "NF",
+        "respMessage": "FLIGHT NOT FOUND",
+        "crewType": "BO",
+        "flightNumber": "0529",
+        "departurePort": "",
+        "arrivalPort": "",
+        "flightDate": "20231031",
+        "tripDate": "",
+        "departureLocalTimestamp": "",
+        "arrivalLocalTimestamp": "",
+        "aircraftType": "",
+        "numberOfFlightCrew": null,
+        "numberOfCabinCrew": null,
+        "flightCrews": [],
+        "cabinCrews": []
+    }
+}

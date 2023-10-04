@@ -1,12 +1,19 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:oauthproject/bloc/auth_status_bloc.dart';
+import 'package:oauthproject/ui/navigation_route.dart';
+import 'package:oauthproject/ui/pages/profile/bloc/self_profile_bloc.dart';
+import 'package:oauthproject/ui/widgets/auth_status_icon_widget.dart';
+import 'package:oauthproject/utility/api.dart';
 import 'package:oauthproject/utility/local_storage.dart';
-import 'package:oauthproject/utility/token_flow.dart';
+import 'package:oauthproject/utility/service_locator.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setupServiceLocator();
+  router = await initRouter();
   runApp(const MainApp());
 }
 
@@ -15,14 +22,26 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(
-              seedColor: Colors.black38, background: Colors.grey),
-          useMaterial3: true),
-      home: BlocProvider(
-        create: (context) => AuthStatusBloc()..add(AuthStatusChecking()),
-        child: const HomePage(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AuthStatusBloc()..add(AuthStatusChecking()),
+        ),
+        BlocProvider(create: (context) {
+          if (context.read<AuthStatusBloc>().state is AuthStatusTokenExpired) {
+            return SelfProfileBloc()..add(ProfileFetchLocalEvent());
+          } else {
+            return SelfProfileBloc()..add(ProfileFetchRemoteEvent());
+          }
+        }),
+      ],
+      child: MaterialApp.router(
+        theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(
+                seedColor: Colors.black38, background: Colors.grey[300]),
+            useMaterial3: true),
+        // home: const LoginPage(),
+        routerConfig: router,
       ),
     );
   }
@@ -36,6 +55,14 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.background,
+        elevation: 0.5,
+        title: const Text('Home'),
+        actions: const [
+          AuthStatusIcon(),
+        ],
+      ),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: BlocBuilder<AuthStatusBloc, AuthStatusState>(
           builder: (context, state) {
@@ -59,17 +86,57 @@ class HomePage extends StatelessWidget {
               const Text('Authenticated'),
               const SizedBox(height: 20),
               ElevatedButton(
-                  onPressed: () async {
-                    final refreshToken = await readFromCache('refresh_token');
-                    await requestFromRefreshToken(refreshToken);
-                  },
-                  child: const Text('Refresh Token'))
+                  onPressed: () => context
+                      .read<AuthStatusBloc>()
+                      .add(AuthStatusRefreshToken()),
+                  child: const Text('Refresh Token')),
+              ElevatedButton(
+                  onPressed: () async => context.go('/profile'),
+                  child: const Text('Profile')),
+              ElevatedButton(
+                  onPressed: () async => context.go('/crewlist'),
+                  child: const Text('Crewlist')),
+              ElevatedButton(
+                  onPressed: () async => context.go('/seniority'),
+                  child: const Text('Seniority List')),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                  onPressed: () =>
+                      context.read<AuthStatusBloc>().add(AuthStatusVoidToken()),
+                  child: const Text('expire the id token')),
             ],
           ));
         } else if (state is AuthStatusOauthAccquired) {
           return const Center(child: Text('AuthStatusOauthAccquired'));
         } else if (state is AuthStatusUnkownError) {
           return const Center(child: Text('Unknown Error'));
+        } else if (state is AuthStatusTokenExpired) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Center(child: Text('AuthStatusTokenExpired')),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                  onPressed: () {
+                    context
+                        .read<AuthStatusBloc>()
+                        .add(AuthStatusRefreshToken());
+                  },
+                  child: const Text('Refresh Token')),
+              ElevatedButton(
+                  onPressed: () async {
+                    // await getBaseRequest(
+                    //     'cls-api/v1/profile', {'ern': '127710G'});
+                    context.go('/profile');
+                  },
+                  child: const Text('Profile')),
+              ElevatedButton(
+                  onPressed: () async => context.go('/seniority'),
+                  child: const Text('Seniority List')),
+            ],
+          );
+        } else if (state is AuthStatusRefeshingToken) {
+          return const Center(child: Text('AuthStatusRefeshingToken'));
         } else {
           return Container();
         }

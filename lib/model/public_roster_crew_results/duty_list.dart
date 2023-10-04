@@ -1,0 +1,212 @@
+import 'dart:convert';
+
+import 'credit_info.dart';
+import 'flight.dart';
+
+class DutyList {
+  int? key;
+  int? dutySequenceWithinTrip;
+  String? oldKey;
+  Flight? flight;
+  String? dutyCode;
+  String? dutyStartUtc;
+  String? dutyStartLocal;
+  String? dutyEndUtc;
+  String? dutyEndLocal;
+  double? dutyPeriod;
+  bool? isStandby;
+  dynamic dutyType;
+  dynamic dutyDesc;
+  dynamic asDutyIndicator;
+  String? patternCode;
+  String? notificationUtc;
+  dynamic acknowledgedUtc;
+  String? patternStartUtc;
+  String? patternStartLocal;
+  String? patternEndUtc;
+  String? patternEndLocal;
+  String? rosterEffectiveToUtc;
+  String? dutyPort;
+  String? dutyEndPort;
+  CreditInfo? creditInfo;
+  int? creditHours;
+  List<dynamic>? specialDutyCode;
+  String? md5;
+
+  DutyList({
+    this.key,
+    this.dutySequenceWithinTrip,
+    this.oldKey,
+    this.flight,
+    this.dutyCode,
+    this.dutyStartUtc,
+    this.dutyStartLocal,
+    this.dutyEndUtc,
+    this.dutyEndLocal,
+    this.dutyPeriod,
+    this.isStandby,
+    this.dutyType,
+    this.dutyDesc,
+    this.asDutyIndicator,
+    this.patternCode,
+    this.notificationUtc,
+    this.acknowledgedUtc,
+    this.patternStartUtc,
+    this.patternStartLocal,
+    this.patternEndUtc,
+    this.patternEndLocal,
+    this.rosterEffectiveToUtc,
+    this.dutyPort,
+    this.dutyEndPort,
+    this.creditInfo,
+    this.creditHours,
+    this.specialDutyCode,
+    this.md5,
+  });
+
+  @override
+  String toString() {
+    return 'DutyList(key: $key, dutySequenceWithinTrip: $dutySequenceWithinTrip, oldKey: $oldKey, flight: $flight, dutyCode: $dutyCode, dutyStartUtc: $dutyStartUtc, dutyStartLocal: $dutyStartLocal, dutyEndUtc: $dutyEndUtc, dutyEndLocal: $dutyEndLocal, dutyPeriod: $dutyPeriod, isStandby: $isStandby, dutyType: $dutyType, dutyDesc: $dutyDesc, asDutyIndicator: $asDutyIndicator, patternCode: $patternCode, notificationUtc: $notificationUtc, acknowledgedUtc: $acknowledgedUtc, patternStartUtc: $patternStartUtc, patternStartLocal: $patternStartLocal, patternEndUtc: $patternEndUtc, patternEndLocal: $patternEndLocal, rosterEffectiveToUtc: $rosterEffectiveToUtc, dutyPort: $dutyPort, dutyEndPort: $dutyEndPort, creditInfo: $creditInfo, creditHours: $creditHours, specialDutyCode: $specialDutyCode, md5: $md5)';
+  }
+
+  factory DutyList.fromMap(Map<String, dynamic> data) => DutyList(
+        key: data['key'] as int?,
+        dutySequenceWithinTrip: data['dutySequenceWithinTrip'] as int?,
+        oldKey: data['_oldKey'] as String?,
+        flight: data['flight'] == null
+            ? null
+            : Flight.fromMap(data['flight'] as Map<String, dynamic>),
+        dutyCode: data['dutyCode'] as String?,
+        dutyStartUtc: data['dutyStartUTC'] as String?,
+        dutyStartLocal: data['dutyStartLocal'] as String?,
+        dutyEndUtc: data['dutyEndUTC'] as String?,
+        dutyEndLocal: data['dutyEndLocal'] as String?,
+        dutyPeriod: (data['dutyPeriod'] as num?)?.toDouble(),
+        isStandby: data['isStandby'] as bool?,
+        dutyType: data['dutyType'] as dynamic,
+        dutyDesc: data['dutyDesc'] as dynamic,
+        asDutyIndicator: data['asDutyIndicator'] as dynamic,
+        patternCode: data['patternCode'] as String?,
+        notificationUtc: data['notificationUtc'] as String?,
+        acknowledgedUtc: data['acknowledgedUtc'] as dynamic,
+        patternStartUtc: data['patternStartUtc'] as String?,
+        patternStartLocal: data['patternStartLocal'] as String?,
+        patternEndUtc: data['patternEndUtc'] as String?,
+        patternEndLocal: data['patternEndLocal'] as String?,
+        rosterEffectiveToUtc: data['rosterEffectiveToUtc'] as String?,
+        dutyPort: data['dutyPort'] as String?,
+        dutyEndPort: data['dutyEndPort'] as String?,
+        creditInfo: data['creditInfo'] == null
+            ? null
+            : CreditInfo.fromMap(data['creditInfo'] as Map<String, dynamic>),
+        creditHours: data['creditHours'] as int?,
+        specialDutyCode: data['specialDutyCode'] as List<dynamic>?,
+        md5: data['md5'] as String?,
+      );
+
+  Map<String, dynamic> toMap() => {
+        'key': key,
+        'dutySequenceWithinTrip': dutySequenceWithinTrip,
+        '_oldKey': oldKey,
+        'flight': flight?.toMap(),
+        'dutyCode': dutyCode,
+        'dutyStartUTC': dutyStartUtc,
+        'dutyStartLocal': dutyStartLocal,
+        'dutyEndUTC': dutyEndUtc,
+        'dutyEndLocal': dutyEndLocal,
+        'dutyPeriod': dutyPeriod,
+        'isStandby': isStandby,
+        'dutyType': dutyType,
+        'dutyDesc': dutyDesc,
+        'asDutyIndicator': asDutyIndicator,
+        'patternCode': patternCode,
+        'notificationUtc': notificationUtc,
+        'acknowledgedUtc': acknowledgedUtc,
+        'patternStartUtc': patternStartUtc,
+        'patternStartLocal': patternStartLocal,
+        'patternEndUtc': patternEndUtc,
+        'patternEndLocal': patternEndLocal,
+        'rosterEffectiveToUtc': rosterEffectiveToUtc,
+        'dutyPort': dutyPort,
+        'dutyEndPort': dutyEndPort,
+        'creditInfo': creditInfo?.toMap(),
+        'creditHours': creditHours,
+        'specialDutyCode': specialDutyCode,
+        'md5': md5,
+      };
+
+  /// `dart:convert`
+  ///
+  /// Parses the string and returns the resulting Json object as [DutyList].
+  factory DutyList.fromJson(String data) {
+    return DutyList.fromMap(json.decode(data) as Map<String, dynamic>);
+  }
+
+  /// `dart:convert`
+  ///
+  /// Converts [DutyList] to a JSON string.
+  String toJson() => json.encode(toMap());
+
+  DutyList copyWith({
+    int? key,
+    int? dutySequenceWithinTrip,
+    String? oldKey,
+    Flight? flight,
+    String? dutyCode,
+    String? dutyStartUtc,
+    String? dutyStartLocal,
+    String? dutyEndUtc,
+    String? dutyEndLocal,
+    double? dutyPeriod,
+    bool? isStandby,
+    dynamic dutyType,
+    dynamic dutyDesc,
+    dynamic asDutyIndicator,
+    String? patternCode,
+    String? notificationUtc,
+    dynamic acknowledgedUtc,
+    String? patternStartUtc,
+    String? patternStartLocal,
+    String? patternEndUtc,
+    String? patternEndLocal,
+    String? rosterEffectiveToUtc,
+    String? dutyPort,
+    String? dutyEndPort,
+    CreditInfo? creditInfo,
+    int? creditHours,
+    List<dynamic>? specialDutyCode,
+    String? md5,
+  }) {
+    return DutyList(
+      key: key ?? this.key,
+      dutySequenceWithinTrip:
+          dutySequenceWithinTrip ?? this.dutySequenceWithinTrip,
+      oldKey: oldKey ?? this.oldKey,
+      flight: flight ?? this.flight,
+      dutyCode: dutyCode ?? this.dutyCode,
+      dutyStartUtc: dutyStartUtc ?? this.dutyStartUtc,
+      dutyStartLocal: dutyStartLocal ?? this.dutyStartLocal,
+      dutyEndUtc: dutyEndUtc ?? this.dutyEndUtc,
+      dutyEndLocal: dutyEndLocal ?? this.dutyEndLocal,
+      dutyPeriod: dutyPeriod ?? this.dutyPeriod,
+      isStandby: isStandby ?? this.isStandby,
+      dutyType: dutyType ?? this.dutyType,
+      dutyDesc: dutyDesc ?? this.dutyDesc,
+      asDutyIndicator: asDutyIndicator ?? this.asDutyIndicator,
+      patternCode: patternCode ?? this.patternCode,
+      notificationUtc: notificationUtc ?? this.notificationUtc,
+      acknowledgedUtc: acknowledgedUtc ?? this.acknowledgedUtc,
+      patternStartUtc: patternStartUtc ?? this.patternStartUtc,
+      patternStartLocal: patternStartLocal ?? this.patternStartLocal,
+      patternEndUtc: patternEndUtc ?? this.patternEndUtc,
+      patternEndLocal: patternEndLocal ?? this.patternEndLocal,
+      rosterEffectiveToUtc: rosterEffectiveToUtc ?? this.rosterEffectiveToUtc,
+      dutyPort: dutyPort ?? this.dutyPort,
+      dutyEndPort: dutyEndPort ?? this.dutyEndPort,
+      creditInfo: creditInfo ?? this.creditInfo,
+      creditHours: creditHours ?? this.creditHours,
+      specialDutyCode: specialDutyCode ?? this.specialDutyCode,
+      md5: md5 ?? this.md5,
+    );
+  }
+}
