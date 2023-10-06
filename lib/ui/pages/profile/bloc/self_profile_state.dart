@@ -8,7 +8,7 @@ final class ProfileInitial extends SelfProfileState {}
 final class ProfileLoading extends SelfProfileState {}
 
 final class ProfileLoaded extends SelfProfileState {
-  final CrewProfile crewProfile;
+  final SelfProfile crewProfile;
 
   ProfileLoaded({required this.crewProfile});
 }

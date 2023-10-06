@@ -106,7 +106,7 @@ class CrewlistResultScreen extends StatelessWidget {
                               .toString()),
                           onTap: () => context.push(
                               '/crewlist/results/flightcrewprofile',
-                              extra: flightCrewList[index]));
+                              extra: flightCrewList[index].crewProfile));
                     } else if (index <=
                         crewList.numberOfCabinCrew! +
                             crewList.numberOfFlightCrew!) {

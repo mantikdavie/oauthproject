@@ -1,0 +1,2171 @@
+[
+    {
+        "_id": "611f24379d268db0158e161b",
+        "aircraftTypeCode": "2",
+        "badgeName": "MAN",
+        "baseport": "HKG",
+        "crewId": "LEE MAN SHING",
+        "crewSeniority": "NN",
+        "currentErn": "101831K",
+        "employmentCompany": "CX",
+        "fleet": "2",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "CN",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "tom_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24379d268db0158e16d8",
+        "aircraftTypeCode": "E",
+        "badgeName": "JESSE",
+        "baseport": "HKG",
+        "crewId": "LEE JKY",
+        "crewSeniority": "TC",
+        "currentErn": "102361F",
+        "employmentCompany": "CX",
+        "fleet": "E",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "CN",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "jesse_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24379d268db0158e16f6",
+        "aircraftTypeCode": "T",
+        "badgeName": "MICHAEL",
+        "baseport": "HKG",
+        "crewId": "LEE KKM",
+        "crewSeniority": "CC",
+        "currentErn": "102430K",
+        "employmentCompany": "CX",
+        "fleet": "T",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "none",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "CN",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "michael_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24379d268db0158e17a9",
+        "aircraftTypeCode": "E",
+        "badgeName": "HENRY",
+        "baseport": "HKG",
+        "crewId": "CHAN HIN LEE H",
+        "crewSeniority": "TC",
+        "currentErn": "102809E",
+        "employmentCompany": "CX",
+        "fleet": "E",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": true
+        },
+        "rankCode": "CN",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "CHAN",
+        "companyEmail": "henry_hl_chan@cathaypacific.com",
+        "profilePicture": {
+            "filename": "102809E.jpg.gpg",
+            "eTag": "dc82daf53adb5f1f8738fc69bfea28de",
+            "updatedAt": "2023-04-21T09:37:18.772Z"
+        }
+    },
+    {
+        "_id": "611f24379d268db0158e17b7",
+        "aircraftTypeCode": "T",
+        "badgeName": "RAYMOND",
+        "baseport": "HKG",
+        "crewId": "LEE MAN WAI",
+        "crewSeniority": "NN",
+        "currentErn": "102844J",
+        "employmentCompany": "CX",
+        "fleet": "T",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "hideFromAddFriendSearch": false,
+            "rosterPrivacy": "none",
+            "profilePicture": false
+        },
+        "rankCode": "CN",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "raymond_mw_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24379d268db0158e1f16",
+        "aircraftTypeCode": "T",
+        "badgeName": "TOMMY",
+        "baseport": "HKG",
+        "crewId": "LEE TWK",
+        "crewSeniority": "ND",
+        "currentErn": "111753R",
+        "employmentCompany": "CX",
+        "fleet": "T",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "thomas_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24379d268db0158e1ff7",
+        "aircraftTypeCode": "E",
+        "badgeName": "LOK",
+        "baseport": "HKG",
+        "crewId": "LEE L",
+        "crewSeniority": "MN",
+        "currentErn": "113551H",
+        "employmentCompany": "CX",
+        "fleet": "E",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "CN",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "lok_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24379d268db0158e2082",
+        "aircraftTypeCode": "B",
+        "badgeName": "ALEX",
+        "baseport": "HKG",
+        "crewId": "LEE CHI HANG",
+        "crewSeniority": "NE",
+        "currentErn": "114512B",
+        "employmentCompany": "CX",
+        "fleet": "B",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "alex_c_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24379d268db0158e2232",
+        "aircraftTypeCode": "E",
+        "badgeName": "KATRINA",
+        "baseport": "HKG",
+        "crewId": "LEE KATRINA",
+        "crewSeniority": "NE",
+        "currentErn": "119063G",
+        "employmentCompany": "CX",
+        "fleet": "E",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "hideFromAddFriendSearch": false,
+            "rosterPrivacy": "none",
+            "profilePicture": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "katrina_b_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e238b",
+        "aircraftTypeCode": "E",
+        "badgeName": "MARTIN",
+        "baseport": "HKG",
+        "crewId": "LEE MKF",
+        "crewSeniority": "NN",
+        "currentErn": "120242A",
+        "employmentCompany": "CX",
+        "fleet": "E",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "martin_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e2410",
+        "aircraftTypeCode": "E",
+        "badgeName": "LEE",
+        "baseport": "HKG",
+        "crewId": "HODGSON LC",
+        "crewSeniority": "ND",
+        "currentErn": "120837H",
+        "employmentCompany": "CX",
+        "fleet": "E",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": true
+        },
+        "rankCode": "CN",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "HODGSON",
+        "companyEmail": "lee_hodgson@cathaypacific.com",
+        "profilePicture": {
+            "filename": "120837H.jpg.gpg",
+            "eTag": "b3394978056331b9b26633378fd73a71",
+            "updatedAt": "2023-04-21T09:38:00.191Z"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e243c",
+        "aircraftTypeCode": "E",
+        "badgeName": "KEITH",
+        "baseport": "HKG",
+        "crewId": "LEE CHK",
+        "crewSeniority": "NN",
+        "currentErn": "121240J",
+        "employmentCompany": "CX",
+        "fleet": "E",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "keith_c_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e245e",
+        "aircraftTypeCode": "E",
+        "badgeName": "MARY",
+        "baseport": "HKG",
+        "crewId": "LEE SMM",
+        "crewSeniority": "NN",
+        "currentErn": "121589B",
+        "employmentCompany": "CX",
+        "fleet": "E",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "hideFromAddFriendSearch": false,
+            "rosterPrivacy": "none",
+            "profilePicture": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "mary_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e2458",
+        "aircraftTypeCode": "E",
+        "badgeName": "JASPER",
+        "baseport": "HKG",
+        "crewId": "LEE JCY",
+        "crewSeniority": "NN",
+        "currentErn": "121548A",
+        "employmentCompany": "CX",
+        "fleet": "E",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": true
+        },
+        "rankCode": "FO",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "jasper_lee@cathaypacific.com",
+        "profilePicture": {
+            "filename": "121548A.jpg.gpg",
+            "eTag": "39094bd564b57e860defc1283f012471",
+            "updatedAt": "2023-04-21T09:38:02.591Z"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e249c",
+        "aircraftTypeCode": "E",
+        "badgeName": "CEDRIC",
+        "baseport": "HKG",
+        "crewId": "LEE TCC",
+        "crewSeniority": "NN",
+        "currentErn": "123088C",
+        "employmentCompany": "CX",
+        "fleet": "E",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "cedric_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e24a0",
+        "aircraftTypeCode": "E",
+        "badgeName": "GILBERT",
+        "baseport": "HKG",
+        "crewId": "LEE GCH",
+        "crewSeniority": "NN",
+        "currentErn": "123153J",
+        "employmentCompany": "CX",
+        "fleet": "E",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "gilbert_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e24a4",
+        "aircraftTypeCode": "E",
+        "badgeName": "JASON",
+        "baseport": "HKG",
+        "crewId": "LEE KA YEUNG",
+        "crewSeniority": "NN",
+        "currentErn": "123158A",
+        "employmentCompany": "CX",
+        "fleet": "E",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": false,
+            "sendRoster": false,
+            "rosterPrivacy": "none",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "jason_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e24ea",
+        "aircraftTypeCode": "T",
+        "badgeName": "VIC",
+        "baseport": "HKG",
+        "crewId": "LEE CHV",
+        "crewSeniority": "NN",
+        "currentErn": "124161E",
+        "employmentCompany": "CX",
+        "fleet": "T",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": true
+        },
+        "rankCode": "FO",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "vic_c_lee@cathaypacific.com",
+        "profilePicture": {
+            "filename": "124161E.jpg.gpg",
+            "eTag": "bb7f146bd750a86d59a83c71dfabd409",
+            "updatedAt": "2023-04-21T09:38:09.314Z"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e252d",
+        "aircraftTypeCode": "B",
+        "badgeName": "DICKSON",
+        "baseport": "HKG",
+        "crewId": "LEE DCS",
+        "crewSeniority": "NN",
+        "currentErn": "124366J",
+        "employmentCompany": "CX",
+        "fleet": "B",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "dickson_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e2562",
+        "aircraftTypeCode": "E",
+        "badgeName": "JONATHAN",
+        "baseport": "HKG",
+        "crewId": "LEE JMY",
+        "crewSeniority": "NN",
+        "currentErn": "124482D",
+        "employmentCompany": "CX",
+        "fleet": "E",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "jonathan_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e256d",
+        "aircraftTypeCode": "E",
+        "badgeName": "ALEX",
+        "baseport": "HKG",
+        "crewId": "LEE SUAREZ AJ",
+        "crewSeniority": "NN",
+        "currentErn": "124546A",
+        "employmentCompany": "CX",
+        "fleet": "E",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": true
+        },
+        "rankCode": "FO",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE SUAREZ",
+        "companyEmail": "alexander_lee@cathaypacific.com",
+        "profilePicture": {
+            "filename": "124546A.jpg.gpg",
+            "eTag": "f82c1c62f12c741be01bf2aae9a93531",
+            "updatedAt": "2023-04-21T09:38:11.230Z"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e258d",
+        "aircraftTypeCode": "B",
+        "badgeName": "HO YIN",
+        "baseport": "HKG",
+        "crewId": "LEE HO YIN",
+        "crewSeniority": "NN",
+        "currentErn": "124804B",
+        "employmentCompany": "CX",
+        "fleet": "B",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "ho_yin_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e25d0",
+        "aircraftTypeCode": "T",
+        "badgeName": "LEE",
+        "baseport": "HKG",
+        "crewId": "MOORE LR",
+        "crewSeniority": "NN",
+        "currentErn": "125203A",
+        "employmentCompany": "CX",
+        "fleet": "T",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": true
+        },
+        "rankCode": "FO",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "MOORE",
+        "companyEmail": "lee_moore@cathaypacific.com",
+        "profilePicture": {
+            "filename": "125203A.jpg.gpg",
+            "eTag": "8b46c76bb7d64a3f29fad7ce34d65797",
+            "updatedAt": "2023-05-24T09:04:54.941Z"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e25ca",
+        "aircraftTypeCode": "E",
+        "badgeName": "LEE",
+        "baseport": "HKG",
+        "crewId": "SALTER LC",
+        "crewSeniority": "NN",
+        "currentErn": "125146F",
+        "employmentCompany": "CX",
+        "fleet": "E",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": true
+        },
+        "rankCode": "FO",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "SALTER",
+        "companyEmail": "lee_salter@cathaypacific.com",
+        "profilePicture": {
+            "filename": "125146F.jpg.gpg",
+            "eTag": "81aa302382abde825224ee4f540f2415",
+            "updatedAt": "2023-04-21T09:38:15.280Z"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e2633",
+        "aircraftTypeCode": "T",
+        "badgeName": "STERAC",
+        "baseport": "HKG",
+        "crewId": "LEE KHS",
+        "crewSeniority": "NN",
+        "currentErn": "125453H",
+        "employmentCompany": "CX",
+        "fleet": "T",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "none",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "sterac_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e2630",
+        "aircraftTypeCode": "E",
+        "badgeName": "AARON",
+        "baseport": "HKG",
+        "crewId": "LEE AJY",
+        "crewSeniority": "NN",
+        "currentErn": "125407L",
+        "employmentCompany": "CX",
+        "fleet": "E",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "none",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "aaron_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e2698",
+        "aircraftTypeCode": "T",
+        "badgeName": "RICKY",
+        "baseport": "HKG",
+        "crewId": "LEE KSR",
+        "crewSeniority": "NN",
+        "currentErn": "125745D",
+        "employmentCompany": "CX",
+        "fleet": "T",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "none",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": true
+        },
+        "rankCode": "FO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "ricky_k_lee@cathaypacific.com"
+    },
+    {
+        "_id": "611f24389d268db0158e26e6",
+        "aircraftTypeCode": "T",
+        "badgeName": "AARON",
+        "baseport": "HKG",
+        "crewId": "LEE AKL",
+        "crewSeniority": "NN",
+        "currentErn": "126093J",
+        "employmentCompany": "CX",
+        "fleet": "T",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "none",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "aaron_k_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e27d0",
+        "aircraftTypeCode": "B",
+        "badgeName": "BILLY",
+        "baseport": "HKG",
+        "crewId": "LEE TLB",
+        "crewSeniority": "NN",
+        "currentErn": "126474G",
+        "employmentCompany": "CX",
+        "fleet": "B",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": true
+        },
+        "rankCode": "FO",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "billy_lee@cathaypacific.com",
+        "profilePicture": {
+            "filename": "126474G.JPG.gpg",
+            "eTag": "9c3555943c50798f548e672347641e15",
+            "updatedAt": "2023-04-21T09:38:22.900Z"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e27e2",
+        "aircraftTypeCode": "E",
+        "badgeName": "MATTHEW",
+        "baseport": "HKG",
+        "crewId": "LEE CHM",
+        "crewSeniority": "NN",
+        "currentErn": "126562D",
+        "employmentCompany": "CX",
+        "fleet": "E",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "matthew_c_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e27d4",
+        "aircraftTypeCode": "T",
+        "badgeName": "JEFFREY",
+        "baseport": "HKG",
+        "crewId": "LEE WLJ",
+        "crewSeniority": "NN",
+        "currentErn": "126478E",
+        "employmentCompany": "CX",
+        "fleet": "T",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "none",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "jeffrey_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e284f",
+        "aircraftTypeCode": "T",
+        "badgeName": "LEE",
+        "baseport": "HKG",
+        "crewId": "MUMFORD LS",
+        "crewSeniority": "NR",
+        "currentErn": "126809H",
+        "employmentCompany": "CX",
+        "fleet": "T",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "SO",
+        "reliefQualified": [],
+        "surname": "MUMFORD",
+        "companyEmail": "lee_mumford@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e287f",
+        "aircraftTypeCode": "T",
+        "badgeName": "JOSHUA",
+        "baseport": "HKG",
+        "crewId": "LEE CHEUK YU",
+        "crewSeniority": "NN",
+        "currentErn": "126940J",
+        "employmentCompany": "CX",
+        "fleet": "T",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "SO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "joshua_cy_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e28b9",
+        "aircraftTypeCode": "T",
+        "badgeName": "RONALD",
+        "baseport": "HKG",
+        "crewId": "LEE CLR",
+        "crewSeniority": "NR",
+        "currentErn": "127046C",
+        "employmentCompany": "CX",
+        "fleet": "T",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": true
+        },
+        "rankCode": "SO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "ronald_lee@cathaypacific.com",
+        "profilePicture": {
+            "filename": "127046C.jpg.gpg",
+            "eTag": "1b41c6fa527b311b84efa5562235f456",
+            "updatedAt": "2023-04-21T09:38:26.876Z"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e28fa",
+        "aircraftTypeCode": "E",
+        "badgeName": "PARKER",
+        "baseport": "HKG",
+        "crewId": "LEE PYP",
+        "crewSeniority": "NN",
+        "currentErn": "127168F",
+        "employmentCompany": "CX",
+        "fleet": "E",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "none",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "pakyin_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e290c",
+        "aircraftTypeCode": "E",
+        "badgeName": "MARTIN",
+        "baseport": "HKG",
+        "crewId": "LEE HYM",
+        "crewSeniority": "NN",
+        "currentErn": "127173B",
+        "employmentCompany": "CX",
+        "fleet": "E",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "martin_h_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e2997",
+        "aircraftTypeCode": "T",
+        "badgeName": "CURTIS",
+        "baseport": "HKG",
+        "crewId": "LEE TYC",
+        "crewSeniority": "NR",
+        "currentErn": "127474C",
+        "employmentCompany": "CX",
+        "fleet": "T",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "none",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "SO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "curtis_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e29ae",
+        "aircraftTypeCode": "E",
+        "badgeName": "YOUNG MIN",
+        "baseport": "HKG",
+        "crewId": "LEE YOUNG MIN",
+        "crewSeniority": "NN",
+        "currentErn": "127592H",
+        "employmentCompany": "CX",
+        "fleet": "E",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "youngmin_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e29fa",
+        "aircraftTypeCode": "T",
+        "badgeName": "MARTIN",
+        "baseport": "HKG",
+        "crewId": "LEE SHM",
+        "crewSeniority": "NN",
+        "currentErn": "127763F",
+        "employmentCompany": "CX",
+        "fleet": "T",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "SO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        },
+        "companyEmail": "martin_s_lee@cathaypacific.com"
+    },
+    {
+        "_id": "611f24389d268db0158e2bfb",
+        "aircraftTypeCode": "T",
+        "badgeName": "JOSHUA",
+        "baseport": "HKG",
+        "crewId": "LEE KWJ",
+        "crewSeniority": "NN",
+        "currentErn": "129121L",
+        "employmentCompany": "CX",
+        "fleet": "T",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "none",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "SO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "joshua_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e2c1a",
+        "aircraftTypeCode": "E",
+        "badgeName": "LEE",
+        "baseport": "HKG",
+        "crewId": "BRITTAN LD",
+        "crewSeniority": "NN",
+        "currentErn": "129255A",
+        "employmentCompany": "CX",
+        "fleet": "E",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [],
+        "surname": "BRITTAN",
+        "companyEmail": "lee_brittan@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e2c48",
+        "aircraftTypeCode": "T",
+        "badgeName": "WILSON",
+        "baseport": "HKG",
+        "crewId": "LEE WCH",
+        "crewSeniority": "NN",
+        "currentErn": "129325K",
+        "employmentCompany": "CX",
+        "fleet": "T",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": false,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": true
+        },
+        "rankCode": "SO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "wilson_lee@cathaypacific.com",
+        "profilePicture": {
+            "filename": "129325K.jpg.gpg",
+            "eTag": "0de6d512e6fda9079e37339eaf086c14",
+            "updatedAt": "2023-04-21T09:38:40.174Z"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e2c88",
+        "aircraftTypeCode": "B",
+        "badgeName": "SAM",
+        "baseport": "HKG",
+        "crewId": "LEE-KOPIJ S",
+        "crewSeniority": "NV",
+        "currentErn": "130155B",
+        "employmentCompany": "CX",
+        "fleet": "B",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": false,
+            "sendRoster": false,
+            "rosterPrivacy": "none",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "SO",
+        "reliefQualified": [],
+        "surname": "LEE-KOPIJ",
+        "companyEmail": "sam_leekopij@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e2d10",
+        "aircraftTypeCode": "T",
+        "badgeName": "SAMMY",
+        "baseport": "HKG",
+        "crewId": "LEE YKS",
+        "crewSeniority": "NN",
+        "currentErn": "131102K",
+        "employmentCompany": "CX",
+        "fleet": "T",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": true
+        },
+        "rankCode": "SO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "sammy_lee@cathaypacific.com",
+        "profilePicture": {
+            "filename": "131102K.jpg.gpg",
+            "eTag": "50248f3cb636604e4787ea29b5f118e2",
+            "updatedAt": "2023-04-21T09:38:44.026Z"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e3045",
+        "aircraftTypeCode": "5",
+        "badgeName": "PATRICK",
+        "baseport": "HKG",
+        "crewId": "LEE PG",
+        "crewSeniority": "NN",
+        "currentErn": "134381H",
+        "employmentCompany": "CX",
+        "fleet": "5",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "hideFromAddFriendSearch": false,
+            "rosterPrivacy": "none"
+        },
+        "rankCode": "SO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "patrick_george_lee@cathaypacific.com"
+    },
+    {
+        "_id": "611f24389d268db0158e30ff",
+        "aircraftTypeCode": "B",
+        "badgeName": "ALEX",
+        "baseport": "HKG",
+        "crewId": "LEE YHA",
+        "crewSeniority": "NN",
+        "currentErn": "134803A",
+        "employmentCompany": "CX",
+        "fleet": "B",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "alex_l@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e3282",
+        "aircraftTypeCode": "B",
+        "badgeName": "JON",
+        "baseport": "HKG",
+        "crewId": "LEE JP",
+        "crewSeniority": "NE",
+        "currentErn": "650903E",
+        "employmentCompany": "CX",
+        "fleet": "B",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "CN",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "jon_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e32ac",
+        "aircraftTypeCode": "T",
+        "badgeName": "STEVEN",
+        "baseport": "HKG",
+        "crewId": "LEE WHS",
+        "crewSeniority": "CC",
+        "currentErn": "650983H",
+        "employmentCompany": "CX",
+        "fleet": "T",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "none",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "CN",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "steven_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e3668",
+        "aircraftTypeCode": "B",
+        "badgeName": "ANDREW",
+        "baseport": "HKG",
+        "crewId": "LEES AJ",
+        "crewSeniority": "NE",
+        "currentErn": "700782A",
+        "employmentCompany": "CX",
+        "fleet": "B",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false
+        },
+        "rankCode": "CN",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEES",
+        "companyEmail": "andrew_j_lees@cathaypacific.com"
+    },
+    {
+        "_id": "611f24389d268db0158e3786",
+        "aircraftTypeCode": "T",
+        "badgeName": "DAVID",
+        "baseport": "HKG",
+        "crewId": "LEE DJ",
+        "crewSeniority": "TC",
+        "currentErn": "700951L",
+        "employmentCompany": "CX",
+        "fleet": "T",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": true
+        },
+        "rankCode": "CN",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "david_j_lee@cathaypacific.com",
+        "profilePicture": {
+            "filename": "700951L.jpg.gpg",
+            "eTag": "44fa73e84623e5cb8b84ea8aa19f4450",
+            "updatedAt": "2023-04-21T09:39:27.812Z"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e390c",
+        "aircraftTypeCode": "T",
+        "badgeName": "MAI MAI",
+        "baseport": "HKG",
+        "crewId": "LEE MM",
+        "crewSeniority": "NE",
+        "currentErn": "701193J",
+        "employmentCompany": "CX",
+        "fleet": "T",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "maimai_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "611f24389d268db0158e3ae2",
+        "aircraftTypeCode": "E",
+        "badgeName": "OSCAR",
+        "baseport": "HKG",
+        "crewId": "LEE BKO",
+        "crewSeniority": "NE",
+        "currentErn": "701451K",
+        "employmentCompany": "CX",
+        "fleet": "E",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "CN",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "oscar_bk_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "6165ea5bc4bb9b7ff4fb0395",
+        "currentErn": "339011R",
+        "aircraftTypeCode": "2",
+        "badgeName": "BRIAN",
+        "baseport": "HKG",
+        "crewId": "LEE CL BRIAN",
+        "crewSeniority": "NN",
+        "employmentCompany": "CX",
+        "primaryPhone": "-",
+        "rankCode": "FO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "brian_lee@cathaypacific.com",
+        "fleet": "2",
+        "fleetMembership": "F",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": false,
+            "sendRoster": false,
+            "rosterPrivacy": "none",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        }
+    },
+    {
+        "_id": "6165ea5bc4bb9b7ff4fb039c",
+        "currentErn": "339432R",
+        "aircraftTypeCode": "2",
+        "badgeName": "ERIC",
+        "baseport": "HKG",
+        "crewId": "LEE CW ERIC",
+        "crewSeniority": "NG",
+        "employmentCompany": "CX",
+        "primaryPhone": "-",
+        "rankCode": "FO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "eric_lee@cathaypacific.com",
+        "fleet": "2",
+        "fleetMembership": "F",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "none",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": true
+        }
+    },
+    {
+        "_id": "6165ea5bc4bb9b7ff4fb03a0",
+        "currentErn": "339562R",
+        "aircraftTypeCode": "2",
+        "badgeName": "MARC",
+        "baseport": "HKG",
+        "crewId": "LEE MH MARC",
+        "crewSeniority": "NN",
+        "employmentCompany": "CX",
+        "primaryPhone": "-",
+        "rankCode": "FO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "marc_lee@cathaypacific.com",
+        "fleet": "2",
+        "fleetMembership": "F",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        }
+    },
+    {
+        "_id": "617c54088b5f7798db44534e",
+        "currentErn": "123173G",
+        "aircraftTypeCode": "B",
+        "badgeName": "JAMINE",
+        "baseport": "HKG",
+        "crewId": "LEE JSY",
+        "crewSeniority": "NN",
+        "employmentCompany": "CX",
+        "primaryPhone": "-",
+        "rankCode": "SO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "jamine_lee@cathaypacific.com",
+        "fleet": "B",
+        "fleetMembership": "F",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": false,
+            "sendRoster": false,
+            "rosterPrivacy": "none",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "61b8e3dad8ff1aa980efb57e",
+        "aircraftTypeCode": "5",
+        "badgeName": "BRAYDEN",
+        "baseport": "HKG",
+        "crewId": "LEE BHS",
+        "crewSeniority": "NG",
+        "currentErn": "135144L",
+        "employmentCompany": "CX",
+        "fleet": "5",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": false,
+            "sendRoster": false,
+            "rosterPrivacy": "none",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "SO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "brayden_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "61c0cc5cca6cbd3c3cc2d781",
+        "aircraftTypeCode": "T",
+        "badgeName": "JACKIE",
+        "baseport": "HKG",
+        "crewId": "LEE JCH",
+        "crewSeniority": "NN",
+        "currentErn": "650918G",
+        "employmentCompany": "CX",
+        "fleet": "T",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "CN",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": "jackie_hc_lee@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "61ddcdd3f586c8d740db02d9",
+        "aircraftTypeCode": "3",
+        "badgeName": "PHILIP",
+        "baseport": "HKG",
+        "crewId": "LEE PHY",
+        "crewSeniority": "NN",
+        "currentErn": "338296R",
+        "employmentCompany": "CX",
+        "fleet": "3",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "philip_l@cathaypacific.com"
+    },
+    {
+        "_id": "62ead4bf562a17b7948d3ec8",
+        "currentErn": "136611C",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": false,
+            "sendRoster": false,
+            "rosterPrivacy": "none",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "aircraftTypeCode": "5",
+        "badgeName": "BRIAN",
+        "baseport": "HKG",
+        "crewId": "LEE PHB",
+        "crewSeniority": "NI",
+        "employmentCompany": "CX",
+        "primaryPhone": "-",
+        "rankCode": "SO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "brian_p_lee@cathaypacific.com",
+        "fleet": "5",
+        "fleetMembership": "F",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "62ec263e562a17b794db60fb",
+        "currentErn": "136617L",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "hideFromAddFriendSearch": false,
+            "rosterPrivacy": "none"
+        },
+        "aircraftTypeCode": "T",
+        "badgeName": "WILL",
+        "baseport": "HKG",
+        "crewId": "LEE WH",
+        "crewSeniority": "NI",
+        "employmentCompany": "CX",
+        "primaryPhone": "-",
+        "rankCode": "SO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "will_lee@cathaypacific.com",
+        "fleet": "T",
+        "fleetMembership": "F"
+    },
+    {
+        "_id": "62ec263e562a17b794db6104",
+        "currentErn": "136622G",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": false,
+            "sendRoster": false,
+            "rosterPrivacy": "none",
+            "hideFromAddFriendSearch": false
+        },
+        "aircraftTypeCode": "5",
+        "badgeName": "ADRIAN",
+        "baseport": "HKG",
+        "crewId": "LEE CLA",
+        "crewSeniority": "NI",
+        "employmentCompany": "CX",
+        "primaryPhone": "-",
+        "rankCode": "SO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "adrian_lee@cathaypacific.com",
+        "fleet": "5",
+        "fleetMembership": "F"
+    },
+    {
+        "_id": "62fc5f1843b37dc18ca4b9eb",
+        "badgeName": "WINNIE",
+        "baseport": "HKG",
+        "companyEmail": null,
+        "crewId": "TANG WINNIE",
+        "currentErn": "AHK1767",
+        "employmentCompany": "LD",
+        "fleet": "6",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false
+        },
+        "rankCode": "FO",
+        "reliefQualified": [],
+        "surname": "TANG"
+    },
+    {
+        "_id": "6310c91a66fb6c21e0f1fd3a",
+        "currentErn": "CXCD014",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "hideFromAddFriendSearch": false,
+            "rosterPrivacy": "none"
+        },
+        "aircraftTypeCode": "A",
+        "badgeName": "",
+        "baseport": "HKG",
+        "crewId": "LEE HI",
+        "crewSeniority": "NN",
+        "employmentCompany": "AD",
+        "primaryPhone": "",
+        "rankCode": "CN",
+        "reliefQualified": [
+            "RQ"
+        ],
+        "surname": "LEE",
+        "companyEmail": null,
+        "fleet": "A",
+        "fleetMembership": "F"
+    },
+    {
+        "_id": "6323854d6bf4521789f4ed18",
+        "currentErn": "136706B",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": false,
+            "sendRoster": false,
+            "rosterPrivacy": "none",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "aircraftTypeCode": "5",
+        "badgeName": "LEO",
+        "baseport": "HKG",
+        "crewId": "LEE KHL",
+        "crewSeniority": "NI",
+        "employmentCompany": "CX",
+        "primaryPhone": "-",
+        "rankCode": "SO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "leo_kh_lee@cathaypacific.com",
+        "fleet": "5",
+        "fleetMembership": "F",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "63a366bf37d069d6396290b7",
+        "currentErn": "137520J",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "aircraftTypeCode": "5",
+        "badgeName": "ANDREW",
+        "baseport": "HKG",
+        "crewId": "LEE ASJ",
+        "crewSeniority": "NN",
+        "employmentCompany": "CX",
+        "primaryPhone": "-",
+        "rankCode": "FO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "andrew_lee@cathaypacific.com",
+        "fleet": "5",
+        "fleetMembership": "F",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    },
+    {
+        "_id": "64f8db40fa0b6492881976c4",
+        "currentErn": "139684K",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false,
+            "rosterPrivacy": "none"
+        },
+        "aircraftTypeCode": "5",
+        "badgeName": "PATRICK",
+        "baseport": "HKG",
+        "crewId": "LEE PPY",
+        "crewSeniority": "NX",
+        "employmentCompany": "CX",
+        "primaryPhone": "-",
+        "rankCode": "SO",
+        "reliefQualified": [],
+        "surname": "LEE",
+        "companyEmail": "patrick_lee@cathaypacific.com",
+        "fleet": "5",
+        "fleetMembership": "F",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    }
+]

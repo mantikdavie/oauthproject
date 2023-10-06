@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'duty_list.dart';
 
-class CrewDutiesFull {
+class SelfDutiesFull {
   String? maxAckDateInDuties;
   String? rosterDiscloseFlag;
   String? masterDiscloseFlag;
@@ -10,7 +10,7 @@ class CrewDutiesFull {
   bool? hasOutstandingAcknowledgement;
   List<DutyList>? dutyList;
 
-  CrewDutiesFull({
+  SelfDutiesFull({
     this.maxAckDateInDuties,
     this.rosterDiscloseFlag,
     this.masterDiscloseFlag,
@@ -24,8 +24,8 @@ class CrewDutiesFull {
     return 'CrewDutiesFull(maxAckDateInDuties: $maxAckDateInDuties, rosterDiscloseFlag: $rosterDiscloseFlag, masterDiscloseFlag: $masterDiscloseFlag, swapRequestApprovedUnread: $swapRequestApprovedUnread, hasOutstandingAcknowledgement: $hasOutstandingAcknowledgement, dutyList: $dutyList)';
   }
 
-  factory CrewDutiesFull.fromMap(Map<String, dynamic> data) {
-    return CrewDutiesFull(
+  factory SelfDutiesFull.fromMap(Map<String, dynamic> data) {
+    return SelfDutiesFull(
       maxAckDateInDuties: data['maxAckDateInDuties'] as String?,
       rosterDiscloseFlag: data['rosterDiscloseFlag'] as String?,
       masterDiscloseFlag: data['masterDiscloseFlag'] as String?,
@@ -49,17 +49,17 @@ class CrewDutiesFull {
 
   /// `dart:convert`
   ///
-  /// Parses the string and returns the resulting Json object as [CrewDutiesFull].
-  factory CrewDutiesFull.fromJson(String data) {
-    return CrewDutiesFull.fromMap(json.decode(data) as Map<String, dynamic>);
+  /// Parses the string and returns the resulting Json object as [SelfDutiesFull].
+  factory SelfDutiesFull.fromJson(String data) {
+    return SelfDutiesFull.fromMap(json.decode(data) as Map<String, dynamic>);
   }
 
   /// `dart:convert`
   ///
-  /// Converts [CrewDutiesFull] to a JSON string.
+  /// Converts [SelfDutiesFull] to a JSON string.
   String toJson() => json.encode(toMap());
 
-  CrewDutiesFull copyWith({
+  SelfDutiesFull copyWith({
     String? maxAckDateInDuties,
     String? rosterDiscloseFlag,
     String? masterDiscloseFlag,
@@ -67,7 +67,7 @@ class CrewDutiesFull {
     bool? hasOutstandingAcknowledgement,
     List<DutyList>? dutyList,
   }) {
-    return CrewDutiesFull(
+    return SelfDutiesFull(
       maxAckDateInDuties: maxAckDateInDuties ?? this.maxAckDateInDuties,
       rosterDiscloseFlag: rosterDiscloseFlag ?? this.rosterDiscloseFlag,
       masterDiscloseFlag: masterDiscloseFlag ?? this.masterDiscloseFlag,

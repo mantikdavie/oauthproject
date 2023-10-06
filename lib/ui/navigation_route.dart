@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:oauthproject/main.dart';
-import 'package:oauthproject/model/flight_crew_list/flight_crew.dart';
+import 'package:oauthproject/model/flight_crew_list/crew_profile.dart';
 import 'package:oauthproject/model/flight_crew_list/flight_crew_list.dart';
 import 'package:oauthproject/ui/pages/Profile/self_profile_screen.dart';
 import 'package:oauthproject/ui/pages/crewlist/crewlist_result_screen.dart';
@@ -41,15 +41,24 @@ Future<GoRouter> initRouter() async {
                       GoRoute(
                         path: 'flightcrewprofile',
                         builder: (context, state) {
-                          final flightCrew = state.extra as FlightCrew;
-                          return CrewProfileScreen(flightCrew: flightCrew);
+                          final crewProfile = state.extra as CrewProfile;
+                          return CrewProfileScreen(crewProfile: crewProfile);
                         },
                       )
                     ]),
               ]),
-              GoRoute(
+          GoRoute(
               path: 'seniority',
-              builder: (context, state) => const SeniorityListScreen()),
+              builder: (context, state) => const SeniorityListScreen(),
+              routes: [
+                GoRoute(
+                  path: 'flightcrewprofile',
+                  builder: (context, state) {
+                    final crewProfile = state.extra as CrewProfile;
+                    return CrewProfileScreen(crewProfile: crewProfile);
+                  },
+                )
+              ]),
         ],
       ),
       GoRoute(

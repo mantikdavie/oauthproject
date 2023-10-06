@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
-import 'package:oauthproject/model/crew_profile/crew_profile.dart';
+import 'package:oauthproject/model/self_profile/self_profile.dart';
 import 'package:oauthproject/model/seniority_list/seniority_list.dart';
 import 'package:oauthproject/utility/api.dart';
 import 'package:oauthproject/utility/local_storage.dart';

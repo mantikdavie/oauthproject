@@ -18,7 +18,10 @@ final class FclMultiSectorLoaded extends FlightCrewlistState {
   final int dutyCode;
   final int dutyStartDate;
 
-  FclMultiSectorLoaded({required this.sectors, required this.dutyCode, required this.dutyStartDate});
+  FclMultiSectorLoaded(
+      {required this.sectors,
+      required this.dutyCode,
+      required this.dutyStartDate});
 }
 
 final class FclNotFound extends FlightCrewlistState {}

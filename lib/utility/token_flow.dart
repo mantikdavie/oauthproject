@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 // import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
@@ -6,6 +7,7 @@ import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:oauth2_client/microsoft_oauth2_client.dart';
 import 'package:oauth2_client/oauth2_client.dart';
 import 'package:oauth2_client/oauth2_helper.dart';
+import 'package:oauthproject/utility/api.dart';
 import 'package:oauthproject/utility/local_storage.dart';
 
 // "https://login.microsoftonline.com/
@@ -68,17 +70,29 @@ FutureOr<String> requestCodeFromOauth() async {
 }
 
 FutureOr<String> requestTokenFromCode(String code) async {
-  final resp = await client.requestAccessToken(
-    code: code,
-    clientId: 'f249d3fd-6586-4cde-a844-59f984c2dcbb',
-    scopes: ['openid offline_access'],
-    // customParams: {'response_mode': 'query'},
-  );
-  final respMap = resp.toMap();
+  // final resp = await client.requestAccessToken(
+  //   code: code,
+  //   clientId: 'f249d3fd-6586-4cde-a844-59f984c2dcbb',
+  //   scopes: ['openid offline_access'],
+  //   // customParams: {'response_mode': 'query'},
+  // );
+
+  final requestBody = {
+    "grant_type": "authorization_code",
+    "code": code,
+    "redirect_uri":
+        "com.cathaypacific.crewlifestyle://com.cathaypacific.crewlifestyle.callback",
+    "client_id": 'f249d3fd-6586-4cde-a844-59f984c2dcbb'
+  };
+
+  final resp = await dioPostRequest('login.microsoftonline.com',
+      'f62aca8c-2ba2-417b-a0c1-ab3f1020ccc4/oauth2/v2.0/token', requestBody);
+
+  final respMap = resp;
+  debugPrint(respMap.toString());
   final idToken = respMap["id_token"];
   final decodeToken = JwtDecoder.decode(idToken.toString());
 
-  debugPrint(respMap.toString());
   debugPrint("id token: ${respMap["id_token"]}");
   debugPrint("refresh_token: ${respMap["refresh_token"]}");
   saveStringToCache('token_resp', respMap.toString());
@@ -97,19 +111,31 @@ Future<String> requestFromRefreshToken(String refreshToken) async {
   //     clientId: 'f249d3fd-6586-4cde-a844-59f984c2dcbb',
   //     scopes: ['openid offline_access']);
 
-  final resp = await client.refreshToken(
-    refreshToken,
-    clientId: 'f249d3fd-6586-4cde-a844-59f984c2dcbb',
-  );
+  // final resp = await client.refreshToken(
+  //   refreshToken,
+  //   clientId: 'f249d3fd-6586-4cde-a844-59f984c2dcbb',
+  // );
 
-  final respMap = resp.toMap();
-  debugPrint("respMap: ${respMap.toString()}");
-  debugPrint("new refresh token from refresh: ${respMap["refresh_token"]}");
-  debugPrint("new id token from refresh: ${respMap["id_token"]}");
-  saveStringToCache('token_resp', respMap.toString());
-  saveStringToCache('access_token', respMap["access_token"]);
-  saveStringToCache('refresh_token', respMap["refresh_token"]);
-  saveStringToCache('id_token', respMap["id_token"]);
+  final requestBody = {
+    "grant_type": "refresh_token",
+    "refresh_token": refreshToken,
+    "scope": "openid",
+    "client_id": 'f249d3fd-6586-4cde-a844-59f984c2dcbb'
+  };
 
-  return respMap["id_token"];
+  final resp = await dioPostRequest(
+      'login.microsoftonline.com',
+      'f62aca8c-2ba2-417b-a0c1-ab3f1020ccc4/oauth2/v2.0/token',
+      requestBody) as Map;
+
+  // final respJson = json.encode(resp.toString());
+
+  debugPrint("new refresh token from refresh: ${resp["refresh_token"]}");
+  debugPrint("new id token from refresh: ${resp["id_token"]}");
+  saveStringToCache('token_resp', resp.toString());
+  saveStringToCache('access_token', resp["access_token"]);
+  saveStringToCache('refresh_token', resp["refresh_token"]);
+  saveStringToCache('id_token', resp["id_token"]);
+
+  return resp["id_token"];
 }

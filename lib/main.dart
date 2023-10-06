@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:oauthproject/bloc/auth_status_bloc.dart';
 import 'package:oauthproject/ui/navigation_route.dart';
+import 'package:oauthproject/ui/pages/profile/bloc/crew_profile_bloc.dart';
 import 'package:oauthproject/ui/pages/profile/bloc/self_profile_bloc.dart';
 import 'package:oauthproject/ui/widgets/auth_status_icon_widget.dart';
 import 'package:oauthproject/utility/api.dart';
@@ -26,6 +27,9 @@ class MainApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => AuthStatusBloc()..add(AuthStatusChecking()),
+        ),
+        BlocProvider(
+          create: (context) => CrewProfileBloc(),
         ),
         BlocProvider(create: (context) {
           if (context.read<AuthStatusBloc>().state is AuthStatusTokenExpired) {
@@ -72,11 +76,26 @@ class HomePage extends StatelessWidget {
           return const Center(child: Text('Status Check in Progress'));
         } else if (state is AuthStatusUnauthenticated) {
           return Center(
-            child: ElevatedButton(
-                onPressed: () {
-                  context.read<AuthStatusBloc>().add(AuthStatusRequestCode());
-                },
-                child: const Text('Login')),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                    onPressed: () {
+                      context
+                          .read<AuthStatusBloc>()
+                          .add(AuthStatusRequestCode());
+                    },
+                    child: const Text('Login')),
+                ElevatedButton(
+                    onPressed: () {
+                      context
+                          .read<AuthStatusBloc>()
+                          .add(AuthStatusRefreshToken());
+                    },
+                    child: const Text('Refresh Token')),
+              ],
+            ),
           );
         } else if (state is AuthStatusAuthenticated) {
           return Center(

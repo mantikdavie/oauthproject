@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:oauthproject/bloc/auth_status_bloc.dart';
 import 'package:oauthproject/model/seniority_list/seniority_list.dart';
+import 'package:oauthproject/ui/pages/profile/bloc/crew_profile_bloc.dart';
 import 'package:oauthproject/ui/pages/seniority/bloc/seniority_bloc.dart';
 import 'package:oauthproject/ui/widgets/auth_status_icon_widget.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
@@ -95,7 +96,7 @@ class _SeniorityListViewWidgetState extends State<SeniorityListViewWidget> {
         index: index,
         duration: const Duration(milliseconds: 1000),
         alignment: 0.25,
-        curve: Curves.decelerate);  
+        curve: Curves.decelerate);
   }
 
   @override
@@ -136,7 +137,15 @@ class _SeniorityListViewWidgetState extends State<SeniorityListViewWidget> {
                                         .colorScheme
                                         .inversePrimary)
                                 : null,
-                            child: ListTile(
+                            child:
+                                BlocListener<CrewProfileBloc, CrewProfileState>(
+                              listener: (context, state) {
+                                if (state is CrewProfileLoaded) {
+                                  context.go('/seniority/flightcrewprofile',
+                                      extra: state.crewProfile);
+                                }
+                              },
+                              child: ListTile(
                                 isThreeLine: false,
                                 dense: true,
                                 title: Row(
@@ -154,10 +163,21 @@ class _SeniorityListViewWidgetState extends State<SeniorityListViewWidget> {
                                 trailing: const Text(''),
                                 subtitle: Text(
                                     '${seniorityList[index].fleet}-${seniorityList[index].rank}'),
-                                onTap: () async {
-                                  // context.push(
-                                  //     '/crewlist/results/flightcrewprofile');
-                                }),
+                                onTap: context.read<CrewProfileBloc>().state
+                                        is CrewProfileLoading
+                                    ? null
+                                    : () {
+                                        final crewId = seniorityList[index]
+                                            .crewId
+                                            .toString();
+                                        if (crewId != '-') {
+                                          context.read<CrewProfileBloc>().add(
+                                              CrewProfileSearchByCrewId(
+                                                  crewId: crewId));
+                                        }
+                                      },
+                              ),
+                            ),
                           );
                         })),
               ],

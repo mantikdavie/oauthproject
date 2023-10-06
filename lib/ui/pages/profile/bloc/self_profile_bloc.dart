@@ -5,7 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:meta/meta.dart';
-import 'package:oauthproject/model/crew_profile/crew_profile.dart';
+import 'package:oauthproject/model/self_profile/self_profile.dart';
 import 'package:oauthproject/utility/api.dart';
 import 'package:oauthproject/utility/local_storage.dart';
 
@@ -28,13 +28,13 @@ class SelfProfileBloc extends Bloc<SelfProfileEvent, SelfProfileState> {
       if (resp != null) {
         final respJson = jsonEncode(resp);
         saveStringToCache('profile_resp', respJson);
-        CrewProfile crewProfile = CrewProfile.fromMap(resp);
+        SelfProfile crewProfile = SelfProfile.fromMap(resp);
         saveStringToCache('crew_id', crewProfile.crewId.toString());
         emit(ProfileLoaded(crewProfile: crewProfile));
       } else {
         final String resp = await readFromCache('profile_resp');
         debugPrint('debug print in fetch local: $resp');
-        CrewProfile crewProfile = CrewProfile.fromJson(resp);
+        SelfProfile crewProfile = SelfProfile.fromJson(resp);
         emit(ProfileLoaded(crewProfile: crewProfile));
       }
     } catch (e) {
@@ -48,7 +48,7 @@ class SelfProfileBloc extends Bloc<SelfProfileEvent, SelfProfileState> {
     try {
       final String resp = await readFromCache('profile_resp');
       debugPrint('debug print in fetch local: $resp');
-      CrewProfile crewProfile = CrewProfile.fromJson(resp);
+      SelfProfile crewProfile = SelfProfile.fromJson(resp);
       emit(ProfileLoaded(crewProfile: crewProfile));
     } catch (e) {
       debugPrint('caught error: $e');

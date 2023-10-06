@@ -1,0 +1,34 @@
+[
+    {
+        "_id": "611f24389d268db0158e297d",
+        "aircraftTypeCode": "2",
+        "badgeName": "EDWIN",
+        "baseport": "HKG",
+        "crewId": "CHIU HTE",
+        "crewSeniority": "NR",
+        "currentErn": "127424H",
+        "employmentCompany": "CX",
+        "fleet": "2",
+        "fleetMembership": "F",
+        "primaryPhone": "-",
+        "privacy": {
+            "primaryPhone": false,
+            "secondaryPhone": false,
+            "mobilePhone": false,
+            "emailAddress": false,
+            "seniorityList": true,
+            "sendRoster": false,
+            "rosterPrivacy": "all",
+            "hideFromAddFriendSearch": false,
+            "profilePicture": false
+        },
+        "rankCode": "SO",
+        "reliefQualified": [],
+        "surname": "CHIU",
+        "companyEmail": "edwin_chiu@cathaypacific.com",
+        "profilePicture": {
+            "eTag": "-",
+            "filename": "-"
+        }
+    }
+]

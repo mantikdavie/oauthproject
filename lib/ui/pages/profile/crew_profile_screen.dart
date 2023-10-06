@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:oauthproject/model/flight_crew_list/crew_profile.dart';
 import 'package:oauthproject/model/flight_crew_list/flight_crew.dart';
 import 'package:oauthproject/model/public_roster_crew_results/public_roster_crew_results.dart';
 import 'package:oauthproject/ui/widgets/auth_status_icon_widget.dart';
@@ -9,9 +10,10 @@ import 'package:oauthproject/utility/api.dart';
 import 'package:oauthproject/utility/local_storage.dart';
 
 class CrewProfileScreen extends StatefulWidget {
-  final FlightCrew flightCrew;
+  // final FlightCrew flightCrew;
+  final CrewProfile crewProfile;
 
-  const CrewProfileScreen({super.key, required this.flightCrew});
+  const CrewProfileScreen({super.key, required this.crewProfile});
 
   @override
   State<CrewProfileScreen> createState() => _CrewProfileScreenState();
@@ -23,7 +25,7 @@ class _CrewProfileScreenState extends State<CrewProfileScreen> {
 
   @override
   void initState() {
-    rosterPrivacy = widget.flightCrew.crewProfile!.privacy!.rosterPrivacy!;
+    rosterPrivacy = widget.crewProfile.privacy!.rosterPrivacy!;
     super.initState();
   }
 
@@ -48,7 +50,7 @@ class _CrewProfileScreenState extends State<CrewProfileScreen> {
                   const SizedBox(width: 120, child: Text("Badge Name: ")),
                   SizedBox(
                       width: 240,
-                      child: Text("${widget.flightCrew.crewBadgeName}"))
+                      child: Text("${widget.crewProfile.badgeName}"))
                 ],
               ),
             ),
@@ -59,8 +61,7 @@ class _CrewProfileScreenState extends State<CrewProfileScreen> {
                 children: [
                   const SizedBox(width: 120, child: Text("Surname: ")),
                   SizedBox(
-                      width: 240,
-                      child: Text("${widget.flightCrew.crewProfile?.surname}"))
+                      width: 240, child: Text("${widget.crewProfile.surname}"))
                 ],
               ),
             ),
@@ -73,7 +74,7 @@ class _CrewProfileScreenState extends State<CrewProfileScreen> {
                   SizedBox(
                       width: 240,
                       child: Text(
-                          "${widget.flightCrew.crewProfile?.fleet}${widget.flightCrew.crewProfile?.rankCode}${widget.flightCrew.crewProfile?.crewSeniority}"))
+                          "${widget.crewProfile.fleet}${widget.crewProfile.rankCode}${widget.crewProfile.crewSeniority}"))
                 ],
               ),
             ),
@@ -84,8 +85,7 @@ class _CrewProfileScreenState extends State<CrewProfileScreen> {
                 children: [
                   const SizedBox(width: 120, child: Text("crew id: ")),
                   SizedBox(
-                      width: 240,
-                      child: Text("${widget.flightCrew.crewProfile?.crewId}"))
+                      width: 240, child: Text("${widget.crewProfile.crewId}"))
                 ],
               ),
             ),
@@ -97,8 +97,7 @@ class _CrewProfileScreenState extends State<CrewProfileScreen> {
                   const SizedBox(width: 120, child: Text("galacxy id: ")),
                   SizedBox(
                       width: 240,
-                      child:
-                          Text("${widget.flightCrew.crewProfile?.galacxyId}"))
+                      child: Text("${widget.crewProfile.galacxyId}"))
                 ],
               ),
             ),
@@ -110,8 +109,7 @@ class _CrewProfileScreenState extends State<CrewProfileScreen> {
                   const SizedBox(width: 120, child: Text("Current ERN: ")),
                   SizedBox(
                       width: 240,
-                      child:
-                          Text("${widget.flightCrew.crewProfile?.currentErn}"))
+                      child: Text("${widget.crewProfile.currentErn}"))
                 ],
               ),
             ),
@@ -134,9 +132,8 @@ class _CrewProfileScreenState extends State<CrewProfileScreen> {
                         ? null
                         : () async {
                             totalblockHours = await getPublicRosterApi(
-                                crewErn: widget
-                                    .flightCrew.crewProfile!.currentErn
-                                    .toString());
+                                crewErn:
+                                    widget.crewProfile.currentErn.toString());
                             setState(() {});
                           },
                     child: const Text("Get Hours"))
@@ -159,7 +156,13 @@ Future<double> getPublicRosterApi({required String crewErn}) async {
   // final respJson = json.decode(resp);
   final PublicRosterCrewResults rosters =
       PublicRosterCrewResults.fromMap(respJson);
-  return await calculateTotalBlockHours(rosters);
+
+  if (respJson['status'] == "ok") {
+    return await calculateTotalBlockHours(rosters);
+  } else {
+    debugPrint(respJson['errorMessage']);
+    return -1.0;
+  }
 }
 
 Future<double> calculateTotalBlockHours(PublicRosterCrewResults rosters) async {
@@ -173,7 +176,11 @@ Future<double> calculateTotalBlockHours(PublicRosterCrewResults rosters) async {
 
   debugPrint(blockHours.toString());
 
-  final double totalBlockHours =
-      blockHours.reduce((value, element) => value + element);
+  final double totalBlockHours;
+  if (blockHours.isNotEmpty) {
+    totalBlockHours = blockHours.reduce((value, element) => value + element);
+  } else {
+    totalBlockHours = 0;
+  }
   return totalBlockHours;
 }

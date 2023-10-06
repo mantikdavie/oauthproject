@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'service_locator.dart';
 
-void saveStringToCache(String key, String value) async {
+Future saveStringToCache(String key, String value) async {
   final sharedPref = sl<SharedPreferences>();
 
   await sharedPref.setString(key, value);

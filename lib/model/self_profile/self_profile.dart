@@ -10,7 +10,7 @@ import 'qualification.dart';
 import 'sub_rankblock_hour_and_unused_reserve.dart';
 import 'travel_doc.dart';
 
-class CrewProfile {
+class SelfProfile {
   String? firstErn;
   String? airCraftServiceType;
   String? aircraftTypeCode;
@@ -88,7 +88,7 @@ class CrewProfile {
   List<dynamic>? requestOut;
   List<dynamic>? requestIn;
 
-  CrewProfile({
+  SelfProfile({
     this.firstErn,
     this.airCraftServiceType,
     this.aircraftTypeCode,
@@ -172,7 +172,7 @@ class CrewProfile {
     return 'CrewProfile(firstErn: $firstErn, airCraftServiceType: $airCraftServiceType, aircraftTypeCode: $aircraftTypeCode, badgeName: $badgeName, baseport: $baseport, contractType: $contractType, countryOfBirth: $countryOfBirth, crewId: $crewId, crewSeniority: $crewSeniority, currentErn: $currentErn, dateOfBirth: $dateOfBirth, dateOfJoin: $dateOfJoin, email: $email, employmentCompany: $employmentCompany, familyMemberName: $familyMemberName, familyPhone: $familyPhone, faxNumber: $faxNumber, firstName: $firstName, fleet: $fleet, fleetMembership: $fleetMembership, galacxyId: $galacxyId, gender: $gender, icaoNumber: $icaoNumber, licenseNumber: $licenseNumber, mailboxNumber: $mailboxNumber, mobilePhone: $mobilePhone, otherName: $otherName, passportName: $passportName, permBase: $permBase, preferredPort: $preferredPort, primaryPhone: $primaryPhone, privacy: $privacy, profileBatchUpdatedAt: $profileBatchUpdatedAt, rankCode: $rankCode, reliefQualified: $reliefQualified, resignationDate: $resignationDate, retirementDate: $retirementDate, secondaryPhone: $secondaryPhone, seniorityOrder: $seniorityOrder, surname: $surname, updatedAt: $updatedAt, travelDoc: $travelDoc, travelDocUpdatedAt: $travelDocUpdatedAt, qualification: $qualification, qualificationUpdatedAt: $qualificationUpdatedAt, cosmicRadiation: $cosmicRadiation, cosmicRadiationUpdatedAt: $cosmicRadiationUpdatedAt, appointmentCode: $appointmentCode, category: $category, categoryEffDate: $categoryEffDate, companyEmail: $companyEmail, fleetCompany: $fleetCompany, homeport: $homeport, mailBoxNumber: $mailBoxNumber, nationality: $nationality, paDialect: $paDialect, passportType: $passportType, specialMeal: $specialMeal, specialMealEffDate: $specialMealEffDate, v: $v, crewNotes: $crewNotes, privacyUpdatedAt: $privacyUpdatedAt, profilePicture: $profilePicture, qualifyRpRq: $qualifyRpRq, subRankblockHourAndUnusedReserve: $subRankblockHourAndUnusedReserve, subRankblockHourAndUnusedReserveUpdatedAt: $subRankblockHourAndUnusedReserveUpdatedAt, cumulativeBlockHours: $cumulativeBlockHours, cumulativeBlockHoursUpdatedAt: $cumulativeBlockHoursUpdatedAt, lastUpdatedView: $lastUpdatedView, lastUpdatedViewUpdatedAt: $lastUpdatedViewUpdatedAt, trainerType: $trainerType, actualAllowance: $actualAllowance, friends: $friends, blocklist: $blocklist, requestOut: $requestOut, requestIn: $requestIn)';
   }
 
-  factory CrewProfile.fromMap(Map<String, dynamic> data) => CrewProfile(
+  factory SelfProfile.fromMap(Map<String, dynamic> data) => SelfProfile(
         firstErn: data['firstErn'] as String?,
         airCraftServiceType: data['airCraftServiceType'] as String?,
         aircraftTypeCode: data['aircraftTypeCode'] as String?,
@@ -377,17 +377,17 @@ class CrewProfile {
 
   /// `dart:convert`
   ///
-  /// Parses the string and returns the resulting Json object as [CrewProfile].
-  factory CrewProfile.fromJson(String data) {
-    return CrewProfile.fromMap(json.decode(data) as Map<String, dynamic>);
+  /// Parses the string and returns the resulting Json object as [SelfProfile].
+  factory SelfProfile.fromJson(String data) {
+    return SelfProfile.fromMap(json.decode(data) as Map<String, dynamic>);
   }
 
   /// `dart:convert`
   ///
-  /// Converts [CrewProfile] to a JSON string.
+  /// Converts [SelfProfile] to a JSON string.
   String toJson() => json.encode(toMap());
 
-  CrewProfile copyWith({
+  SelfProfile copyWith({
     String? firstErn,
     String? airCraftServiceType,
     String? aircraftTypeCode,
@@ -465,7 +465,7 @@ class CrewProfile {
     List<dynamic>? requestOut,
     List<dynamic>? requestIn,
   }) {
-    return CrewProfile(
+    return SelfProfile(
       firstErn: firstErn ?? this.firstErn,
       airCraftServiceType: airCraftServiceType ?? this.airCraftServiceType,
       aircraftTypeCode: aircraftTypeCode ?? this.aircraftTypeCode,

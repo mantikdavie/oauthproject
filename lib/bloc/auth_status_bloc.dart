@@ -48,6 +48,8 @@ class AuthStatusBloc extends Bloc<AuthStatusEvent, AuthStatusState> {
     try {
       final code = await requestCodeFromOauth();
       if (code.isNotEmpty) emit(AuthStatusOauthAccquired());
+      await Future.delayed(const Duration(milliseconds: 100));
+
       final idToken = await requestTokenFromCode(code);
       if (!JwtDecoder.isExpired(idToken)) emit(AuthStatusAuthenticated());
     } catch (e) {
