@@ -13,6 +13,10 @@ final class CrewProfileLoaded extends CrewProfileState {
   CrewProfileLoaded({required this.crewProfile});
 }
 
-final class CrewProfileError extends CrewProfileState {}
+final class CrewProfileError extends CrewProfileState {
+  final String errorMessage;
+
+  CrewProfileError({required this.errorMessage});
+}
 
 final class CrewProfileEmpty extends CrewProfileState {}

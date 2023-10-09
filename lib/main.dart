@@ -1,9 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:oauthproject/bloc/auth_status_bloc.dart';
+import 'package:oauthproject/firebase_options.dart';
 import 'package:oauthproject/ui/navigation_route.dart';
+import 'package:oauthproject/ui/pages/crew_roster/bloc/crew_roster_bloc.dart';
 import 'package:oauthproject/ui/pages/profile/bloc/crew_profile_bloc.dart';
 import 'package:oauthproject/ui/pages/profile/bloc/self_profile_bloc.dart';
 import 'package:oauthproject/ui/widgets/auth_status_icon_widget.dart';
@@ -11,8 +16,14 @@ import 'package:oauthproject/utility/api.dart';
 import 'package:oauthproject/utility/local_storage.dart';
 import 'package:oauthproject/utility/service_locator.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+  // PlatformDispatcher.instance.onError = (error, stack) {
+  //   FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+  //   return true;
+  // };
   await setupServiceLocator();
   router = await initRouter();
   runApp(const MainApp());
@@ -30,6 +41,9 @@ class MainApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => CrewProfileBloc(),
+        ),
+        BlocProvider(
+          create: (context) => CrewRosterBloc(),
         ),
         BlocProvider(create: (context) {
           if (context.read<AuthStatusBloc>().state is AuthStatusTokenExpired) {

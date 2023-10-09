@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "91373226635",
+    "project_id": "fallen-harbour-flyer",
+    "storage_bucket": "fallen-harbour-flyer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:91373226635:android:ae99d63be0067972f9628e",
+        "android_client_info": {
+          "package_name": "com.example.oauthproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxUvDZ4TF5F7WVy_01xzbEVdnbCme0f0I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

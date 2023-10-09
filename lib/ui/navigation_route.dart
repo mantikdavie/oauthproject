@@ -3,7 +3,9 @@ import 'package:go_router/go_router.dart';
 import 'package:oauthproject/main.dart';
 import 'package:oauthproject/model/flight_crew_list/crew_profile.dart';
 import 'package:oauthproject/model/flight_crew_list/flight_crew_list.dart';
+import 'package:oauthproject/model/public_roster_crew_results/public_roster_crew_results.dart';
 import 'package:oauthproject/ui/pages/Profile/self_profile_screen.dart';
+import 'package:oauthproject/ui/pages/crew_roster/crew_roster_screen.dart';
 import 'package:oauthproject/ui/pages/crewlist/crewlist_result_screen.dart';
 import 'package:oauthproject/ui/pages/crewlist/flight_crewlist_screen.dart';
 import 'package:oauthproject/ui/pages/login/login_screen.dart';
@@ -52,12 +54,20 @@ Future<GoRouter> initRouter() async {
               builder: (context, state) => const SeniorityListScreen(),
               routes: [
                 GoRoute(
-                  path: 'flightcrewprofile',
-                  builder: (context, state) {
-                    final crewProfile = state.extra as CrewProfile;
-                    return CrewProfileScreen(crewProfile: crewProfile);
-                  },
-                )
+                    path: 'flightcrewprofile',
+                    builder: (context, state) {
+                      final crewProfile = state.extra as CrewProfile;
+                      return CrewProfileScreen(crewProfile: crewProfile);
+                    },
+                    routes: [
+                      GoRoute(
+                        path: 'crew-roster',
+                        builder: (context, state) {
+                          final roster = state.extra as PublicRosterCrewResults;
+                          return CrewRosterScreen(roster: roster);
+                        },
+                      )
+                    ])
               ]),
         ],
       ),

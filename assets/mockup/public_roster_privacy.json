@@ -1,0 +1,9 @@
+{
+    "errors": [
+        {
+            "status": 400,
+            "title": "BadRequestError",
+            "detail": "rosterPrivacy not permitted"
+        }
+    ]
+}

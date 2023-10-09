@@ -24,6 +24,7 @@ class _SeniorityListScreenState extends State<SeniorityListScreen> {
     return BlocProvider(
       create: (context) => SeniorityBloc()..add(FetchFromLocal()),
       child: Scaffold(
+
           // floatingActionButton: FloatingActionButton(onPressed: () {
           //   saveStringToCache('seniority_list', '');
           // }),
@@ -118,6 +119,7 @@ class _SeniorityListViewWidgetState extends State<SeniorityListViewWidget> {
           return Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
                   height: 50,
@@ -170,10 +172,15 @@ class _SeniorityListViewWidgetState extends State<SeniorityListViewWidget> {
                                         final crewId = seniorityList[index]
                                             .crewId
                                             .toString();
-                                        if (crewId != '-') {
-                                          context.read<CrewProfileBloc>().add(
-                                              CrewProfileSearchByCrewId(
-                                                  crewId: crewId));
+
+                                        if (context
+                                            .read<CrewProfileBloc>()
+                                            .state is! CrewProfileLoading) {
+                                          if (crewId != '-') {
+                                            context.read<CrewProfileBloc>().add(
+                                                CrewProfileSearchByCrewId(
+                                                    crewId: crewId));
+                                          }
                                         }
                                       },
                               ),
@@ -210,39 +217,51 @@ class _SeniorityListFilterOptionsWidgetState
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50,
+      height: 80,
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
         SizedBox(
           width: 80,
-          child: DropdownButton<String>(
-              value: rankDropDownValue,
-              items: rankList
-                  .map<DropdownMenuItem<String>>((e) =>
-                      DropdownMenuItem(value: e, child: Text(e.toString())))
-                  .toList(),
-              onChanged: (value) {
-                setState(() {
-                  rankDropDownValue = value!;
-                });
-                context.read<SeniorityBloc>().add(FilterList(
-                    rank: rankDropDownValue, fleet: fleetDropDownValue));
-              }),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Center(child: Text('Rank')),
+              DropdownButton<String>(
+                  value: rankDropDownValue,
+                  items: rankList
+                      .map<DropdownMenuItem<String>>((e) =>
+                          DropdownMenuItem(value: e, child: Text(e.toString())))
+                      .toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      rankDropDownValue = value!;
+                    });
+                    context.read<SeniorityBloc>().add(FilterList(
+                        rank: rankDropDownValue, fleet: fleetDropDownValue));
+                  }),
+            ],
+          ),
         ),
         SizedBox(
           width: 80,
-          child: DropdownButton<String>(
-              value: fleetDropDownValue,
-              items: fleetList
-                  .map<DropdownMenuItem<String>>((e) =>
-                      DropdownMenuItem(value: e, child: Text(e.toString())))
-                  .toList(),
-              onChanged: (value) {
-                setState(() {
-                  fleetDropDownValue = value!;
-                });
-                context.read<SeniorityBloc>().add(FilterList(
-                    rank: rankDropDownValue, fleet: fleetDropDownValue));
-              }),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Center(child: Text('Fleet')),
+              DropdownButton<String>(
+                  value: fleetDropDownValue,
+                  items: fleetList
+                      .map<DropdownMenuItem<String>>((e) =>
+                          DropdownMenuItem(value: e, child: Text(e.toString())))
+                      .toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      fleetDropDownValue = value!;
+                    });
+                    context.read<SeniorityBloc>().add(FilterList(
+                        rank: rankDropDownValue, fleet: fleetDropDownValue));
+                  }),
+            ],
+          ),
         ),
       ]),
     );

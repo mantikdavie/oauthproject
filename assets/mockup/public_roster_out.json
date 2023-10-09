@@ -1,5 +1,5 @@
 {
-    "dutyList": [],
-    "status": "error",
-    "errorMessage": "outstanding acknowledgement"
-  }
+  "dutyList": [],
+  "status": "error",
+  "errorMessage": "outstanding acknowledgement"
+}

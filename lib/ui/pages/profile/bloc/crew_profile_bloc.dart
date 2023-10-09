@@ -19,22 +19,31 @@ class CrewProfileBloc extends Bloc<CrewProfileEvent, CrewProfileState> {
 
   Future<void> _mapCrewProfileSearchByCrewIdToState(
       CrewProfileSearchByCrewId event, Emitter<CrewProfileState> emit) async {
-    emit(CrewProfileLoading());
+    try {
+      final ern = await readFromCache('ern');
+      final selfCrewId = await readFromCache('crew_id');
 
-    await Future.delayed(const Duration(milliseconds: 1000));
-    final ern = await readFromCache('ern');
+      if (selfCrewId != event.crewId) {
+        emit(CrewProfileLoading());
 
-    // final resp = await rootBundle
-    //     .loadString("assets/mockup/crew_profile_by_crewid.json");
-    // final respJson = json.decode(resp) as List;
-    // CrewProfile crewProfile = CrewProfile.fromMap(respJson.first);
+        await Future.delayed(const Duration(milliseconds: 1000));
 
-    final resp = await getBaseRequest('cls-api/v1/profile', {
-      'ern': ern,
-      'crewId': event.crewId,
-    }) as List;
+        // final resp = await rootBundle
+        //     .loadString("assets/mockup/crew_profile_by_crewid.json");
+        // final respJson = json.decode(resp) as List;
+        // CrewProfile crewProfile = CrewProfile.fromMap(respJson.first);
 
-    CrewProfile crewProfile = CrewProfile.fromMap(resp.first);
-    emit(CrewProfileLoaded(crewProfile: crewProfile));
+        final resp = await getBaseRequest('cls-api/v1/profile', {
+          'ern': ern,
+          'crewId': event.crewId,
+        }) as List;
+
+        CrewProfile crewProfile = CrewProfile.fromMap(resp.first);
+        emit(CrewProfileLoaded(crewProfile: crewProfile));
+      }
+    } catch (e) {
+      debugPrint('caught error: $e');
+      emit(CrewProfileError(errorMessage: e.toString()));
+    }
   }
 }
