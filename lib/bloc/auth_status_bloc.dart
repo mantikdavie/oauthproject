@@ -61,7 +61,17 @@ class AuthStatusBloc extends Bloc<AuthStatusEvent, AuthStatusState> {
   }
 
   void _mapAuthStatusRequestTokenToState(
-      AuthStatusRequestToken event, Emitter<AuthStatusState> emit) async {}
+      AuthStatusRequestToken event, Emitter<AuthStatusState> emit) async {
+    emit(AuthStatusCheckInProgess());
+
+    // final idToken = await requestTokenFromCode(event.oauthCode);
+    final idToken = event.idToken.toString();
+    final refreshToken = event.refreshToken.toString();
+    saveStringToCache('id_token', idToken);
+    saveStringToCache('refresh_token', refreshToken);
+
+    if (!JwtDecoder.isExpired(idToken)) emit(AuthStatusAuthenticated());
+  }
 
   void _mapAuthStatusRefreshTokenToState(
       AuthStatusRefreshToken event, Emitter<AuthStatusState> emit) async {
