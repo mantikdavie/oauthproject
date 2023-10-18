@@ -21,19 +21,26 @@ class SeniorityListScreen extends StatefulWidget {
 class _SeniorityListScreenState extends State<SeniorityListScreen> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider<SeniorityBloc>(
       create: (context) => SeniorityBloc()..add(FetchFromLocal()),
-      child: Scaffold(
+      child: BlocListener<CrewProfileBloc, CrewProfileState>(
+        listener: (context, state) {
+          if (state is CrewProfileLoaded) {
+            context.push('/flightcrewprofile', extra: state.crewProfile);
+          }
+        },
+        child: Scaffold(
 
-          // floatingActionButton: FloatingActionButton(onPressed: () {
-          //   saveStringToCache('seniority_list', '');
-          // }),
-          appBar: AppBar(
+            // floatingActionButton: FloatingActionButton(onPressed: () {
+            //   saveStringToCache('seniority_list', '');
+            // }),
+            appBar: AppBar(
+              backgroundColor: Theme.of(context).colorScheme.background,
+              actions: const [SeniorityListRefreshButton(), AuthStatusIcon()],
+            ),
             backgroundColor: Theme.of(context).colorScheme.background,
-            actions: const [SeniorityListRefreshButton(), AuthStatusIcon()],
-          ),
-          backgroundColor: Theme.of(context).colorScheme.background,
-          body: const SeniorityListColumn()),
+            body: const SeniorityListColumn()),
+      ),
     );
   }
 }
@@ -139,51 +146,40 @@ class _SeniorityListViewWidgetState extends State<SeniorityListViewWidget> {
                                         .colorScheme
                                         .inversePrimary)
                                 : null,
-                            child:
-                                BlocListener<CrewProfileBloc, CrewProfileState>(
-                              listener: (context, state) {
-                                if (state is CrewProfileLoaded) {
-                                  context.go('/seniority/flightcrewprofile',
-                                      extra: state.crewProfile);
-                                }
-                              },
-                              child: ListTile(
-                                isThreeLine: false,
-                                dense: true,
-                                title: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                        seniorityList[index].crewId.toString()),
-                                    const SizedBox(width: 10),
-                                    Text(seniorityList[index]
-                                        .seniorityOrder
-                                        .toString()),
-                                  ],
-                                ),
-                                trailing: const Text(''),
-                                subtitle: Text(
-                                    '${seniorityList[index].fleet}-${seniorityList[index].rank}'),
-                                onTap: context.read<CrewProfileBloc>().state
-                                        is CrewProfileLoading
-                                    ? null
-                                    : () {
-                                        final crewId = seniorityList[index]
-                                            .crewId
-                                            .toString();
-
-                                        if (context
-                                            .read<CrewProfileBloc>()
-                                            .state is! CrewProfileLoading) {
-                                          if (crewId != '-') {
-                                            context.read<CrewProfileBloc>().add(
-                                                CrewProfileSearchByCrewId(
-                                                    crewId: crewId));
-                                          }
-                                        }
-                                      },
+                            child: ListTile(
+                              isThreeLine: false,
+                              dense: true,
+                              title: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(seniorityList[index].crewId.toString()),
+                                  const SizedBox(width: 10),
+                                  Text(seniorityList[index]
+                                      .seniorityOrder
+                                      .toString()),
+                                ],
                               ),
+                              trailing: const Text(''),
+                              subtitle: Text(
+                                  '${seniorityList[index].fleet}-${seniorityList[index].rank}'),
+                              onTap: context.read<CrewProfileBloc>().state
+                                      is CrewProfileLoading
+                                  ? null
+                                  : () {
+                                      final crewId = seniorityList[index]
+                                          .crewId
+                                          .toString();
+
+                                      if (context.read<CrewProfileBloc>().state
+                                          is! CrewProfileLoading) {
+                                        if (crewId != '-') {
+                                          context.read<CrewProfileBloc>().add(
+                                              CrewProfileSearchByCrewId(
+                                                  crewId: crewId));
+                                        }
+                                      }
+                                    },
                             ),
                           );
                         })),

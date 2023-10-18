@@ -9,8 +9,10 @@ import 'package:oauthproject/bloc/auth_status_bloc.dart';
 import 'package:oauthproject/firebase_options.dart';
 import 'package:oauthproject/ui/navigation_route.dart';
 import 'package:oauthproject/ui/pages/crew_roster/bloc/crew_roster_bloc.dart';
+import 'package:oauthproject/ui/pages/crewlist/bloc/flight_crewlist_bloc.dart';
 import 'package:oauthproject/ui/pages/profile/bloc/crew_profile_bloc.dart';
 import 'package:oauthproject/ui/pages/profile/bloc/self_profile_bloc.dart';
+import 'package:oauthproject/ui/pages/seniority/bloc/seniority_bloc.dart';
 import 'package:oauthproject/ui/widgets/auth_status_icon_widget.dart';
 import 'package:oauthproject/utility/api.dart';
 import 'package:oauthproject/utility/local_storage.dart';
@@ -39,19 +41,16 @@ class MainApp extends StatelessWidget {
         BlocProvider(
           create: (context) => AuthStatusBloc()..add(AuthStatusChecking()),
         ),
-        BlocProvider(
-          create: (context) => CrewProfileBloc(),
-        ),
-        BlocProvider(
-          create: (context) => CrewRosterBloc(),
-        ),
+        BlocProvider(create: (context) => CrewProfileBloc()),
+        BlocProvider(create: (context) => CrewRosterBloc()),
+        BlocProvider(create: (context) => FlightCrewlistBloc()),
         BlocProvider(create: (context) {
           if (context.read<AuthStatusBloc>().state is AuthStatusTokenExpired) {
             return SelfProfileBloc()..add(ProfileFetchLocalEvent());
           } else {
             return SelfProfileBloc()..add(ProfileFetchRemoteEvent());
           }
-        }),
+        })
       ],
       child: MaterialApp.router(
         theme: ThemeData(
@@ -127,7 +126,7 @@ class HomePage extends StatelessWidget {
                   onPressed: () async => context.go('/profile'),
                   child: const Text('Profile')),
               ElevatedButton(
-                  onPressed: () async => context.go('/crewlist'),
+                  onPressed: () async => context.go('/crewlist-search'),
                   child: const Text('Crewlist')),
               ElevatedButton(
                   onPressed: () async => context.go('/seniority'),

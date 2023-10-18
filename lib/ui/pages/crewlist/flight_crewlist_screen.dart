@@ -24,12 +24,9 @@ class _FlightCrewListScreenState extends State<FlightCrewListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => FlightCrewlistBloc(),
-      child: CrewListSearch(
-          dutyCodeController: dutyCodeController,
-          dutyStartDateController: dutyStartDateController),
-    );
+    return CrewListSearch(
+        dutyCodeController: dutyCodeController,
+        dutyStartDateController: dutyStartDateController);
   }
 }
 
@@ -51,7 +48,7 @@ class CrewListSearch extends StatelessWidget {
           ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text("Crew List Not Found")));
         } else if (state is FclLoaded) {
-          context.go('/crewlist/results', extra: state.flightCrewList);
+          context.push('/crewlist-results', extra: state.flightCrewList);
         }
       },
       child: Scaffold(

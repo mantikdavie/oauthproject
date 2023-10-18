@@ -87,26 +87,27 @@ class CrewlistResultScreen extends StatelessWidget {
                       final flightCrewList = crewList.flightCrews;
                       final flightCrewTitle =
                           "${flightCrewList?[index].aircraftTypeQualificationCode}${flightCrewList?[index].crewCategory}${flightCrewList?[index].crewCategorySeniority}${flightCrewList?[index].qualificationSeniority}";
-                      return ListTile(
-                          isThreeLine: false,
-                          dense: true,
-                          title: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                  '${flightCrewList?[index].crewBadgeName} ${flightCrewList?[index].crewProfile?.surname}'),
-                              const SizedBox(width: 10),
-                              Text(flightCrewTitle),
-                            ],
-                          ),
-                          trailing:
-                              Text(flightCrewList![index].crewId.toString()),
-                          subtitle: Text(flightCrewList[index]
-                              .specialDutyCodeDesc
-                              .toString()),
-                          onTap: () => context.push(
-                              '/crewlist/results/flightcrewprofile',
-                              extra: flightCrewList[index].crewProfile));
+                      return Card(
+                        color: Theme.of(context).colorScheme.tertiaryContainer,
+                        child: ListTile(
+                            contentPadding: const EdgeInsets.all(10),
+                            isThreeLine: false,
+                            dense: false,
+                            title: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                    '${flightCrewList?[index].crewBadgeName} ${flightCrewList?[index].crewProfile?.surname}'),
+                                // const SizedBox(width: 10),
+                                Text(flightCrewTitle),
+                              ],
+                            ),
+                            subtitle: Text(
+                                flightCrewList![index].specialDutyCodeDesc ??
+                                    ""),
+                            onTap: () => context.push('/flightcrewprofile',
+                                extra: flightCrewList[index].crewProfile)),
+                      );
                     } else if (index <=
                         crewList.numberOfCabinCrew! +
                             crewList.numberOfFlightCrew!) {
@@ -114,11 +115,26 @@ class CrewlistResultScreen extends StatelessWidget {
                       final ccList = crewList.cabinCrews;
                       final ccTitle =
                           "${ccList?[newIndex].aircraftTypeQualificationCode} - ${ccList?[newIndex].crewCategory}";
-                      return ListTile(
-                        isThreeLine: false,
-                        title: Text(ccTitle),
-                        trailing: Text(ccList![newIndex].crewId.toString()),
-                        subtitle: Text('${ccList[newIndex].crewBadgeName}'),
+                      return Card(
+                        color: Theme.of(context).colorScheme.secondaryContainer,
+                        child: ListTile(
+                          isThreeLine: false,
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('${ccList?[newIndex].crewBadgeName}'),
+                              Text(ccTitle)
+                            ],
+                          ),
+                          subtitle: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('${ccList?[newIndex].crewId}'),
+                              Text('${ccList?[newIndex].languageCode}'),
+                            ],
+                          ),
+                        ),
                       );
                     } else {
                       return Container();

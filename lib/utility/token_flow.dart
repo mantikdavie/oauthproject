@@ -93,8 +93,8 @@ FutureOr<String> requestTokenFromCode(String code) async {
   final idToken = respMap["id_token"];
   final decodeToken = JwtDecoder.decode(idToken.toString());
 
-  debugPrint("id token: ${respMap["id_token"]}");
-  debugPrint("refresh_token: ${respMap["refresh_token"]}");
+  // debugPrint("id token: ${respMap["id_token"]}");
+  // debugPrint("refresh_token: ${respMap["refresh_token"]}");
   saveStringToCache('token_resp', respMap.toString());
   saveStringToCache('access_token', respMap["access_token"]);
   saveStringToCache('refresh_token', respMap["refresh_token"]);

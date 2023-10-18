@@ -37,75 +37,66 @@ class _CrewProfileScreenState extends State<CrewProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return BlocListener<CrewRosterBloc, CrewRosterState>(
+      listener: (context, state) {
+        if (state is CrewRosterLoaded) {
+          context.push('/crew-roster', extra: state.publicRosterCrewResults);
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.background,
+          actions: const [AuthStatusIcon()],
+        ),
         backgroundColor: Theme.of(context).colorScheme.background,
-        actions: const [AuthStatusIcon()],
-      ),
-      backgroundColor: Theme.of(context).colorScheme.background,
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            CrewProfileItemsWidget(
-                title: "Badge Name: ", detail: '${crewProfile.badgeName}'),
-            CrewProfileItemsWidget(
-                title: "Surname", detail: '${crewProfile.surname}'),
-            CrewProfileItemsWidget(
-                title: "Fleet and Rank: ",
-                detail:
-                    '${crewProfile.fleet}${crewProfile.rankCode}${crewProfile.crewSeniority}'),
-            CrewProfileItemsWidget(
-                title: "Crew ID", detail: "${crewProfile.crewId}"),
-            CrewProfileItemsWidget(
-                title: "Current ERN", detail: "${crewProfile.currentErn}"),
-            CrewProfileItemsWidget(
-                title: "Base Port", detail: "${crewProfile.baseport}"),
-            CrewProfileItemsWidget(
-                title: "Base Port", detail: "${crewProfile.companyEmail}"),
-            BlocListener<CrewRosterBloc, CrewRosterState>(
-              listener: (context, state) async {
-                if (state is CrewRosterLoaded) {
-                  // totalblockHours = await calculateTotalBlockHours(
-                  //     state.publicRosterCrewResults);
-                  // setState(() {});
-                  context.push('/seniority/flightcrewprofile/crew-roster',
-                      extra: state.publicRosterCrewResults);
-                }
-              },
-              child: CrewProfileItemsWidget(
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              CrewProfileItemsWidget(
+                  title: "Badge Name: ", detail: '${crewProfile.badgeName}'),
+              CrewProfileItemsWidget(
+                  title: "Surname:", detail: '${crewProfile.surname}'),
+              CrewProfileItemsWidget(
+                  title: "Fleet and Rank:",
+                  detail:
+                      '${crewProfile.fleet}${crewProfile.rankCode}${crewProfile.crewSeniority}'),
+              CrewProfileItemsWidget(
+                  title: "Crew ID:", detail: "${crewProfile.crewId}"),
+              CrewProfileItemsWidget(
+                  title: "ERN:", detail: "${crewProfile.currentErn}"),
+              CrewProfileItemsWidget(
+                  title: "Base Port:", detail: "${crewProfile.baseport}"),
+              CrewProfileItemsWidget(
+                  title: "Company Email:",
+                  detail: "${crewProfile.companyEmail}"),
+              CrewProfileItemsWidget(
                   title: "Block Hours:", detail: "$totalblockHours"),
-            ),
-            const SizedBox(height: 50),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                    onPressed: rosterPrivacy != "all"
-                        ? null
-                        : () async {
-                            context.read<CrewRosterBloc>().add(
-                                RequestPublicRoster(
-                                    crewErn:
-                                        crewProfile.currentErn.toString()));
-                          },
-                    child: const Text("Get Hours"))
-              ],
-            ),
-            BlocBuilder<CrewRosterBloc, CrewRosterState>(
-              builder: (context, state) {
-                debugPrint('Crew Roster Bloc State: $state');
-                if (state is CrewRosterLoading) {
-                  return const Center(child: CircularProgressIndicator());
-                } else if (state is CrewRosterError) {
-                  return Center(child: Text(state.errorMessage.toString()));
-                } else {
-                  return Container();
-                }
-              },
-            )
-          ],
+              const SizedBox(height: 50),
+              ElevatedButton(
+                  onPressed: rosterPrivacy != "all"
+                      ? null
+                      : () async {
+                          context.read<CrewRosterBloc>().add(
+                              RequestPublicRoster(
+                                  crewErn: crewProfile.currentErn.toString()));
+                        },
+                  child: const Text("Get Roster")),
+              BlocBuilder<CrewRosterBloc, CrewRosterState>(
+                builder: (context, state) {
+                  debugPrint('Crew Roster Bloc State: $state');
+                  if (state is CrewRosterLoading) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (state is CrewRosterError) {
+                    return Center(child: Text(state.errorMessage.toString()));
+                  } else {
+                    return Container();
+                  }
+                },
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -131,12 +122,14 @@ class CrewProfileItemsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: height ?? 30,
+      height: height ?? 40,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SizedBox(width: titleWidth ?? 120, child: Text(title)),
-          SizedBox(width: detailWidth ?? 240, child: Text(detail))
+          Expanded(flex: 2, child: Text(title, textAlign: TextAlign.start)),
+          Expanded(
+              flex: 3,
+              child: Text(detail, maxLines: 2, textAlign: TextAlign.start))
         ],
       ),
     );
