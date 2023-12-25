@@ -87,7 +87,7 @@ class FlightCrewlistBloc
         SimCrewList simCrewList = SimCrewList.fromMap(resp['result']);
         debugPrint(simCrewList.toString());
         emit(SimCrewListLoaded(simCrewList: simCrewList));
-      } else if (resp['result']['respCode'] == "NF") {
+      } else if (resp['errors'] != null) {
         debugPrint("No Flight Crew List Found");
         emit(FclNotFound());
       } else {
@@ -96,6 +96,7 @@ class FlightCrewlistBloc
     } catch (e) {
       debugPrint('caught error: $e');
       emit(FclError(errorMessage: e.toString()));
+      emit(FclNotFound());
     }
   }
 

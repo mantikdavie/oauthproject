@@ -76,7 +76,9 @@ class _CrewListSearchState extends State<CrewListSearch> {
                       width: 100,
                       child: TextField(
                           controller: widget.dutyCodeController,
-                          keyboardType: TextInputType.number,
+                          textCapitalization: TextCapitalization.characters,
+                          keyboardType:
+                              isSim ? TextInputType.text : TextInputType.number,
                           textAlign: TextAlign.center))),
               const SizedBox(height: 50),
               const Center(child: Text('Duty Start Date')),

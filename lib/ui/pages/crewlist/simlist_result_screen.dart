@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:oauthproject/model/flight_crew_list/crew_profile.dart';
 import 'package:oauthproject/model/sim_crew_list/sim_crew_list.dart';
 import 'package:oauthproject/ui/widgets/auth_status_icon_widget.dart';
 
