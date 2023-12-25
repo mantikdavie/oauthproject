@@ -37,6 +37,8 @@ class _CrewRosterScreenState extends State<CrewRosterScreen> {
       listener: (context, state) {
         if (state is FclLoaded) {
           context.push('/crewlist-results', extra: state.flightCrewList);
+        } else if (state is SimCrewListLoaded) {
+          context.push('/sim-crewlist-results', extra: state.simCrewList);
         }
       },
       child: Scaffold(
@@ -215,15 +217,20 @@ class SimDutyContainer extends StatelessWidget {
           child: Text(model.showString ?? "", textAlign: TextAlign.center)),
       Expanded(
           flex: containerFlex,
-          child: Card(
-            child: Container(
-                margin: const EdgeInsets.all(2),
-                // decoration: BoxDecoration(
-                //     border: Border.all(color: Colors.black45),
-                //     borderRadius: const BorderRadius.all(Radius.circular(15))),
-                padding: const EdgeInsets.all(10),
-                height: 60,
-                child: Text('${duty.dutyDesc}')),
+          child: GestureDetector(
+            onTap: () => context.read<FlightCrewlistBloc>().add(RequestSimEvent(
+                dutyCode: '${duty.patternCode}',
+                dutyStartDate: '${model.dutyDate}')),
+            child: Card(
+              child: Container(
+                  margin: const EdgeInsets.all(2),
+                  // decoration: BoxDecoration(
+                  //     border: Border.all(color: Colors.black45),
+                  //     borderRadius: const BorderRadius.all(Radius.circular(15))),
+                  padding: const EdgeInsets.all(10),
+                  height: 60,
+                  child: Text('${duty.dutyDesc}')),
+            ),
           ))
     ]);
   }

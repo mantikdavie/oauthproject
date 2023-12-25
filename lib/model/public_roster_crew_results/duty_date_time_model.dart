@@ -7,6 +7,7 @@ class DutyDateTimeModel {
   DateTime? dutyEndUtc;
   DateTime? dutyEndLocal;
   String? flightDate;
+  String? dutyDate;
   String? dutyStartLocalString;
   String? dutyEndLocalString;
   String? dutyStartUtcString;
@@ -22,6 +23,7 @@ class DutyDateTimeModel {
       this.dutyEndUtc,
       this.dutyEndLocal,
       this.flightDate,
+      this.dutyDate,
       this.dutyStartLocalString,
       this.dutyEndLocalString,
       this.dutyStartUtcString,
@@ -36,15 +38,19 @@ class DutyDateTimeModel {
     final dutyEndUtc = DateTime.parse("${roster.dutyEndUtc}");
     final dutyEndLocal = DateTime.parse("${roster.dutyEndLocal}");
 
-    final dutyStartDay =
+    final flightStartDay =
         roster.flight?.scheduledFlightDate.toString().replaceAll('-', '');
+
+    final dutyStartDay =
+        roster.dutyStartLocal.toString().substring(0, 10).replaceAll('-', '');
 
     return DutyDateTimeModel(
         dutyStartUtc: dutyStartUtc,
         dutyStartLocal: dutyStartLocal,
         dutyEndUtc: dutyEndUtc,
         dutyEndLocal: dutyEndLocal,
-        flightDate: dutyStartDay,
+        flightDate: flightStartDay,
+        dutyDate: dutyStartDay,
         dutyStartLocalString: DateFormat.Hm().format(dutyStartLocal),
         dutyEndLocalString: DateFormat.Hm().format(dutyEndLocal),
         dutyStartUtcString: DateFormat.Hm().format(dutyStartUtc),
