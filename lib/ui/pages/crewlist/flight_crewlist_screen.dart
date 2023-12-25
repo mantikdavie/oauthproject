@@ -25,12 +25,13 @@ class _FlightCrewListScreenState extends State<FlightCrewListScreen> {
   @override
   Widget build(BuildContext context) {
     return CrewListSearch(
-        dutyCodeController: dutyCodeController,
-        dutyStartDateController: dutyStartDateController);
+      dutyCodeController: dutyCodeController,
+      dutyStartDateController: dutyStartDateController,
+    );
   }
 }
 
-class CrewListSearch extends StatelessWidget {
+class CrewListSearch extends StatefulWidget {
   const CrewListSearch({
     super.key,
     required this.dutyCodeController,
@@ -41,6 +42,13 @@ class CrewListSearch extends StatelessWidget {
   final TextEditingController dutyStartDateController;
 
   @override
+  State<CrewListSearch> createState() => _CrewListSearchState();
+}
+
+class _CrewListSearchState extends State<CrewListSearch> {
+  bool isSim = false;
+
+  @override
   Widget build(BuildContext context) {
     return BlocListener<FlightCrewlistBloc, FlightCrewlistState>(
       listener: (context, state) {
@@ -49,6 +57,8 @@ class CrewListSearch extends StatelessWidget {
               const SnackBar(content: Text("Crew List Not Found")));
         } else if (state is FclLoaded) {
           context.push('/crewlist-results', extra: state.flightCrewList);
+        } else if (state is SimCrewListLoaded) {
+          context.push('/sim-crewlist-results', extra: state.simCrewList);
         }
       },
       child: Scaffold(
@@ -65,7 +75,7 @@ class CrewListSearch extends StatelessWidget {
                   child: SizedBox(
                       width: 100,
                       child: TextField(
-                          controller: dutyCodeController,
+                          controller: widget.dutyCodeController,
                           keyboardType: TextInputType.number,
                           textAlign: TextAlign.center))),
               const SizedBox(height: 50),
@@ -74,10 +84,18 @@ class CrewListSearch extends StatelessWidget {
                   child: SizedBox(
                       width: 100,
                       child: TextField(
-                          controller: dutyStartDateController,
+                          controller: widget.dutyStartDateController,
                           keyboardType: TextInputType.number,
                           textAlign: TextAlign.center))),
               const SizedBox(height: 50),
+              Switch(
+                value: isSim,
+                onChanged: (value) {
+                  setState(() {
+                    isSim = value;
+                  });
+                },
+              ),
               Center(
                   child: BlocBuilder<FlightCrewlistBloc, FlightCrewlistState>(
                 builder: (context, state) {
@@ -86,13 +104,22 @@ class CrewListSearch extends StatelessWidget {
                   } else {
                     return ElevatedButton(
                         onPressed: () {
-                          if (dutyCodeController.text.isNotEmpty &&
-                              dutyStartDateController.text.isNotEmpty) {
-                            context.read<FlightCrewlistBloc>().add(
-                                RequestFclEvent(
-                                    dutyCode: dutyCodeController.text,
-                                    dutyStartDate:
-                                        dutyStartDateController.text));
+                          if (widget.dutyCodeController.text.isNotEmpty &&
+                              widget.dutyStartDateController.text.isNotEmpty) {
+                            if (isSim) {
+                              context.read<FlightCrewlistBloc>().add(
+                                  RequestSimEvent(
+                                      dutyCode: widget.dutyCodeController.text,
+                                      dutyStartDate:
+                                          widget.dutyStartDateController.text));
+                              // TestRequestSimEvent());
+                            } else {
+                              context.read<FlightCrewlistBloc>().add(
+                                  RequestFclEvent(
+                                      dutyCode: widget.dutyCodeController.text,
+                                      dutyStartDate:
+                                          widget.dutyStartDateController.text));
+                            }
                           }
                           // context
                           //     .read<FlightCrewlistBloc>()
@@ -135,5 +162,23 @@ class CrewListSearch extends StatelessWidget {
             ],
           )),
     );
+  }
+}
+
+class SimToggleSwitch extends StatefulWidget {
+  const SimToggleSwitch({super.key});
+
+  @override
+  State<SimToggleSwitch> createState() => _SimToggleSwitchState();
+}
+
+class _SimToggleSwitchState extends State<SimToggleSwitch> {
+  @override
+  Widget build(BuildContext context) {
+    return Switch(
+        value: true,
+        onChanged: (newValue) {
+          setState(() {});
+        });
   }
 }

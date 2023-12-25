@@ -5,10 +5,12 @@ import 'package:oauthproject/main.dart';
 import 'package:oauthproject/model/flight_crew_list/crew_profile.dart';
 import 'package:oauthproject/model/flight_crew_list/flight_crew_list.dart';
 import 'package:oauthproject/model/public_roster_crew_results/public_roster_crew_results.dart';
+import 'package:oauthproject/model/sim_crew_list/sim_crew_list.dart';
 import 'package:oauthproject/ui/pages/Profile/self_profile_screen.dart';
 import 'package:oauthproject/ui/pages/crew_roster/crew_roster_screen.dart';
 import 'package:oauthproject/ui/pages/crewlist/crewlist_result_screen.dart';
 import 'package:oauthproject/ui/pages/crewlist/flight_crewlist_screen.dart';
+import 'package:oauthproject/ui/pages/crewlist/simlist_result_screen.dart';
 import 'package:oauthproject/ui/pages/login/login_screen.dart';
 import 'package:oauthproject/ui/pages/login/login_web_screen.dart';
 import 'package:oauthproject/ui/pages/profile/crew_profile_screen.dart';
@@ -53,6 +55,13 @@ Future<GoRouter> initRouter() async {
             builder: (context, state) {
               final crewlist = state.extra as FlightCrewList;
               return CrewlistResultScreen(crewList: crewlist);
+            },
+          ),
+          GoRoute(
+            path: 'sim-crewlist-results',
+            builder: (context, state) {
+              final crewlist = state.extra as SimCrewList;
+              return SimListResultScreen(simCrewList: crewlist);
             },
           ),
           GoRoute(

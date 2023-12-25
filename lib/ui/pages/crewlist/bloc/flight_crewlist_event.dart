@@ -10,6 +10,13 @@ final class RequestFclEvent extends FlightCrewlistEvent {
   RequestFclEvent({required this.dutyCode, required this.dutyStartDate});
 }
 
+final class RequestSimEvent extends FlightCrewlistEvent {
+  final String dutyCode;
+  final String dutyStartDate;
+
+  RequestSimEvent({required this.dutyCode, required this.dutyStartDate});
+}
+
 final class RequestSectorFclEvent extends FlightCrewlistEvent {
   final String sector;
   final int dutyCode;
@@ -21,10 +28,6 @@ final class RequestSectorFclEvent extends FlightCrewlistEvent {
       required this.sector});
 }
 
-final class TestRequestFclEvent extends FlightCrewlistEvent {
-  // final String dutyCode;
-  // final String dutyStartDate;
+final class TestRequestFclEvent extends FlightCrewlistEvent {}
 
-  // TestRequestFlightCrewlistEvent(
-  // {required this.dutyCode, required this.dutyStartDate});
-}
+final class TestRequestSimEvent extends FlightCrewlistEvent {}

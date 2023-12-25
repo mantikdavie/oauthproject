@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:meta/meta.dart';
 import 'package:oauthproject/model/flight_crew_list/flight_crew_list.dart';
+import 'package:oauthproject/model/sim_crew_list/sim_crew_list.dart';
 import 'package:oauthproject/utility/api.dart';
 import 'package:oauthproject/utility/constants.dart';
 import 'package:oauthproject/utility/local_storage.dart';
@@ -19,6 +20,8 @@ class FlightCrewlistBloc
     on<RequestFclEvent>(_mapRequestFlightCrewlistEventToState);
     on<RequestSectorFclEvent>(_mapRequestSectorFlightCrewlistEventToState);
     on<TestRequestFclEvent>(_mapTestRequestFlightCrewlistEventToState);
+    on<RequestSimEvent>(_mapRequestSimEventToState);
+    on<TestRequestSimEvent>(_mapTestRequestSimEventToState);
   }
 
   void _mapRequestFlightCrewlistEventToState(
@@ -63,6 +66,39 @@ class FlightCrewlistBloc
     }
   }
 
+  void _mapRequestSimEventToState(
+      RequestSimEvent event, Emitter<FlightCrewlistState> emit) async {
+    emit(FclLoading());
+
+    try {
+      final dutyCode = event.dutyCode;
+      final dutyStartDate = event.dutyStartDate;
+      final ern = await readFromCache('ern');
+      const isFlightCrewListSearch = 'N';
+
+      final resp = await getBaseRequest(apiEndpointFlightCrewList, {
+        'ern': ern,
+        'dutyStartDate': dutyStartDate,
+        'dutyCode': dutyCode,
+        'flightCrewList': isFlightCrewListSearch
+      });
+
+      if (resp != null && resp['result']['respCode'] == "") {
+        SimCrewList simCrewList = SimCrewList.fromMap(resp['result']);
+        debugPrint(simCrewList.toString());
+        emit(SimCrewListLoaded(simCrewList: simCrewList));
+      } else if (resp['result']['respCode'] == "NF") {
+        debugPrint("No Flight Crew List Found");
+        emit(FclNotFound());
+      } else {
+        emit(FclError(errorMessage: 'Unknown Error'));
+      }
+    } catch (e) {
+      debugPrint('caught error: $e');
+      emit(FclError(errorMessage: e.toString()));
+    }
+  }
+
   void _mapTestRequestFlightCrewlistEventToState(
       TestRequestFclEvent event, Emitter<FlightCrewlistState> emit) async {
     emit(FclLoading());
@@ -87,6 +123,24 @@ class FlightCrewlistBloc
 
       emit(FclMultiSectorLoaded(
           sectors: sectors, dutyCode: dutyCode, dutyStartDate: dutyStartDate));
+    }
+  }
+
+  void _mapTestRequestSimEventToState(
+      TestRequestSimEvent event, Emitter<FlightCrewlistState> emit) async {
+    emit(FclLoading());
+
+    await Future.delayed(const Duration(milliseconds: 1000));
+    final resp = await rootBundle.loadString("assets/mockup/sim_crewlist.json");
+
+    // final resp =
+    //     await rootBundle.loadString("assets/mockup/flight_crewlist_multi.json");
+
+    final respJson = json.decode(resp);
+    SimCrewList simCrewList = SimCrewList.fromMap(respJson["result"]);
+    debugPrint(simCrewList.toString());
+    if (respJson['result']['respCode'] == "") {
+      emit(SimCrewListLoaded(simCrewList: simCrewList));
     }
   }
 

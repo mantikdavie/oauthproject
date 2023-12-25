@@ -24,6 +24,12 @@ final class FclMultiSectorLoaded extends FlightCrewlistState {
       required this.dutyStartDate});
 }
 
+final class SimCrewListLoaded extends FlightCrewlistState {
+  final SimCrewList simCrewList;
+
+  SimCrewListLoaded({required this.simCrewList});
+}
+
 final class FclNotFound extends FlightCrewlistState {}
 
 final class FclError extends FlightCrewlistState {
