@@ -139,6 +139,7 @@ class _SeniorityListViewWidgetState extends State<SeniorityListViewWidget> {
                         shrinkWrap: true,
                         itemCount: seniorityList.length,
                         itemBuilder: (context, index) {
+                          final crewPositionOrder = index + 1;
                           return Container(
                             decoration: index == state.selfIndex
                                 ? BoxDecoration(
@@ -147,6 +148,7 @@ class _SeniorityListViewWidgetState extends State<SeniorityListViewWidget> {
                                         .inversePrimary)
                                 : null,
                             child: ListTile(
+                              leading: Text(crewPositionOrder.toString()),
                               isThreeLine: false,
                               dense: true,
                               title: Row(
