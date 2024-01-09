@@ -4,7 +4,6 @@ import 'dart:convert';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
-import 'package:oauthproject/model/self_profile/self_profile.dart';
 import 'package:oauthproject/model/seniority_list/seniority_list.dart';
 import 'package:oauthproject/utility/api.dart';
 import 'package:oauthproject/utility/local_storage.dart';
@@ -38,10 +37,12 @@ class SeniorityBloc extends Bloc<SeniorityEvent, SeniorityState> {
         final respJson = json.decode(resp) as List;
         for (var (index, element) in respJson.indexed) {
           final crew = SeniorityList.fromMap(element);
-          list.add(crew);
+          if (element['seniorityOrder'] != 0) {
+            list.add(crew);
+          }
 
           if (crew.crewId == crewId) {
-            selfIndex = index;
+            selfIndex = list.length - 1;
           }
         }
         fullSeniorityList = list;
@@ -73,10 +74,12 @@ class SeniorityBloc extends Bloc<SeniorityEvent, SeniorityState> {
 
         for (var (index, element) in resp.indexed) {
           final crew = SeniorityList.fromMap(element);
-          list.add(crew);
+          if (element['seniorityOrder'] != 0) {
+            list.add(crew);
+          }
 
           if (crew.crewId == crewId) {
-            selfIndex = index;
+            selfIndex = list.length - 1;
           }
         }
         fullSeniorityList = list;
