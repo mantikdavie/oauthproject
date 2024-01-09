@@ -38,7 +38,9 @@ class CrewProfileBloc extends Bloc<CrewProfileEvent, CrewProfileState> {
           'crewId': event.crewId,
         }) as List;
 
-        CrewProfile crewProfile = CrewProfile.fromMap(resp.first);
+        final result = resp.first;
+
+        CrewProfile crewProfile = CrewProfile.fromMap(result['crewProfile']);
         emit(CrewProfileLoaded(crewProfile: crewProfile));
       }
     } catch (e) {
