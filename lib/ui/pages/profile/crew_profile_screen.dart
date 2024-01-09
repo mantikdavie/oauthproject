@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -26,13 +27,41 @@ class _CrewProfileScreenState extends State<CrewProfileScreen> {
   late final String rosterPrivacy;
   double totalblockHours = 0.0;
   late CrewProfile crewProfile;
+  Image defaultImage = Image.asset("assets/icon/pilot_icon.png", height: 150);
+  late Image crewImage;
 
   @override
   void initState() {
     crewProfile = widget.crewProfile;
     rosterPrivacy = crewProfile.privacy!.rosterPrivacy!;
-
+    crewImage = defaultImage;
+    getCrewPicture();
     super.initState();
+  }
+
+  void getCrewPicture() async {
+    final profilePicturePath = crewProfile.profilePicture!.filename.toString();
+
+    final List<dynamic> profilePictures = await getBaseRequest(
+        'cls-api/v1/profile/pictureBatchGet', {'fileList': profilePicturePath});
+
+    final crewPictureString = profilePictures.first['data'];
+
+    try {
+      final codec =
+          await instantiateImageCodec(base64Decode(crewPictureString));
+      if (codec.frameCount > 0) {
+        crewImage = Image.memory(
+          base64Decode(crewPictureString),
+          scale: 0.75,
+        );
+        setState(() {});
+      } else {
+        crewImage = defaultImage;
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+    }
   }
 
   @override
@@ -54,6 +83,7 @@ class _CrewProfileScreenState extends State<CrewProfileScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              crewImage,
               CrewProfileItemsWidget(
                   title: "Badge Name: ", detail: '${crewProfile.badgeName}'),
               CrewProfileItemsWidget(
@@ -73,7 +103,7 @@ class _CrewProfileScreenState extends State<CrewProfileScreen> {
                   detail: "${crewProfile.companyEmail}"),
               CrewProfileItemsWidget(
                   title: "Block Hours:", detail: "$totalblockHours"),
-              const SizedBox(height: 50),
+              const SizedBox(height: 30),
               ElevatedButton(
                   onPressed: rosterPrivacy != "all"
                       ? null
