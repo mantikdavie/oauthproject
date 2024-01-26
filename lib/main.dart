@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
-import 'package:oauthproject/bloc/auth_status_bloc.dart';
+import 'package:oauthproject/bloc/auth/auth_status_bloc.dart';
 import 'package:oauthproject/firebase_options.dart';
 import 'package:oauthproject/ui/navigation_route.dart';
 import 'package:oauthproject/ui/pages/crew_roster/bloc/crew_roster_bloc.dart';

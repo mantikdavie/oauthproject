@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:oauthproject/bloc/auth_status_bloc.dart';
+import 'package:oauthproject/bloc/auth/auth_status_bloc.dart';
 
 class AuthStatusIcon extends StatelessWidget {
   const AuthStatusIcon({super.key});

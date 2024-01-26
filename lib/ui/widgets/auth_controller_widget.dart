@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:oauthproject/bloc/auth_status_bloc.dart';
+import 'package:oauthproject/bloc/auth/auth_status_bloc.dart';
 
 class AuthControllerWidget extends StatelessWidget {
   const AuthControllerWidget({super.key});

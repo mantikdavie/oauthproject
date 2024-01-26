@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:oauthproject/bloc/auth_status_bloc.dart';
+import 'package:oauthproject/bloc/auth/auth_status_bloc.dart';
 
 class LoginWebScreen extends StatefulWidget {
   const LoginWebScreen({super.key});
