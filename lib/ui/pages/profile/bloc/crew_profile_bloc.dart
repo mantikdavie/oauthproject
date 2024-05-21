@@ -38,10 +38,23 @@ class CrewProfileBloc extends Bloc<CrewProfileEvent, CrewProfileState> {
           'crewId': event.crewId,
         }) as List;
 
-        final result = resp.first;
+        final length = resp.length;
+        debugPrint('response length: $length');
 
-        CrewProfile crewProfile = CrewProfile.fromMap(result['crewProfile']);
-        emit(CrewProfileLoaded(crewProfile: crewProfile));
+        if (length > 1) {
+          for (var element in resp) {
+            final CrewProfile crewProfile =
+                CrewProfile.fromMap(element['crewProfile']);
+            if (crewProfile.crewId == event.crewId) {
+              emit(CrewProfileLoaded(crewProfile: crewProfile));
+            }
+          }
+        } else {
+          final result = resp.first;
+
+          CrewProfile crewProfile = CrewProfile.fromMap(result['crewProfile']);
+          emit(CrewProfileLoaded(crewProfile: crewProfile));
+        }
       }
     } catch (e) {
       debugPrint('caught error: $e');
