@@ -9,7 +9,16 @@ import 'package:oauthproject/ui/widgets/auth_status_icon_widget.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 const List<String> rankList = <String>['All', 'CN', 'FO', 'SO'];
-const List<String> fleetList = <String>['All', 'E', 'T', '3', '5', '2', 'B'];
+const List<String> fleetList = <String>[
+  'All',
+  'T',
+  'AWB',
+  'E',
+  '3',
+  '5',
+  '2',
+  'B'
+];
 
 class SeniorityListScreen extends StatefulWidget {
   const SeniorityListScreen({super.key});

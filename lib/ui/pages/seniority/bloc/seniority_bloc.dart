@@ -122,13 +122,28 @@ class SeniorityBloc extends Bloc<SeniorityEvent, SeniorityState> {
     if (rank == 'All' && fleet == 'All') {
       return fullSeniorityList;
     } else if (rank == 'All' && fleet != 'All') {
-      return fullSeniorityList.where((crew) => crew.fleet == fleet).toList();
+      if (fleet == 'AWB') {
+        return fullSeniorityList
+            .where((crew) =>
+                (crew.fleet == '3' || crew.fleet == '5' || crew.fleet == 'E'))
+            .toList();
+      } else {
+        return fullSeniorityList.where((crew) => crew.fleet == fleet).toList();
+      }
     } else if (rank != 'All' && fleet == 'All') {
       return fullSeniorityList.where((crew) => crew.rank == rank).toList();
     } else {
-      return fullSeniorityList
-          .where((crew) => (crew.rank == rank && crew.fleet == fleet))
-          .toList();
+      if (fleet == 'AWB') {
+        return fullSeniorityList
+            .where((crew) =>
+                crew.rank == rank &&
+                (crew.fleet == '3' || crew.fleet == '5' || crew.fleet == 'E'))
+            .toList();
+      } else {
+        return fullSeniorityList
+            .where((crew) => (crew.rank == rank && crew.fleet == fleet))
+            .toList();
+      }
     }
   }
 }
