@@ -33,7 +33,7 @@ class _CrewProfileScreenState extends State<CrewProfileScreen> {
   @override
   void initState() {
     crewProfile = widget.crewProfile;
-    rosterPrivacy = crewProfile.privacy!.rosterPrivacy!;
+    rosterPrivacy = crewProfile.privacy?.rosterPrivacy! ?? 'none';
     crewImage = defaultImage;
     getCrewPicture();
     super.initState();
