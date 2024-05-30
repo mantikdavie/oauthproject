@@ -23,6 +23,7 @@ Future<dynamic> getBaseRequest(
     final resp = await dio.getUri(uri,
         options: Options(headers: {
           "Authorization": "Bearer $token",
+          HttpHeaders.userAgentHeader: "okhttp/4.9.2"
         }));
 
     final dynamic respData = resp.data;
@@ -45,6 +46,7 @@ Future<dynamic> dioPostRequest(
     final resp = await dio.postUri(uri,
         options: Options(headers: {
           HttpHeaders.contentTypeHeader: "application/x-www-form-urlencoded",
+          HttpHeaders.userAgentHeader: "okhttp/4.9.2"
         }),
         data: requestBody);
 
@@ -58,6 +60,8 @@ Future<dynamic> dioPostRequest(
   }
 }
 
+
+//http Request not using Dio
 Future<dynamic> httpPostRequest(
     String base, String path, Map<String, String> requestBody) async {
   final uri = Uri.https(base, path);
