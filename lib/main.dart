@@ -131,6 +131,12 @@ class HomePage extends StatelessWidget {
               ElevatedButton(
                   onPressed: () async => context.go('/seniority'),
                   child: const Text('Seniority List')),
+              ElevatedButton(
+                  onPressed: () {
+                    context.read<CrewRosterBloc>().add(RequestTestRoster());
+                    context.go('/roster-test');
+                  },
+                  child: const Text('Roster Test')),
               const SizedBox(height: 20),
               ElevatedButton(
                   onPressed: () =>

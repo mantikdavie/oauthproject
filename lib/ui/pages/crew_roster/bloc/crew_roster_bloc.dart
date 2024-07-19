@@ -15,6 +15,7 @@ part 'crew_roster_state.dart';
 class CrewRosterBloc extends Bloc<CrewRosterEvent, CrewRosterState> {
   CrewRosterBloc() : super(CrewRosterInitial()) {
     on<RequestPublicRoster>(_mapRequestPublicRosterToState);
+    on<RequestTestRoster>(_mapRequestTestRosterToState);
   }
 
   void _mapRequestPublicRosterToState(
@@ -27,6 +28,29 @@ class CrewRosterBloc extends Bloc<CrewRosterEvent, CrewRosterState> {
     final selfErn = await readFromCache('ern');
     final respJson = await getBaseRequest('cls-api/v1/duties',
         {'ern': selfErn, 'publicRosterErn': event.crewErn});
+
+    if (respJson['status'] != null) {
+      PublicRosterCrewResults roster =
+          PublicRosterCrewResults.fromMap(respJson);
+
+      if (roster.status == 'ok') {
+        emit(CrewRosterLoaded(publicRosterCrewResults: roster));
+      } else if (roster.status == 'error') {
+        emit(CrewRosterError(errorMessage: respJson['errorMessage']));
+      }
+    } else if (respJson['errors'] != null) {
+      emit(CrewRosterError(errorMessage: respJson['errors'].toString()));
+    }
+  }
+
+  void _mapRequestTestRosterToState(
+      RequestTestRoster event, Emitter<CrewRosterState> emit) async {
+    emit(CrewRosterLoading());
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    final resp =
+        await rootBundle.loadString("assets/mockup/roster_cross_01.json");
+    final respJson = jsonDecode(resp);
 
     if (respJson['status'] != null) {
       PublicRosterCrewResults roster =
