@@ -43,7 +43,7 @@ class FlightCrewlistBloc
 
       if (resp != null && resp['result']['respCode'] == "") {
         FlightCrewList flightCrewList = FlightCrewList.fromMap(resp['result']);
-        debugPrint(flightCrewList.toString());
+        // debugPrint(flightCrewList.toString());
         emit(FclLoaded(flightCrewList: flightCrewList));
       } else if (resp['result']['respCode'] == "MF") {
         final sectors = resp['result']['sectors'] as List;

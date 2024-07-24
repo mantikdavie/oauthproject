@@ -69,7 +69,7 @@ class _CrewProfileScreenState extends State<CrewProfileScreen> {
     return BlocListener<CrewRosterBloc, CrewRosterState>(
       listener: (context, state) {
         if (state is CrewRosterLoaded) {
-          context.push('/crew-roster', extra: state.publicRosterCrewResults);
+          context.push('/crew-roster', extra: state.rosters);
         }
       },
       child: Scaffold(

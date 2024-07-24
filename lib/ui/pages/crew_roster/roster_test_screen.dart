@@ -30,7 +30,9 @@ class RosterTestScreen extends StatelessWidget {
         if (state is CrewRosterLoading) {
           return const Center(child: CircularProgressIndicator());
         } else if (state is CrewRosterLoaded) {
-          return RosterResultTestScreen(roster: state.publicRosterCrewResults);
+          return RosterResultTestScreen(roster: state.rosters);
+        } else if (state is CrewMultiRosterLoaded) {
+          return MonthlyRosterTabView(rosters: state.rosters);
         } else {
           return const SizedBox();
         }
@@ -39,8 +41,39 @@ class RosterTestScreen extends StatelessWidget {
   }
 }
 
+class MonthlyRosterTabView extends StatelessWidget {
+  final Map<String, List<DutyList>> rosters;
+
+  const MonthlyRosterTabView({super.key, required this.rosters});
+
+  @override
+  Widget build(BuildContext context) {
+    List<String> months = rosters.keys.toList();
+
+    return DefaultTabController(
+      length: months.length,
+      child: Column(
+        children: [
+          TabBar(
+            isScrollable: true,
+            tabs: months.map((month) => Tab(text: month)).toList(),
+          ),
+          Expanded(
+            child: TabBarView(
+              children: months.map((month) {
+                return RosterListColumn(
+                    totalblockHours: 50, duties: rosters[month] ?? []);
+              }).toList(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class RosterResultTestScreen extends StatefulWidget {
-  final PublicRosterCrewResults roster;
+  final Map<String, List<DutyList>> roster;
   const RosterResultTestScreen({super.key, required this.roster});
   @override
   State<RosterResultTestScreen> createState() => _RosterResultTestScreenState();
@@ -48,12 +81,14 @@ class RosterResultTestScreen extends StatefulWidget {
 
 class _RosterResultTestScreenState extends State<RosterResultTestScreen> {
   late List<DutyList> duties;
+  List<String> months = [];
   double totalblockHours = 0.0;
 
   @override
   void initState() {
     super.initState();
-    duties = widget.roster.dutyList!;
+    months = widget.roster.keys.toList();
+    duties = widget.roster[months[0]]!;
     totalblockHours = calculateTotalBlockHours(duties);
   }
 
@@ -67,40 +102,57 @@ class _RosterResultTestScreenState extends State<RosterResultTestScreen> {
             context.push('/sim-crewlist-results', extra: state.simCrewList);
           }
         },
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('Total Block Hours: '),
-                Text(totalblockHours.toStringAsFixed(2)),
-              ],
-            ),
-            Expanded(
-              child: ListView.builder(
-                padding: const EdgeInsets.all(10),
-                itemCount: duties.length,
-                itemBuilder: (context, index) {
-                  final duty = duties[index];
+        child:
+            RosterListColumn(totalblockHours: totalblockHours, duties: duties));
+  }
+}
 
-                  if (duty.dutyCode == "TRIP") {
-                    return FlightDutyContainer(duty: duty);
-                  } else if (duty.dutyCode == "ACY") {
-                    if (duty.dutyType == "OFF") {
-                      return OffDutyContainer(duty: duty);
-                    } else if (duty.dutyType == "SIM") {
-                      return SimDutyContainer(duty: duty);
-                    } else {
-                      return OtherDutyContainer(duty: duty);
-                    }
-                  } else {
-                    return OtherDutyContainer(duty: duty);
-                  }
-                },
-              ),
-            ),
+class RosterListColumn extends StatelessWidget {
+  const RosterListColumn({
+    super.key,
+    required this.totalblockHours,
+    required this.duties,
+  });
+
+  final double totalblockHours;
+  final List<DutyList> duties;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('Total Block Hours: '),
+            Text(totalblockHours.toStringAsFixed(2)),
           ],
-        ));
+        ),
+        Expanded(
+          child: ListView.builder(
+            padding: const EdgeInsets.all(10),
+            itemCount: duties.length,
+            itemBuilder: (context, index) {
+              final duty = duties[index];
+
+              if (duty.dutyCode == "TRIP") {
+                return FlightDutyContainer(duty: duty);
+              } else if (duty.dutyCode == "ACY") {
+                if (duty.dutyType == "OFF") {
+                  return OffDutyContainer(duty: duty);
+                } else if (duty.dutyType == "SIM") {
+                  return SimDutyContainer(duty: duty);
+                } else {
+                  return OtherDutyContainer(duty: duty);
+                }
+              } else {
+                return OtherDutyContainer(duty: duty);
+              }
+            },
+          ),
+        ),
+      ],
+    );
   }
 }
 
@@ -127,7 +179,6 @@ class FlightDutyContainer extends StatelessWidget {
           child: GestureDetector(
             onTap: () => context.read<FlightCrewlistBloc>().add(RequestFclEvent(
                 dutyCode: '${duty.flight?.flightNumber}',
-                sectorSequenceNo: duty.flight!.sectorSequenceNumber!.toInt(),
                 dutyStartDate: '${model.flightDate}')),
             child: Card(
               child: Container(

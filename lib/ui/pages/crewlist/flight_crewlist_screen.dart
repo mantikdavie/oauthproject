@@ -24,6 +24,7 @@ class _FlightCrewListScreenState extends State<FlightCrewListScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print('FlightCrewListScreen build');
     return CrewListSearch(
       dutyCodeController: dutyCodeController,
       dutyStartDateController: dutyStartDateController,

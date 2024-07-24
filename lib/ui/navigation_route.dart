@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:oauthproject/main.dart';
 import 'package:oauthproject/model/flight_crew_list/crew_profile.dart';
 import 'package:oauthproject/model/flight_crew_list/flight_crew_list.dart';
+import 'package:oauthproject/model/public_roster_crew_results/duty_list.dart';
 import 'package:oauthproject/model/public_roster_crew_results/public_roster_crew_results.dart';
 import 'package:oauthproject/model/sim_crew_list/sim_crew_list.dart';
 import 'package:oauthproject/ui/pages/Profile/self_profile_screen.dart';
@@ -75,8 +76,8 @@ Future<GoRouter> initRouter() async {
           GoRoute(
             path: 'crew-roster',
             builder: (context, state) {
-              final roster = state.extra as PublicRosterCrewResults;
-              return CrewRosterScreen(roster: roster);
+              final rosters = state.extra as Map<String, List<DutyList>>;
+              return CrewRosterScreen(rosters: rosters);
             },
           ),
           GoRoute(
@@ -105,9 +106,6 @@ Future<GoRouter> initRouter() async {
           GoRoute(
               path: 'seniority',
               builder: (context, state) => const SeniorityListScreen()),
-          GoRoute(
-              path: 'roster-test',
-              builder: (context, state) => const RosterTestScreen()),
         ],
       ),
       GoRoute(
