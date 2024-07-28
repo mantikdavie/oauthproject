@@ -10,7 +10,7 @@ class CrewlistResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('CrewlistResultScreen build');
+    print('CrewlistResultScreen build: ${crewList.flightNumber}');
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.background,

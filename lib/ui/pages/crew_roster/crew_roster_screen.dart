@@ -12,40 +12,25 @@ import 'package:oauthproject/ui/widgets/auth_status_icon_widget.dart';
 const dateShowFlex = 1;
 const containerFlex = 7;
 
-class CrewRosterScreen extends StatefulWidget {
+class CrewRosterScreen extends StatelessWidget {
   final Map<String, List<DutyList>> rosters;
 
   const CrewRosterScreen({super.key, required this.rosters});
 
   @override
-  State<CrewRosterScreen> createState() => _CrewRosterScreenState();
-}
-
-class _CrewRosterScreenState extends State<CrewRosterScreen> {
-  late List<DutyList> duties;
-  late List<String> months;
-  double totalblockHours = 0.0;
-
-  @override
-  void initState() {
-    super.initState();
-    months = widget.rosters.keys.toList();
-    duties = widget.rosters[months.first]!;
-    // totalblockHours = calculateTotalBlockHours(duties);
-  }
-
-  @override
   Widget build(BuildContext context) {
-    print('crewrosterscreen build');
+    final months = rosters.keys.toList();
+    print('crewrosterscreen build: ${rosters.values.first.first.key}');
     return BlocListener<FlightCrewlistBloc, FlightCrewlistState>(
         listener: (context, state) {
+          print('The Flight Crew List Bloc State: $state');
           if (state is FclLoading) {
             showDialog(
                 context: context,
                 barrierDismissible: false,
                 builder: (BuildContext context) {
                   return WillPopScope(
-                      onWillPop: () async => true,
+                      onWillPop: () async => false,
                       child: const Center(child: CircularProgressIndicator()));
                 });
           } else {
@@ -72,7 +57,7 @@ class _CrewRosterScreenState extends State<CrewRosterScreen> {
                     tabs: months.map((month) => Tab(text: month)).toList()),
               ),
               backgroundColor: Theme.of(context).colorScheme.background,
-              body: MonthlyRosterTabView(rosters: widget.rosters)),
+              body: MonthlyRosterTabView(rosters: rosters)),
         ));
   }
 }
@@ -116,24 +101,38 @@ class FlightDutyContainer extends StatelessWidget {
                       Expanded(
                           flex: 2,
                           child: Text(
-                              '${duty.flight?.carrierCode} ${duty.flight?.flightNumber}')),
+                            '${duty.flight?.carrierCode} ${duty.flight?.flightNumber}',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge
+                                ?.copyWith(fontWeight: FontWeight.bold),
+                          )),
+                      Expanded(
+                        flex: 1,
+                        child: Text('${duty.flight?.departurePort}',
+                            style: Theme.of(context).textTheme.titleMedium),
+                      ),
                       Expanded(
                           flex: 1,
-                          child: Text('${duty.flight?.departurePort}')),
-                      Expanded(
-                          flex: 1, child: Text('${duty.flight?.arrivalPort}')),
+                          child: Text('${duty.flight?.arrivalPort}',
+                              style: Theme.of(context).textTheme.titleMedium)),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Expanded(
-                          flex: 2, child: Text('${duty.flight?.aircraftType}')),
+                          flex: 2,
+                          child: Text('${duty.flight?.aircraftType}',
+                              style: Theme.of(context).textTheme.bodyMedium)),
                       Expanded(
                           flex: 1,
-                          child: Text('${model.dutyStartLocalString}L')),
+                          child: Text('${model.dutyStartLocalString}L',
+                              style: Theme.of(context).textTheme.bodySmall)),
                       Expanded(
-                          flex: 1, child: Text('${model.dutyEndLocalString}L')),
+                          flex: 1,
+                          child: Text('${model.dutyEndLocalString}L',
+                              style: Theme.of(context).textTheme.bodySmall)),
                     ],
                   ),
                   const SizedBox(height: 5),
@@ -142,13 +141,19 @@ class FlightDutyContainer extends StatelessWidget {
                     children: [
                       Expanded(
                           flex: 2,
-                          child: Text(duty.flight!.specialDutyCode!.isNotEmpty
-                              ? duty.flight!.specialDutyCode?.first
-                              : '')),
+                          child: Text(
+                              duty.flight!.specialDutyCode!.isNotEmpty
+                                  ? duty.flight!.specialDutyCode?.first
+                                  : '',
+                              style: Theme.of(context).textTheme.bodyMedium)),
                       Expanded(
                           flex: 1,
                           child: Text(
-                              '${duty.flight!.blockHours?.toStringAsFixed(2)}Hours')),
+                              '${duty.flight!.blockHours?.toStringAsFixed(2)}Hours',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge
+                                  ?.copyWith(fontWeight: FontWeight.bold))),
                     ],
                   ),
                 ]),
@@ -321,9 +326,9 @@ class MonthlyRosterTabView extends StatelessWidget {
 
     return TabBarView(
       children: months.map((month) {
-        final hours = calculateTotalBlockHours(rosters[month] ?? []);
+        final hours = calculateTotalBlockHours(rosters[month]!);
         return RosterListColumn(
-            totalblockHours: hours, duties: rosters[month] ?? []);
+            totalblockHours: hours, duties: rosters[month]!);
       }).toList(),
     );
   }
@@ -337,8 +342,6 @@ double calculateTotalBlockHours(List<DutyList> duties) {
       blockHours.add(duty.flight!.blockHours!.toDouble());
     }
   }
-
-  // debugPrint(blockHours.toString());
 
   final double totalBlockHours;
   if (blockHours.isNotEmpty) {
