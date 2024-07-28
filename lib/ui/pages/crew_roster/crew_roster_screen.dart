@@ -44,7 +44,14 @@ class _CrewRosterScreenState extends State<CrewRosterScreen> {
       child: Scaffold(
           appBar: AppBar(
               backgroundColor: Theme.of(context).colorScheme.background,
-              actions: const [AuthStatusIcon()]),
+              actions: [
+                IconButton(
+                    icon: const AuthStatusIcon(),
+                    onPressed: () {
+                      context.push('/json-display',
+                          extra: widget.roster.toMap());
+                    })
+              ]),
           backgroundColor: Theme.of(context).colorScheme.background,
           body: Column(
             children: [

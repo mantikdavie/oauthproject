@@ -11,6 +11,7 @@ import 'package:oauthproject/ui/pages/crew_roster/crew_roster_screen.dart';
 import 'package:oauthproject/ui/pages/crewlist/crewlist_result_screen.dart';
 import 'package:oauthproject/ui/pages/crewlist/flight_crewlist_screen.dart';
 import 'package:oauthproject/ui/pages/crewlist/simlist_result_screen.dart';
+import 'package:oauthproject/ui/pages/json/json_screen.dart';
 import 'package:oauthproject/ui/pages/login/login_screen.dart';
 import 'package:oauthproject/ui/pages/login/login_web_screen.dart';
 import 'package:oauthproject/ui/pages/profile/crew_profile_screen.dart';
@@ -84,6 +85,11 @@ Future<GoRouter> initRouter() async {
           builder: (BuildContext context, GoRouterState state) {
             return const LoginWebScreen();
           }),
+      GoRoute(
+        path: '/json-display',
+        builder: (context, state) =>
+            JsonDisplayScreen(jsonData: state.extra as Map<String, dynamic>),
+      ),
     ],
   );
 
