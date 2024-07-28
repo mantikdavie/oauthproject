@@ -75,7 +75,13 @@ class _CrewProfileScreenState extends State<CrewProfileScreen> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.background,
-          actions: const [AuthStatusIcon()],
+          actions: [
+            IconButton(
+                icon: const AuthStatusIcon(),
+                onPressed: () {
+                  context.push('/json-display', extra: crewProfile.toMap());
+                })
+          ],
         ),
         backgroundColor: Theme.of(context).colorScheme.background,
         body: Padding(
