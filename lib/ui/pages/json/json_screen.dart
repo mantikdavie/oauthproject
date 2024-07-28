@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';
 
 class JsonDisplayScreen extends StatefulWidget {
   final Map<String, dynamic> jsonData;
@@ -7,7 +6,7 @@ class JsonDisplayScreen extends StatefulWidget {
   const JsonDisplayScreen({Key? key, required this.jsonData}) : super(key: key);
 
   @override
-  _JsonDisplayScreenState createState() => _JsonDisplayScreenState();
+  State<JsonDisplayScreen> createState() => _JsonDisplayScreenState();
 }
 
 class _JsonDisplayScreenState extends State<JsonDisplayScreen> {
@@ -17,36 +16,42 @@ class _JsonDisplayScreenState extends State<JsonDisplayScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('JSON Display'),
+        title: const Text('JSON Viewer'),
         backgroundColor: Theme.of(context).colorScheme.background,
       ),
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(16.0),
             child: TextField(
               onChanged: _performSearch,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 labelText: 'Search',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(),
+                prefixIcon: const Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                filled: true,
+                fillColor: Colors.grey[200],
               ),
             ),
           ),
           Expanded(
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CollapsibleJsonWidget(
-                      data: widget.jsonData,
-                      searchQuery: _searchQuery,
-                      initiallyExpanded: true,
-                      isTopLevel: true,
-                    ),
-                  ],
+            child: Card(
+              margin: const EdgeInsets.all(16.0),
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: CollapsibleJsonWidget(
+                    data: widget.jsonData,
+                    searchQuery: _searchQuery,
+                    initiallyExpanded: true,
+                    isTopLevel: true,
+                  ),
                 ),
               ),
             ),
@@ -63,7 +68,7 @@ class _JsonDisplayScreenState extends State<JsonDisplayScreen> {
   }
 }
 
-class CollapsibleJsonWidget extends StatefulWidget {
+class CollapsibleJsonWidget extends StatelessWidget {
   final dynamic data;
   final String? keyName;
   final String searchQuery;
@@ -80,119 +85,110 @@ class CollapsibleJsonWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<CollapsibleJsonWidget> createState() => _CollapsibleJsonWidgetState();
-}
-
-class _CollapsibleJsonWidgetState extends State<CollapsibleJsonWidget> {
-  @override
   Widget build(BuildContext context) {
-    if (widget.data is Map) {
-      return widget.isTopLevel
-          ? _buildTopLevelMap(widget.data)
-          : _buildMap(widget.data);
-    } else if (widget.data is List) {
-      return widget.isTopLevel
-          ? _buildTopLevelList(widget.data)
-          : _buildList(widget.data);
+    if (data is Map) {
+      return _buildMap(context, data);
+    } else if (data is List) {
+      return _buildList(context, data);
     } else {
-      return _highlightText(widget.data.toString());
+      return _buildLeaf(context, data);
     }
   }
 
-  Widget _buildTopLevelMap(Map data) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: data.entries.map((entry) {
-        return CollapsibleJsonWidget(
-          data: entry.value,
-          keyName: entry.key,
-          searchQuery: widget.searchQuery,
-          initiallyExpanded: widget.initiallyExpanded,
-        );
-      }).toList(),
-    );
-  }
-
-  Widget _buildTopLevelList(List data) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: data.asMap().entries.map((entry) {
-        return CollapsibleJsonWidget(
-          data: entry.value,
-          keyName: 'Item ${entry.key}',
-          searchQuery: widget.searchQuery,
-          initiallyExpanded: widget.initiallyExpanded,
-        );
-      }).toList(),
-    );
-  }
-
-  Widget _buildMap(Map data) {
-    return ExpansionTile(
-      initiallyExpanded: widget.initiallyExpanded,
-      title: _highlightText(widget.keyName ?? '{...}'),
-      children: data.entries.map((entry) {
-        return CollapsibleJsonWidget(
-          data: entry.value,
-          keyName: entry.key,
-          searchQuery: widget.searchQuery,
-          initiallyExpanded: false,
-        );
-      }).toList(),
-    );
-  }
-
-  Widget _buildList(List data) {
-    return ExpansionTile(
-      initiallyExpanded: widget.initiallyExpanded,
-      title: _highlightText(widget.keyName ?? '[${data.length} items]'),
-      children: data.asMap().entries.map((entry) {
-        if (entry.value is Map) {
+  Widget _buildMap(BuildContext context, Map data) {
+    return Theme(
+      data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+      child: ExpansionTile(
+        initiallyExpanded: isTopLevel || initiallyExpanded,
+        title: _buildTitle(context, keyName ?? 'Object', '{...}'),
+        children: data.entries.map((entry) {
           return CollapsibleJsonWidget(
             data: entry.value,
-            keyName: 'Item ${entry.key}',
-            searchQuery: widget.searchQuery,
+            keyName: entry.key,
+            searchQuery: searchQuery,
           );
-        } else {
-          return ListTile(
-            title: _highlightText('Item ${entry.key}'),
-            subtitle: _highlightText(entry.key.toString()),
-          );
-        }
-      }).toList(),
+        }).toList(),
+      ),
     );
   }
 
-  Widget _highlightText(String text) {
-    if (widget.searchQuery.isEmpty) {
-      return Text(text);
+  Widget _buildList(BuildContext context, List data) {
+    return Theme(
+      data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+      child: ExpansionTile(
+        initiallyExpanded: isTopLevel || initiallyExpanded,
+        title: _buildTitle(context, keyName ?? 'Array', '[${data.length}]'),
+        children: data.asMap().entries.map((entry) {
+          return CollapsibleJsonWidget(
+            data: entry.value,
+            keyName: '[${entry.key}]',
+            searchQuery: searchQuery,
+          );
+        }).toList(),
+      ),
+    );
+  }
+
+  Widget _buildLeaf(BuildContext context, dynamic data) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            flex: 2,
+            child: _highlightText(context, keyName ?? '', true),
+          ),
+          const SizedBox(width: 8),
+          Expanded(
+            flex: 3,
+            child: _highlightText(context, data.toString(), false),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTitle(BuildContext context, String key, String type) {
+    return Row(
+      children: [
+        Expanded(child: _highlightText(context, key, true)),
+        _highlightText(context, type, false),
+      ],
+    );
+  }
+
+  Widget _highlightText(BuildContext context, String text, bool isKey) {
+    final style = isKey
+        ? const TextStyle(fontWeight: FontWeight.bold)
+        : const TextStyle(color: Colors.blue);
+
+    if (searchQuery.isEmpty) {
+      return Text(text, style: style);
     }
 
     List<TextSpan> spans = [];
     int start = 0;
     int indexOfMatch;
 
-    while ((indexOfMatch = text
-            .toLowerCase()
-            .indexOf(widget.searchQuery.toLowerCase(), start)) !=
+    while ((indexOfMatch =
+            text.toLowerCase().indexOf(searchQuery.toLowerCase(), start)) !=
         -1) {
       if (start != indexOfMatch) {
-        spans.add(TextSpan(text: text.substring(start, indexOfMatch)));
+        spans.add(
+            TextSpan(text: text.substring(start, indexOfMatch), style: style));
       }
       spans.add(TextSpan(
-        text: text.substring(
-            indexOfMatch, indexOfMatch + widget.searchQuery.length),
-        style: const TextStyle(backgroundColor: Colors.yellow),
+        text: text.substring(indexOfMatch, indexOfMatch + searchQuery.length),
+        style: style.copyWith(backgroundColor: Colors.yellow),
       ));
-      start = indexOfMatch + widget.searchQuery.length;
+      start = indexOfMatch + searchQuery.length;
     }
 
     if (start != text.length) {
-      spans.add(TextSpan(text: text.substring(start)));
+      spans.add(TextSpan(text: text.substring(start), style: style));
     }
 
-    return RichText(
-        text: TextSpan(
-            style: DefaultTextStyle.of(context).style, children: spans));
+    return RichText(text: TextSpan(children: spans));
   }
 }
