@@ -51,7 +51,20 @@ class CrewRosterScreen extends StatelessWidget {
           child: Scaffold(
               appBar: AppBar(
                 backgroundColor: Theme.of(context).colorScheme.background,
-                actions: const [AuthStatusIcon()],
+                actions: [
+                  IconButton(
+                      icon: const AuthStatusIcon(),
+                      onPressed: () {
+                        Map<String, List<Map<String, dynamic>>>
+                            convertedRosters = rosters.map(
+                          (key, value) => MapEntry(
+                            key,
+                            value.map((dutyList) => dutyList.toMap()).toList(),
+                          ),
+                        );
+                        context.push('/json-display', extra: convertedRosters);
+                      })
+                ],
                 bottom: TabBar(
                     isScrollable: true,
                     tabs: months.map((month) => Tab(text: month)).toList()),

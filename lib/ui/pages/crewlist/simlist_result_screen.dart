@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:oauthproject/model/sim_crew_list/sim_crew_list.dart';
 import 'package:oauthproject/ui/widgets/auth_status_icon_widget.dart';
 
@@ -12,7 +13,13 @@ class SimListResultScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.background,
-          actions: const [AuthStatusIcon()],
+          actions: [
+            IconButton(
+                icon: const AuthStatusIcon(),
+                onPressed: () {
+                  context.push('/json-display', extra: simCrewList.toMap());
+                })
+          ],
         ),
         backgroundColor: Theme.of(context).colorScheme.background,
         body: Padding(
