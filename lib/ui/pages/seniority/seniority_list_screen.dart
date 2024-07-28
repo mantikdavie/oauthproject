@@ -30,6 +30,7 @@ class SeniorityListScreen extends StatefulWidget {
 class _SeniorityListScreenState extends State<SeniorityListScreen> {
   @override
   Widget build(BuildContext context) {
+    print('Seniority List Screen Build');
     return BlocProvider<SeniorityBloc>(
       create: (context) => SeniorityBloc()..add(FetchFromLocal()),
       child: BlocListener<CrewProfileBloc, CrewProfileState>(

@@ -8,3 +8,5 @@ final class RequestPublicRoster extends CrewRosterEvent {
 
   RequestPublicRoster({required this.crewErn});
 }
+
+final class RequestTestRoster extends CrewRosterEvent {}

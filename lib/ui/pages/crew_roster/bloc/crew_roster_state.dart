@@ -8,9 +8,16 @@ final class CrewRosterInitial extends CrewRosterState {}
 final class CrewRosterLoading extends CrewRosterState {}
 
 final class CrewRosterLoaded extends CrewRosterState {
-  final PublicRosterCrewResults publicRosterCrewResults;
+  final Map<String, List<DutyList>> rosters;
 
-  CrewRosterLoaded({required this.publicRosterCrewResults});
+  CrewRosterLoaded({required this.rosters});
+}
+
+final class CrewMultiRosterLoaded extends CrewRosterState {
+  final Map<String, List<DutyList>> rosters;
+
+  CrewMultiRosterLoaded({required this.rosters});
+
 
 }
 
