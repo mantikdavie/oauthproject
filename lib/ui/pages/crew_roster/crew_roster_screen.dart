@@ -9,8 +9,8 @@ import 'package:oauthproject/ui/pages/crew_roster/bloc/crew_roster_bloc.dart';
 import 'package:oauthproject/ui/pages/crewlist/bloc/flight_crewlist_bloc.dart';
 import 'package:oauthproject/ui/widgets/auth_status_icon_widget.dart';
 
-const dateShowFlex = 1;
-const containerFlex = 7;
+const dateShowFlex = 2;
+const containerFlex = 10;
 
 class CrewRosterScreen extends StatelessWidget {
   final Map<String, List<DutyList>> rosters;
@@ -95,7 +95,22 @@ class FlightDutyContainer extends StatelessWidget {
         Expanded(
           flex: dateShowFlex,
           child: showDate
-              ? Text(model.showString ?? "", textAlign: TextAlign.center)
+              ? Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(
+                    model.showString ?? "",
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                  ),
+                )
               : const SizedBox(),
         ),
         Expanded(
@@ -106,14 +121,13 @@ class FlightDutyContainer extends StatelessWidget {
                 dutyStartDate: '${model.flightDate}')),
             child: Card(
               elevation: 4,
-              color: Colors
-                  .purple[50], // or Colors.purple[50] for a different look
+              color: Colors.purple[50],
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Container(
                 padding: const EdgeInsets.all(12),
-                height: 160,
+                height: 150,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -142,7 +156,7 @@ class FlightDutyContainer extends StatelessWidget {
                           children: [
                             Text('${duty.flight?.departurePort}',
                                 style: Theme.of(context).textTheme.titleMedium),
-                            Text('${model.dutyStartLocalString}L',
+                            Text(formatTime(duty.flight?.stdLocal),
                                 style: Theme.of(context).textTheme.bodySmall),
                           ],
                         ),
@@ -153,7 +167,7 @@ class FlightDutyContainer extends StatelessWidget {
                           children: [
                             Text('${duty.flight?.arrivalPort}',
                                 style: Theme.of(context).textTheme.titleMedium),
-                            Text('${model.dutyEndLocalString}L',
+                            Text(formatTime(duty.flight?.staLocal),
                                 style: Theme.of(context).textTheme.bodySmall),
                           ],
                         ),
@@ -167,20 +181,18 @@ class FlightDutyContainer extends StatelessWidget {
                           'Block: ${duty.flight?.blockHours?.toStringAsFixed(2)} hrs',
                           style: Theme.of(context).textTheme.bodyMedium,
                         ),
-                        Text(
-                          'Duty: ${duty.dutyPeriod?.toStringAsFixed(2)} hrs',
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
+                        if (duty.specialDutyCode != null &&
+                            duty.specialDutyCode!.isNotEmpty)
+                          Expanded(
+                            child: Text(
+                              'Special: ${duty.specialDutyCode!.join(", ")}',
+                              style: Theme.of(context).textTheme.bodySmall,
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.end,
+                            ),
+                          ),
                       ],
                     ),
-                    const SizedBox(height: 4),
-                    if (duty.specialDutyCode != null &&
-                        duty.specialDutyCode!.isNotEmpty)
-                      Text(
-                        'Special: ${duty.specialDutyCode!.join(", ")}',
-                        style: Theme.of(context).textTheme.bodySmall,
-                        overflow: TextOverflow.ellipsis,
-                      ),
                   ],
                 ),
               ),
@@ -208,7 +220,22 @@ class OffDutyContainer extends StatelessWidget {
         Expanded(
           flex: dateShowFlex,
           child: showDate
-              ? Text(model.showString ?? "", textAlign: TextAlign.center)
+              ? Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(
+                    model.showString ?? "",
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                  ),
+                )
               : const SizedBox(),
         ),
         Expanded(
@@ -264,7 +291,22 @@ class SimDutyContainer extends StatelessWidget {
         Expanded(
           flex: dateShowFlex,
           child: showDate
-              ? Text(model.showString ?? "", textAlign: TextAlign.center)
+              ? Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(
+                    model.showString ?? "",
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                  ),
+                )
               : const SizedBox(),
         ),
         Expanded(
@@ -333,7 +375,22 @@ class OtherDutyContainer extends StatelessWidget {
         Expanded(
           flex: dateShowFlex,
           child: showDate
-              ? Text(model.showString ?? "", textAlign: TextAlign.center)
+              ? Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(
+                    model.showString ?? "",
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                  ),
+                )
               : const SizedBox(),
         ),
         Expanded(
@@ -503,4 +560,10 @@ double calculateTotalBlockHours(List<DutyList> duties) {
     totalBlockHours = 0;
   }
   return totalBlockHours;
+}
+
+String formatTime(String? timeString) {
+  if (timeString == null) return '';
+  final dateTime = DateTime.parse(timeString);
+  return '${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}L';
 }
