@@ -77,10 +77,12 @@ class CrewRosterScreen extends StatelessWidget {
 
 class FlightDutyContainer extends StatelessWidget {
   final DutyList duty;
+  final bool showDate;
 
   const FlightDutyContainer({
     super.key,
     required this.duty,
+    required this.showDate,
   });
 
   @override
@@ -91,8 +93,11 @@ class FlightDutyContainer extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Expanded(
-            flex: dateShowFlex,
-            child: Text(model.showString ?? "", textAlign: TextAlign.center)),
+          flex: dateShowFlex,
+          child: showDate
+              ? Text(model.showString ?? "", textAlign: TextAlign.center)
+              : const SizedBox(),
+        ),
         Expanded(
           flex: containerFlex,
           child: GestureDetector(
@@ -100,76 +105,84 @@ class FlightDutyContainer extends StatelessWidget {
                 dutyCode: '${duty.flight?.flightNumber}',
                 dutyStartDate: '${model.flightDate}')),
             child: Card(
+              elevation: 4,
+              color: Colors
+                  .purple[50], // or Colors.purple[50] for a different look
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
               child: Container(
-                margin: const EdgeInsets.all(2),
-                // decoration: BoxDecoration(
-                //     border: Border.all(color: Colors.black45),
-                //     borderRadius: const BorderRadius.all(Radius.circular(15))),
-                padding: const EdgeInsets.all(10),
-                height: 100,
-                child: Column(children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Expanded(
-                          flex: 2,
-                          child: Text(
-                            '${duty.flight?.carrierCode} ${duty.flight?.flightNumber}',
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleLarge
-                                ?.copyWith(fontWeight: FontWeight.bold),
-                          )),
-                      Expanded(
-                        flex: 1,
-                        child: Text('${duty.flight?.departurePort}',
-                            style: Theme.of(context).textTheme.titleMedium),
+                padding: const EdgeInsets.all(12),
+                height: 160,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '${duty.flight?.carrierCode} ${duty.flight?.flightNumber}',
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge
+                              ?.copyWith(fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          '${duty.flight?.aircraftType}',
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('${duty.flight?.departurePort}',
+                                style: Theme.of(context).textTheme.titleMedium),
+                            Text('${model.dutyStartLocalString}L',
+                                style: Theme.of(context).textTheme.bodySmall),
+                          ],
+                        ),
+                        Icon(Icons.flight_takeoff,
+                            color: Theme.of(context).primaryColor),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text('${duty.flight?.arrivalPort}',
+                                style: Theme.of(context).textTheme.titleMedium),
+                            Text('${model.dutyEndLocalString}L',
+                                style: Theme.of(context).textTheme.bodySmall),
+                          ],
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Block: ${duty.flight?.blockHours?.toStringAsFixed(2)} hrs',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                        Text(
+                          'Duty: ${duty.dutyPeriod?.toStringAsFixed(2)} hrs',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 4),
+                    if (duty.specialDutyCode != null &&
+                        duty.specialDutyCode!.isNotEmpty)
+                      Text(
+                        'Special: ${duty.specialDutyCode!.join(", ")}',
+                        style: Theme.of(context).textTheme.bodySmall,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      Expanded(
-                          flex: 1,
-                          child: Text('${duty.flight?.arrivalPort}',
-                              style: Theme.of(context).textTheme.titleMedium)),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Expanded(
-                          flex: 2,
-                          child: Text('${duty.flight?.aircraftType}',
-                              style: Theme.of(context).textTheme.bodyMedium)),
-                      Expanded(
-                          flex: 1,
-                          child: Text('${model.dutyStartLocalString}L',
-                              style: Theme.of(context).textTheme.bodySmall)),
-                      Expanded(
-                          flex: 1,
-                          child: Text('${model.dutyEndLocalString}L',
-                              style: Theme.of(context).textTheme.bodySmall)),
-                    ],
-                  ),
-                  const SizedBox(height: 5),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Expanded(
-                          flex: 2,
-                          child: Text(
-                              duty.flight!.specialDutyCode!.isNotEmpty
-                                  ? duty.flight!.specialDutyCode?.first
-                                  : '',
-                              style: Theme.of(context).textTheme.bodyMedium)),
-                      Expanded(
-                          flex: 1,
-                          child: Text(
-                              '${duty.flight!.blockHours?.toStringAsFixed(2)}Hours',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge
-                                  ?.copyWith(fontWeight: FontWeight.bold))),
-                    ],
-                  ),
-                ]),
+                  ],
+                ),
               ),
             ),
           ),
@@ -181,8 +194,10 @@ class FlightDutyContainer extends StatelessWidget {
 
 class OffDutyContainer extends StatelessWidget {
   final DutyList duty;
+  final bool showDate;
 
-  const OffDutyContainer({super.key, required this.duty});
+  const OffDutyContainer(
+      {super.key, required this.duty, required this.showDate});
 
   @override
   Widget build(BuildContext context) {
@@ -191,19 +206,41 @@ class OffDutyContainer extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Expanded(
-            flex: dateShowFlex,
-            child: Text(model.showString ?? "", textAlign: TextAlign.center)),
+          flex: dateShowFlex,
+          child: showDate
+              ? Text(model.showString ?? "", textAlign: TextAlign.center)
+              : const SizedBox(),
+        ),
         Expanded(
           flex: containerFlex,
           child: Card(
+            elevation: 4,
+            color: Colors.green[50],
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
             child: Container(
-                margin: const EdgeInsets.all(2),
-                // decoration: BoxDecoration(
-                //     border: Border.all(color: Colors.black45),
-                //     borderRadius: const BorderRadius.all(Radius.circular(15))),
-                padding: const EdgeInsets.all(10),
-                height: 60,
-                child: Text('${duty.dutyDesc}')),
+              padding: const EdgeInsets.all(12),
+              height: 100,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    '${duty.dutyDesc}',
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium
+                        ?.copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    'Off Duty',
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
       ],
@@ -213,69 +250,160 @@ class OffDutyContainer extends StatelessWidget {
 
 class SimDutyContainer extends StatelessWidget {
   final DutyList duty;
+  final bool showDate;
 
-  const SimDutyContainer({
-    super.key,
-    required this.duty,
-  });
+  const SimDutyContainer(
+      {super.key, required this.duty, required this.showDate});
 
   @override
   Widget build(BuildContext context) {
     DutyDateTimeModel model = DutyDateTimeModel.fromRoster(duty);
-    return Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-      Expanded(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Expanded(
           flex: dateShowFlex,
-          child: Text(model.showString ?? "", textAlign: TextAlign.center)),
-      Expanded(
+          child: showDate
+              ? Text(model.showString ?? "", textAlign: TextAlign.center)
+              : const SizedBox(),
+        ),
+        Expanded(
           flex: containerFlex,
           child: GestureDetector(
             onTap: () => context.read<FlightCrewlistBloc>().add(RequestSimEvent(
                 dutyCode: '${duty.patternCode}',
                 dutyStartDate: '${model.dutyDate}')),
             child: Card(
+              elevation: 4,
+              color: Colors.blue[50],
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
               child: Container(
-                  margin: const EdgeInsets.all(2),
-                  // decoration: BoxDecoration(
-                  //     border: Border.all(color: Colors.black45),
-                  //     borderRadius: const BorderRadius.all(Radius.circular(15))),
-                  padding: const EdgeInsets.all(10),
-                  height: 60,
-                  child: Text('${duty.dutyDesc}')),
+                padding: const EdgeInsets.all(12),
+                height: 100,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Simulator Training',
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleMedium
+                          ?.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 4),
+                    Text('${duty.dutyDesc}',
+                        style: Theme.of(context).textTheme.bodyMedium),
+                    const SizedBox(height: 4),
+                    Text(
+                      'Pattern: ${duty.patternCode}',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                  ],
+                ),
+              ),
             ),
-          ))
-    ]);
+          ),
+        ),
+      ],
+    );
   }
 }
 
 class OtherDutyContainer extends StatelessWidget {
   final DutyList duty;
+  final bool showDate;
 
-  const OtherDutyContainer({
-    super.key,
-    required this.duty,
-  });
+  const OtherDutyContainer(
+      {super.key, required this.duty, required this.showDate});
+
+  String formatTime(String? dateTimeString) {
+    if (dateTimeString == null) return '';
+    final dateTime = DateTime.parse(dateTimeString);
+    return '${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}L';
+  }
 
   @override
   Widget build(BuildContext context) {
     DutyDateTimeModel model = DutyDateTimeModel.fromRoster(duty);
-    return Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-      Expanded(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Expanded(
           flex: dateShowFlex,
-          child: Text(model.showString ?? "", textAlign: TextAlign.center)),
-      Expanded(
+          child: showDate
+              ? Text(model.showString ?? "", textAlign: TextAlign.center)
+              : const SizedBox(),
+        ),
+        Expanded(
           flex: containerFlex,
           child: Card(
-            child: Container(
-              margin: const EdgeInsets.all(2),
-              // decoration: BoxDecoration(
-              //     border: Border.all(color: Colors.black45),
-              //     borderRadius: const BorderRadius.all(Radius.circular(15))),
-              padding: const EdgeInsets.all(10),
-              height: 60,
-              child: Text(duty.dutyDesc),
+            elevation: 4,
+            color: Colors.orange[50],
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
             ),
-          ))
-    ]);
+            child: Container(
+              padding: const EdgeInsets.all(12),
+              height: 100,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    duty.dutyDesc,
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium
+                        ?.copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 4),
+                  if (duty.dutyType == "SBY") ...[
+                    Text(
+                      'Pattern: ${duty.patternCode}',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            'Start: ${formatTime(duty.patternStartLocal)}',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                        ),
+                        Expanded(
+                          child: Text(
+                            'End: ${formatTime(duty.patternEndLocal)}',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ] else
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            'Type: ${duty.dutyType}',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                        ),
+                        Expanded(
+                          child: Text(
+                            'Pattern: ${duty.patternCode}',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                        ),
+                      ],
+                    ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
 
@@ -291,6 +419,8 @@ class RosterListColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String? lastShownDate;
+
     return Column(
       children: [
         Row(
@@ -306,19 +436,29 @@ class RosterListColumn extends StatelessWidget {
             itemCount: duties.length,
             itemBuilder: (context, index) {
               final duty = duties[index];
+              final model = DutyDateTimeModel.fromRoster(duty);
+              final currentDate = model.showString;
+
+              final showDate = currentDate != lastShownDate;
+              if (showDate) {
+                lastShownDate = currentDate;
+              }
 
               if (duty.dutyCode == "TRIP") {
-                return FlightDutyContainer(duty: duty);
+                return FlightDutyContainer(
+                  duty: duty,
+                  showDate: showDate,
+                );
               } else if (duty.dutyCode == "ACY") {
                 if (duty.dutyType == "OFF") {
-                  return OffDutyContainer(duty: duty);
+                  return OffDutyContainer(duty: duty, showDate: showDate);
                 } else if (duty.dutyType == "SIM") {
-                  return SimDutyContainer(duty: duty);
+                  return SimDutyContainer(duty: duty, showDate: showDate);
                 } else {
-                  return OtherDutyContainer(duty: duty);
+                  return OtherDutyContainer(duty: duty, showDate: showDate);
                 }
               } else {
-                return OtherDutyContainer(duty: duty);
+                return OtherDutyContainer(duty: duty, showDate: showDate);
               }
             },
           ),
