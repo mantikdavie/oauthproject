@@ -10,7 +10,7 @@ import 'package:oauthproject/ui/pages/crewlist/bloc/flight_crewlist_bloc.dart';
 import 'package:oauthproject/ui/widgets/auth_status_icon_widget.dart';
 
 const dateShowFlex = 2;
-const containerFlex = 10;
+const containerFlex = 11;
 
 class CrewRosterScreen extends StatelessWidget {
   final Map<String, List<DutyList>> rosters;
@@ -127,7 +127,7 @@ class FlightDutyContainer extends StatelessWidget {
               ),
               child: Container(
                 padding: const EdgeInsets.all(12),
-                height: 150,
+                height: 130,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
