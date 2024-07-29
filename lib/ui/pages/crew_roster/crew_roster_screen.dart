@@ -360,12 +360,6 @@ class OtherDutyContainer extends StatelessWidget {
   const OtherDutyContainer(
       {super.key, required this.duty, required this.showDate});
 
-  String formatTime(String? dateTimeString) {
-    if (dateTimeString == null) return '';
-    final dateTime = DateTime.parse(dateTimeString);
-    return '${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}L';
-  }
-
   @override
   Widget build(BuildContext context) {
     DutyDateTimeModel model = DutyDateTimeModel.fromRoster(duty);
@@ -496,9 +490,11 @@ class RosterListColumn extends StatelessWidget {
               final model = DutyDateTimeModel.fromRoster(duty);
               final currentDate = model.showString;
 
-              final showDate = currentDate != lastShownDate;
-              if (showDate) {
-                lastShownDate = currentDate;
+              bool showDate;
+              if (duty.dutyCode == "TRIP") {
+                showDate = duty.flight?.itemSequenceWithinDuty == 1;
+              } else {
+                showDate = currentDate != lastShownDate;
               }
 
               if (duty.dutyCode == "TRIP") {
@@ -527,8 +523,12 @@ class RosterListColumn extends StatelessWidget {
 
 class MonthlyRosterTabView extends StatelessWidget {
   final Map<String, List<DutyList>> rosters;
+  final Map<String, double> totalBlockHours;
 
-  const MonthlyRosterTabView({super.key, required this.rosters});
+  MonthlyRosterTabView({Key? key, required this.rosters})
+      : totalBlockHours = rosters.map((month, duties) =>
+            MapEntry(month, calculateTotalBlockHours(duties))),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -536,34 +536,32 @@ class MonthlyRosterTabView extends StatelessWidget {
 
     return TabBarView(
       children: months.map((month) {
-        final hours = calculateTotalBlockHours(rosters[month]!);
         return RosterListColumn(
-            totalblockHours: hours, duties: rosters[month]!);
+            totalblockHours: totalBlockHours[month]!, duties: rosters[month]!);
       }).toList(),
     );
   }
 }
 
 double calculateTotalBlockHours(List<DutyList> duties) {
-  List<double> blockHours = [];
-
-  for (var duty in duties) {
-    if (duty.flight != null) {
-      blockHours.add(duty.flight!.blockHours!.toDouble());
-    }
-  }
-
-  final double totalBlockHours;
-  if (blockHours.isNotEmpty) {
-    totalBlockHours = blockHours.reduce((value, element) => value + element);
-  } else {
-    totalBlockHours = 0;
-  }
-  return totalBlockHours;
+  return duties
+      .where((duty) => duty.flight != null && duty.flight!.blockHours != null)
+      .fold(0.0, (sum, duty) => sum + duty.flight!.blockHours!);
 }
+
+final Map<String, String> _formattedTimeCache = {};
 
 String formatTime(String? timeString) {
   if (timeString == null) return '';
+
+  if (_formattedTimeCache.containsKey(timeString)) {
+    return _formattedTimeCache[timeString]!;
+  }
+
   final dateTime = DateTime.parse(timeString);
-  return '${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}L';
+  final formattedTime =
+      '${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}L';
+
+  _formattedTimeCache[timeString] = formattedTime;
+  return formattedTime;
 }
