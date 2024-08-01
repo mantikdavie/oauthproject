@@ -25,30 +25,28 @@ class SeniorityBloc extends Bloc<SeniorityEvent, SeniorityState> {
     emit(SeniorityLoading());
     await Future.delayed(const Duration(milliseconds: 500));
     try {
-      final List<SeniorityList> list = [];
-      int selfIndex = -1;
       debugPrint('Fetching Local Seniority List...');
       final resp = await readFromCache('seniority_list');
-      final String crewId = await readFromCache('crew_id');
       debugPrint('resp in local cache: $resp');
-      if (resp == null || resp == '') {
+
+      if (resp == null || resp.isEmpty) {
         emit(SeniorityNoLocalCache());
-      } else {
-        final respJson = json.decode(resp) as List;
-        for (var (index, element) in respJson.indexed) {
-          final crew = SeniorityList.fromMap(element);
-          if (element['seniorityOrder'] != 0) {
-            list.add(crew);
-          }
-
-          if (crew.crewId == crewId) {
-            selfIndex = list.length - 1;
-          }
-        }
-        fullSeniorityList = list;
-
-        emit(SeniorityLoaded(seniorityList: list, selfIndex: selfIndex));
+        return;
       }
+
+      final String crewId = await readFromCache('crew_id');
+      final respJson = json.decode(resp) as List;
+
+      final list = respJson
+          .where((element) => element['seniorityOrder'] != 0)
+          .map((element) => SeniorityList.fromMap(element))
+          .toList();
+
+      fullSeniorityList = list;
+
+      final selfIndex = list.indexWhere((crew) => crew.crewId == crewId);
+
+      emit(SeniorityLoaded(seniorityList: list, selfIndex: selfIndex));
     } catch (e) {
       debugPrint('caught error in Local Fetch: $e');
       emit(SeniorityError(errorMessage: e.toString()));
