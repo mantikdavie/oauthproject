@@ -12,6 +12,7 @@ part 'seniority_event.dart';
 part 'seniority_state.dart';
 
 class SeniorityBloc extends Bloc<SeniorityEvent, SeniorityState> {
+  final Map<String, List<SeniorityList>> _memoizedLists = {};
   List<SeniorityList> fullSeniorityList = [];
 
   SeniorityBloc() : super(SeniorityInitial()) {
@@ -75,12 +76,13 @@ class SeniorityBloc extends Bloc<SeniorityEvent, SeniorityState> {
         ).where((crew) => crew.seniorityOrder != 0).toList();
 
         fullSeniorityList = list;
+        _memoizedLists.clear(); // Clear memoized results
 
         final selfIndex = list.indexWhere((crew) => crew.crewId == crewId);
 
         emit(SeniorityLoaded(seniorityList: list, selfIndex: selfIndex));
       } else {
-        emit(SeniorityLoaded(seniorityList: [], selfIndex: -1));
+        emit(SeniorityLoaded(seniorityList: const [], selfIndex: -1));
       }
     } catch (e) {
       debugPrint('caught error: $e');
@@ -108,14 +110,22 @@ class SeniorityBloc extends Bloc<SeniorityEvent, SeniorityState> {
   }
 
   Future<List<SeniorityList>> getFilteredList(String rank, String fleet) async {
+    final key = '$rank-$fleet';
+    if (_memoizedLists.containsKey(key)) {
+      return _memoizedLists[key]!;
+    }
+
     debugPrint('searching for $rank and $fleet');
 
-    return fullSeniorityList.where((crew) {
+    final filteredList = fullSeniorityList.where((crew) {
       bool rankMatch = rank == 'All' || crew.rank == rank;
       bool fleetMatch = fleet == 'All' ||
           (fleet == 'AWB' && ['3', '5', 'E'].contains(crew.fleet)) ||
           crew.fleet == fleet;
       return rankMatch && fleetMatch;
     }).toList();
+
+    _memoizedLists[key] = filteredList;
+    return filteredList;
   }
 }
