@@ -60,31 +60,29 @@ class SeniorityBloc extends Bloc<SeniorityEvent, SeniorityState> {
     emit(SeniorityLoading());
     debugPrint('Fetching Remote Seniority List...');
     try {
-      final List<SeniorityList> list = [];
       final ern = await readFromCache('ern');
-      int selfIndex = -1;
       final resp =
           await getBaseRequest('cls-api/v1/seniorityList', {'ern': ern})
-              as List;
+              as List?;
 
-      if (resp.isNotEmpty) {
-        final respJson = jsonEncode(resp);
-        saveStringToCache('seniority_list', respJson);
+      final respJson = jsonEncode(resp);
+      saveStringToCache('seniority_list', respJson);
+
+      if (resp?.isNotEmpty ?? false) {
         final String crewId = await readFromCache('crew_id');
 
-        for (var (index, element) in resp.indexed) {
-          final crew = SeniorityList.fromMap(element);
-          if (element['seniorityOrder'] != 0) {
-            list.add(crew);
-          }
+        final list = List<SeniorityList>.generate(
+          resp!.length,
+          (index) => SeniorityList.fromMap(resp[index]),
+        ).where((crew) => crew.seniorityOrder != 0).toList();
 
-          if (crew.crewId == crewId) {
-            selfIndex = list.length - 1;
-          }
-        }
         fullSeniorityList = list;
 
+        final selfIndex = list.indexWhere((crew) => crew.crewId == crewId);
+
         emit(SeniorityLoaded(seniorityList: list, selfIndex: selfIndex));
+      } else {
+        emit(SeniorityLoaded(seniorityList: [], selfIndex: -1));
       }
     } catch (e) {
       debugPrint('caught error: $e');
