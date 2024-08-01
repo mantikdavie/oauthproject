@@ -131,7 +131,7 @@ class CollapsibleJsonWidget extends StatelessWidget {
 
   Widget _buildLeaf(BuildContext context, dynamic data) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -139,7 +139,13 @@ class CollapsibleJsonWidget extends StatelessWidget {
             flex: 2,
             child: _highlightText(context, keyName ?? '', true),
           ),
-          const SizedBox(width: 8),
+          const SizedBox(width: 16),
+          Container(
+            width: 1,
+            height: 24,
+            color: Theme.of(context).dividerColor,
+          ),
+          const SizedBox(width: 16),
           Expanded(
             flex: 3,
             child: _highlightText(context, data.toString(), false),

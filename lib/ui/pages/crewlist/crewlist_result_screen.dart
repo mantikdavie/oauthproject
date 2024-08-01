@@ -14,7 +14,13 @@ class CrewlistResultScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.background,
-          actions: const [AuthStatusIcon()],
+          actions: [
+            IconButton(
+                icon: const AuthStatusIcon(),
+                onPressed: () {
+                  context.push('/json-display', extra: crewList.toMap());
+                })
+          ],
         ),
         backgroundColor: Theme.of(context).colorScheme.background,
         body: Padding(
