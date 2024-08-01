@@ -91,18 +91,13 @@ class SeniorityBloc extends Bloc<SeniorityEvent, SeniorityState> {
   void _mapFilterListToState(
       FilterList event, Emitter<SeniorityState> emit) async {
     emit(SeniorityLoading());
-    int selfIndex = -1;
-    await Future.delayed(const Duration(milliseconds: 1000));
+    await Future.delayed(const Duration(milliseconds: 300));
     try {
-      final rank = event.rank;
-      final fleet = event.fleet;
-      final filteredList = await getFilteredList(rank!, fleet!);
+      final filteredList = await getFilteredList(event.rank!, event.fleet!);
       final String crewId = await readFromCache('crew_id');
-      for (var (index, element) in filteredList.indexed) {
-        if (element.crewId == crewId) {
-          selfIndex = index;
-        }
-      }
+
+      final selfIndex =
+          filteredList.indexWhere((element) => element.crewId == crewId);
 
       debugPrint('filteredList: $filteredList');
       emit(SeniorityLoaded(seniorityList: filteredList, selfIndex: selfIndex));
@@ -115,31 +110,12 @@ class SeniorityBloc extends Bloc<SeniorityEvent, SeniorityState> {
   Future<List<SeniorityList>> getFilteredList(String rank, String fleet) async {
     debugPrint('searching for $rank and $fleet');
 
-    if (rank == 'All' && fleet == 'All') {
-      return fullSeniorityList;
-    } else if (rank == 'All' && fleet != 'All') {
-      if (fleet == 'AWB') {
-        return fullSeniorityList
-            .where((crew) =>
-                (crew.fleet == '3' || crew.fleet == '5' || crew.fleet == 'E'))
-            .toList();
-      } else {
-        return fullSeniorityList.where((crew) => crew.fleet == fleet).toList();
-      }
-    } else if (rank != 'All' && fleet == 'All') {
-      return fullSeniorityList.where((crew) => crew.rank == rank).toList();
-    } else {
-      if (fleet == 'AWB') {
-        return fullSeniorityList
-            .where((crew) =>
-                crew.rank == rank &&
-                (crew.fleet == '3' || crew.fleet == '5' || crew.fleet == 'E'))
-            .toList();
-      } else {
-        return fullSeniorityList
-            .where((crew) => (crew.rank == rank && crew.fleet == fleet))
-            .toList();
-      }
-    }
+    return fullSeniorityList.where((crew) {
+      bool rankMatch = rank == 'All' || crew.rank == rank;
+      bool fleetMatch = fleet == 'All' ||
+          (fleet == 'AWB' && ['3', '5', 'E'].contains(crew.fleet)) ||
+          crew.fleet == fleet;
+      return rankMatch && fleetMatch;
+    }).toList();
   }
 }
