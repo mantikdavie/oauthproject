@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:oauthproject/ui/pages/crewlist/bloc/flight_crewlist_bloc.dart';
@@ -16,10 +17,41 @@ class _FlightCrewListScreenState extends State<FlightCrewListScreen> {
   final dutyStartDateController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    // Set the initial value of dutyStartDateController to today's date
+    dutyStartDateController.text = _getFormattedDate(DateTime.now());
+  }
+
+  @override
   void dispose() {
     dutyCodeController.dispose();
     dutyStartDateController.dispose();
     super.dispose();
+  }
+
+  String _getFormattedDate(DateTime date) {
+    return "${date.year}${date.month.toString().padLeft(2, '0')}${date.day.toString().padLeft(2, '0')}";
+  }
+
+  void _incrementDate() {
+    final currentDate = _parseDate(dutyStartDateController.text);
+    final newDate = currentDate.add(const Duration(days: 1));
+    dutyStartDateController.text = _getFormattedDate(newDate);
+  }
+
+  void _decrementDate() {
+    final currentDate = _parseDate(dutyStartDateController.text);
+    final newDate = currentDate.subtract(const Duration(days: 1));
+    dutyStartDateController.text = _getFormattedDate(newDate);
+  }
+
+  DateTime _parseDate(String dateString) {
+    return DateTime(
+      int.parse(dateString.substring(0, 4)),
+      int.parse(dateString.substring(4, 6)),
+      int.parse(dateString.substring(6, 8)),
+    );
   }
 
   @override
@@ -28,6 +60,8 @@ class _FlightCrewListScreenState extends State<FlightCrewListScreen> {
     return CrewListSearch(
       dutyCodeController: dutyCodeController,
       dutyStartDateController: dutyStartDateController,
+      incrementDate: _incrementDate,
+      decrementDate: _decrementDate,
     );
   }
 }
@@ -37,10 +71,14 @@ class CrewListSearch extends StatefulWidget {
     super.key,
     required this.dutyCodeController,
     required this.dutyStartDateController,
+    required this.incrementDate,
+    required this.decrementDate,
   });
 
   final TextEditingController dutyCodeController;
   final TextEditingController dutyStartDateController;
+  final VoidCallback incrementDate;
+  final VoidCallback decrementDate;
 
   @override
   State<CrewListSearch> createState() => _CrewListSearchState();
@@ -63,76 +101,117 @@ class _CrewListSearchState extends State<CrewListSearch> {
         }
       },
       child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Theme.of(context).colorScheme.background,
-            actions: const [AuthStatusIcon()],
-          ),
+        appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.background,
-          body: Column(
+          actions: const [AuthStatusIcon()],
+        ),
+        backgroundColor: Theme.of(context).colorScheme.background,
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
             children: [
-              const SizedBox(height: 60),
+              const SizedBox(height: 30),
               const Center(child: Text('Duty Code')),
-              Center(
-                  child: SizedBox(
-                      width: 100,
-                      child: TextField(
-                          controller: widget.dutyCodeController,
-                          textCapitalization: TextCapitalization.characters,
-                          keyboardType:
-                              isSim ? TextInputType.text : TextInputType.number,
-                          textAlign: TextAlign.center))),
-              const SizedBox(height: 50),
-              const Center(child: Text('Duty Start Date')),
-              Center(
-                  child: SizedBox(
-                      width: 100,
-                      child: TextField(
-                          controller: widget.dutyStartDateController,
-                          keyboardType: TextInputType.number,
-                          textAlign: TextAlign.center))),
-              const SizedBox(height: 50),
-              Switch(
-                value: isSim,
-                onChanged: (value) {
-                  setState(() {
-                    isSim = value;
-                  });
-                },
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    // Add SizedBox here
+                    width: 100,
+                    child: TextFormField(
+                      controller: widget.dutyCodeController,
+                      textCapitalization: TextCapitalization.characters,
+                      keyboardType:
+                          isSim ? TextInputType.text : TextInputType.number,
+                      inputFormatters: [
+                        if (!isSim) FilteringTextInputFormatter.digitsOnly,
+                        if (isSim) _SimDutyCodeFormatter(),
+                      ],
+                      decoration: InputDecoration(
+                        hintText: isSim ? "e.g A1124" : "",
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
               ),
-              Center(
-                  child: BlocBuilder<FlightCrewlistBloc, FlightCrewlistState>(
-                builder: (context, state) {
-                  if (state is FclLoading) {
-                    return const CircularProgressIndicator();
-                  } else {
-                    return ElevatedButton(
-                        onPressed: () {
-                          if (widget.dutyCodeController.text.isNotEmpty &&
-                              widget.dutyStartDateController.text.isNotEmpty) {
-                            if (isSim) {
-                              context.read<FlightCrewlistBloc>().add(
-                                  RequestSimEvent(
-                                      dutyCode: widget.dutyCodeController.text,
-                                      dutyStartDate:
-                                          widget.dutyStartDateController.text));
-                              // TestRequestSimEvent());
-                            } else {
-                              context.read<FlightCrewlistBloc>().add(
-                                  RequestFclEvent(
-                                      dutyCode: widget.dutyCodeController.text,
-                                      dutyStartDate:
-                                          widget.dutyStartDateController.text));
-                            }
-                          }
-                          // context
-                          //     .read<FlightCrewlistBloc>()
-                          //     .add(TestRequestFclEvent());
-                        },
-                        child: const Text('Submit'));
+              const SizedBox(height: 30),
+              const Center(child: Text('Duty Start Date')),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    onPressed: widget.decrementDate,
+                    icon: const Icon(Icons.remove),
+                  ),
+                  SizedBox(
+                    width: 100,
+                    child: TextFormField(
+                      controller: widget.dutyStartDateController,
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                        hintText: "e.g., 20231026",
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: widget.incrementDate,
+                    icon: const Icon(Icons.add),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Simulator Duty:'),
+                  Switch(
+                    value: isSim,
+                    onChanged: (value) {
+                      setState(() {
+                        isSim = value;
+                        widget.dutyCodeController.clear();
+                      });
+                    },
+                  ),
+                ],
+              ),
+              const SizedBox(height: 30),
+              ElevatedButton(
+                onPressed: () {
+                  // Disable the button and show loading indicator if already in a loading state
+                  if (context.read<FlightCrewlistBloc>().state is FclLoading)
+                    return;
+
+                  if (widget.dutyCodeController.text.isNotEmpty &&
+                      widget.dutyStartDateController.text.isNotEmpty) {
+                    if (isSim) {
+                      context.read<FlightCrewlistBloc>().add(RequestSimEvent(
+                          dutyCode: widget.dutyCodeController.text,
+                          dutyStartDate: widget.dutyStartDateController.text));
+                    } else {
+                      context.read<FlightCrewlistBloc>().add(RequestFclEvent(
+                          dutyCode: widget.dutyCodeController.text,
+                          dutyStartDate: widget.dutyStartDateController.text));
+                    }
                   }
                 },
-              )),
-              const SizedBox(height: 60),
+                child: BlocBuilder<FlightCrewlistBloc, FlightCrewlistState>(
+                  builder: (context, state) {
+                    if (state is FclLoading) {
+                      return const SizedBox(
+                        height: 20,
+                        width: 20,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      );
+                    } else {
+                      return const Text('Submit');
+                    }
+                  },
+                ),
+              ),
+              const SizedBox(height: 30),
               BlocBuilder<FlightCrewlistBloc, FlightCrewlistState>(
                 builder: (context, state) {
                   if (state is FclMultiSectorLoaded) {
@@ -163,25 +242,26 @@ class _CrewListSearchState extends State<CrewListSearch> {
                 },
               )
             ],
-          )),
+          ),
+        ),
+      ),
     );
   }
 }
 
-class SimToggleSwitch extends StatefulWidget {
-  const SimToggleSwitch({super.key});
-
+class _SimDutyCodeFormatter extends TextInputFormatter {
   @override
-  State<SimToggleSwitch> createState() => _SimToggleSwitchState();
-}
-
-class _SimToggleSwitchState extends State<SimToggleSwitch> {
-  @override
-  Widget build(BuildContext context) {
-    return Switch(
-        value: true,
-        onChanged: (newValue) {
-          setState(() {});
-        });
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    var text = newValue.text.toUpperCase();
+    if (text.length > 5) {
+      text = text.substring(0, 5);
+    }
+    if (text.isNotEmpty) {
+      if (RegExp(r'^[A-Z]\d{0,4}$').hasMatch(text)) {
+        return newValue.copyWith(text: text);
+      }
+    }
+    return oldValue;
   }
 }
