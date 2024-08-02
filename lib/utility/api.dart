@@ -60,7 +60,6 @@ Future<dynamic> dioPostRequest(
   }
 }
 
-
 //http Request not using Dio
 Future<dynamic> httpPostRequest(
     String base, String path, Map<String, String> requestBody) async {

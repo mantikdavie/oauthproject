@@ -4,12 +4,11 @@ import 'package:go_router/go_router.dart';
 import 'package:oauthproject/main.dart';
 import 'package:oauthproject/model/flight_crew_list/crew_profile.dart';
 import 'package:oauthproject/model/flight_crew_list/flight_crew_list.dart';
+import 'package:oauthproject/model/my_full_roster/my_full_roster.dart';
 import 'package:oauthproject/model/public_roster_crew_results/duty_list.dart';
-import 'package:oauthproject/model/public_roster_crew_results/public_roster_crew_results.dart';
 import 'package:oauthproject/model/sim_crew_list/sim_crew_list.dart';
 import 'package:oauthproject/ui/pages/Profile/self_profile_screen.dart';
 import 'package:oauthproject/ui/pages/crew_roster/crew_roster_screen.dart';
-import 'package:oauthproject/ui/pages/crew_roster/roster_test_screen.dart';
 import 'package:oauthproject/ui/pages/crewlist/crewlist_result_screen.dart';
 import 'package:oauthproject/ui/pages/crewlist/flight_crewlist_screen.dart';
 import 'package:oauthproject/ui/pages/crewlist/simlist_result_screen.dart';
@@ -17,6 +16,7 @@ import 'package:oauthproject/ui/pages/json/json_screen.dart';
 import 'package:oauthproject/ui/pages/login/login_screen.dart';
 import 'package:oauthproject/ui/pages/login/login_web_screen.dart';
 import 'package:oauthproject/ui/pages/profile/crew_profile_screen.dart';
+import 'package:oauthproject/ui/pages/self_roster/self_roster_screen.dart';
 import 'package:oauthproject/ui/pages/seniority/seniority_list_screen.dart';
 import 'package:oauthproject/utility/local_storage.dart';
 
@@ -74,6 +74,13 @@ Future<GoRouter> initRouter() async {
           GoRoute(
               path: 'profile',
               builder: (context, state) => const SelfProfileScreen()),
+          GoRoute(
+            path: 'roster',
+            builder: (BuildContext context, GoRouterState state) {
+              final MyFullRoster myFullRoster = state.extra as MyFullRoster;
+              return MyFullRosterScreen(myFullRoster: myFullRoster);
+            },
+          ),
           GoRoute(
             path: 'crew-roster',
             builder: (context, state) {

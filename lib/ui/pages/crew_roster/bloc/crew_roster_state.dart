@@ -17,8 +17,6 @@ final class CrewMultiRosterLoaded extends CrewRosterState {
   final Map<String, List<DutyList>> rosters;
 
   CrewMultiRosterLoaded({required this.rosters});
-
-
 }
 
 final class CrewRosterError extends CrewRosterState {
