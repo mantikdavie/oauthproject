@@ -16,7 +16,7 @@ import 'package:oauthproject/ui/pages/json/json_screen.dart';
 import 'package:oauthproject/ui/pages/login/login_screen.dart';
 import 'package:oauthproject/ui/pages/login/login_web_screen.dart';
 import 'package:oauthproject/ui/pages/profile/crew_profile_screen.dart';
-import 'package:oauthproject/ui/pages/self_roster/self_roster_screen.dart';
+import 'package:oauthproject/ui/pages/my_roster/my_full_roster_screen.dart';
 import 'package:oauthproject/ui/pages/seniority/seniority_list_screen.dart';
 import 'package:oauthproject/utility/local_storage.dart';
 
