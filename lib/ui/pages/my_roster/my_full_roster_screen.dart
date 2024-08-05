@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:oauthproject/model/my_full_roster/my_full_roster.dart';
 import 'package:oauthproject/model/my_full_roster/duty_list.dart';
+import 'package:oauthproject/ui/widgets/duty_container_widgets.dart';
 
 class MyFullRosterScreen extends StatelessWidget {
   final MyFullRoster myFullRoster;
@@ -75,286 +76,286 @@ class MonthlyRosterTabView extends StatelessWidget {
   }
 }
 
-class FlightDutyContainer extends StatelessWidget {
-  final DutyList duty;
-  final bool showDate;
+// class FlightDutyContainer extends StatelessWidget {
+//   final DutyList duty;
+//   final bool showDate;
 
-  const FlightDutyContainer({
-    super.key,
-    required this.duty,
-    required this.showDate,
-  });
+//   const FlightDutyContainer({
+//     super.key,
+//     required this.duty,
+//     required this.showDate,
+//   });
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Expanded(
-          flex: dateShowFlex,
-          child: showDate
-              ? Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Text(
-                    DateFormat('MMM d')
-                        .format(DateTime.parse(duty.dutyStartLocal!)),
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).primaryColor,
-                        ),
-                  ),
-                )
-              : const SizedBox(),
-        ),
-        Expanded(
-          flex: containerFlex,
-          child: Card(
-            elevation: 4,
-            color: Colors.purple[50],
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Container(
-              padding: const EdgeInsets.all(12),
-              height: 130,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Flight Duty',
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleLarge
-                        ?.copyWith(fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 8),
-                  Text('Start: ${formatTime(duty.dutyStartLocal)}'),
-                  Text('End: ${formatTime(duty.dutyEndLocal)}'),
-                  // Text('Duration: ${d ?? "N/A"}'),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       mainAxisAlignment: MainAxisAlignment.start,
+//       children: [
+//         Expanded(
+//           flex: dateShowFlex,
+//           child: showDate
+//               ? Container(
+//                   padding:
+//                       const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+//                   decoration: BoxDecoration(
+//                     color: Theme.of(context).primaryColor.withOpacity(0.1),
+//                     borderRadius: BorderRadius.circular(8),
+//                   ),
+//                   child: Text(
+//                     DateFormat('MMM d')
+//                         .format(DateTime.parse(duty.dutyStartLocal!)),
+//                     textAlign: TextAlign.center,
+//                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+//                           fontWeight: FontWeight.bold,
+//                           color: Theme.of(context).primaryColor,
+//                         ),
+//                   ),
+//                 )
+//               : const SizedBox(),
+//         ),
+//         Expanded(
+//           flex: containerFlex,
+//           child: Card(
+//             elevation: 4,
+//             color: Colors.purple[50],
+//             shape: RoundedRectangleBorder(
+//               borderRadius: BorderRadius.circular(12),
+//             ),
+//             child: Container(
+//               padding: const EdgeInsets.all(12),
+//               height: 130,
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   Text(
+//                     'Flight Duty',
+//                     style: Theme.of(context)
+//                         .textTheme
+//                         .titleLarge
+//                         ?.copyWith(fontWeight: FontWeight.bold),
+//                   ),
+//                   const SizedBox(height: 8),
+//                   Text('Start: ${formatTime(duty.dutyStartLocal)}'),
+//                   Text('End: ${formatTime(duty.dutyEndLocal)}'),
+//                   // Text('Duration: ${d ?? "N/A"}'),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+// }
 
-class OffDutyContainer extends StatelessWidget {
-  final DutyList duty;
-  final bool showDate;
+// class OffDutyContainer extends StatelessWidget {
+//   final DutyList duty;
+//   final bool showDate;
 
-  const OffDutyContainer(
-      {super.key, required this.duty, required this.showDate});
+//   const OffDutyContainer(
+//       {super.key, required this.duty, required this.showDate});
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Expanded(
-          flex: dateShowFlex,
-          child: showDate
-              ? Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Text(
-                    DateFormat('MMM d')
-                        .format(DateTime.parse(duty.dutyStartLocal!)),
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).primaryColor,
-                        ),
-                  ),
-                )
-              : const SizedBox(),
-        ),
-        Expanded(
-          flex: containerFlex,
-          child: Card(
-            elevation: 4,
-            color: Colors.green[50],
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Container(
-              padding: const EdgeInsets.all(12),
-              height: 100,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Off Duty',
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium
-                        ?.copyWith(fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(duty.dutyDesc ?? ""),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       mainAxisAlignment: MainAxisAlignment.start,
+//       children: [
+//         Expanded(
+//           flex: dateShowFlex,
+//           child: showDate
+//               ? Container(
+//                   padding:
+//                       const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+//                   decoration: BoxDecoration(
+//                     color: Theme.of(context).primaryColor.withOpacity(0.1),
+//                     borderRadius: BorderRadius.circular(8),
+//                   ),
+//                   child: Text(
+//                     DateFormat('MMM d')
+//                         .format(DateTime.parse(duty.dutyStartLocal!)),
+//                     textAlign: TextAlign.center,
+//                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+//                           fontWeight: FontWeight.bold,
+//                           color: Theme.of(context).primaryColor,
+//                         ),
+//                   ),
+//                 )
+//               : const SizedBox(),
+//         ),
+//         Expanded(
+//           flex: containerFlex,
+//           child: Card(
+//             elevation: 4,
+//             color: Colors.green[50],
+//             shape: RoundedRectangleBorder(
+//               borderRadius: BorderRadius.circular(12),
+//             ),
+//             child: Container(
+//               padding: const EdgeInsets.all(12),
+//               height: 100,
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: [
+//                   Text(
+//                     'Off Duty',
+//                     style: Theme.of(context)
+//                         .textTheme
+//                         .titleMedium
+//                         ?.copyWith(fontWeight: FontWeight.bold),
+//                   ),
+//                   const SizedBox(height: 4),
+//                   Text(duty.dutyDesc ?? ""),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+// }
 
-class SimDutyContainer extends StatelessWidget {
-  final DutyList duty;
-  final bool showDate;
+// class SimDutyContainer extends StatelessWidget {
+//   final DutyList duty;
+//   final bool showDate;
 
-  const SimDutyContainer(
-      {super.key, required this.duty, required this.showDate});
+//   const SimDutyContainer(
+//       {super.key, required this.duty, required this.showDate});
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Expanded(
-          flex: dateShowFlex,
-          child: showDate
-              ? Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Text(
-                    DateFormat('MMM d')
-                        .format(DateTime.parse(duty.dutyStartLocal!)),
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).primaryColor,
-                        ),
-                  ),
-                )
-              : const SizedBox(),
-        ),
-        Expanded(
-          flex: containerFlex,
-          child: Card(
-            elevation: 4,
-            color: Colors.blue[50],
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Container(
-              padding: const EdgeInsets.all(12),
-              height: 100,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Simulator Training',
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium
-                        ?.copyWith(fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(duty.dutyDesc ?? ""),
-                  const SizedBox(height: 4),
-                  Text(
-                    'Pattern: ${duty.patternCode ?? "N/A"}',
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       mainAxisAlignment: MainAxisAlignment.start,
+//       children: [
+//         Expanded(
+//           flex: dateShowFlex,
+//           child: showDate
+//               ? Container(
+//                   padding:
+//                       const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+//                   decoration: BoxDecoration(
+//                     color: Theme.of(context).primaryColor.withOpacity(0.1),
+//                     borderRadius: BorderRadius.circular(8),
+//                   ),
+//                   child: Text(
+//                     DateFormat('MMM d')
+//                         .format(DateTime.parse(duty.dutyStartLocal!)),
+//                     textAlign: TextAlign.center,
+//                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+//                           fontWeight: FontWeight.bold,
+//                           color: Theme.of(context).primaryColor,
+//                         ),
+//                   ),
+//                 )
+//               : const SizedBox(),
+//         ),
+//         Expanded(
+//           flex: containerFlex,
+//           child: Card(
+//             elevation: 4,
+//             color: Colors.blue[50],
+//             shape: RoundedRectangleBorder(
+//               borderRadius: BorderRadius.circular(12),
+//             ),
+//             child: Container(
+//               padding: const EdgeInsets.all(12),
+//               height: 100,
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   Text(
+//                     'Simulator Training',
+//                     style: Theme.of(context)
+//                         .textTheme
+//                         .titleMedium
+//                         ?.copyWith(fontWeight: FontWeight.bold),
+//                   ),
+//                   const SizedBox(height: 4),
+//                   Text(duty.dutyDesc ?? ""),
+//                   const SizedBox(height: 4),
+//                   Text(
+//                     'Pattern: ${duty.patternCode ?? "N/A"}',
+//                     style: Theme.of(context).textTheme.bodySmall,
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+// }
 
-class OtherDutyContainer extends StatelessWidget {
-  final DutyList duty;
-  final bool showDate;
+// class OtherDutyContainer extends StatelessWidget {
+//   final DutyList duty;
+//   final bool showDate;
 
-  const OtherDutyContainer(
-      {super.key, required this.duty, required this.showDate});
+//   const OtherDutyContainer(
+//       {super.key, required this.duty, required this.showDate});
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Expanded(
-          flex: dateShowFlex,
-          child: showDate
-              ? Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Text(
-                    DateFormat('MMM d')
-                        .format(DateTime.parse(duty.dutyStartLocal!)),
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).primaryColor,
-                        ),
-                  ),
-                )
-              : const SizedBox(),
-        ),
-        Expanded(
-          flex: containerFlex,
-          child: Card(
-            elevation: 4,
-            color: Colors.orange[50],
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Container(
-              padding: const EdgeInsets.all(12),
-              height: 100,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    duty.dutyDesc ?? "",
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium
-                        ?.copyWith(fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 4),
-                  Text('Type: ${duty.dutyType ?? "N/A"}'),
-                  Text('Pattern: ${duty.patternCode ?? "N/A"}'),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       mainAxisAlignment: MainAxisAlignment.start,
+//       children: [
+//         Expanded(
+//           flex: dateShowFlex,
+//           child: showDate
+//               ? Container(
+//                   padding:
+//                       const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+//                   decoration: BoxDecoration(
+//                     color: Theme.of(context).primaryColor.withOpacity(0.1),
+//                     borderRadius: BorderRadius.circular(8),
+//                   ),
+//                   child: Text(
+//                     DateFormat('MMM d')
+//                         .format(DateTime.parse(duty.dutyStartLocal!)),
+//                     textAlign: TextAlign.center,
+//                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+//                           fontWeight: FontWeight.bold,
+//                           color: Theme.of(context).primaryColor,
+//                         ),
+//                   ),
+//                 )
+//               : const SizedBox(),
+//         ),
+//         Expanded(
+//           flex: containerFlex,
+//           child: Card(
+//             elevation: 4,
+//             color: Colors.orange[50],
+//             shape: RoundedRectangleBorder(
+//               borderRadius: BorderRadius.circular(12),
+//             ),
+//             child: Container(
+//               padding: const EdgeInsets.all(12),
+//               height: 100,
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: [
+//                   Text(
+//                     duty.dutyDesc ?? "",
+//                     style: Theme.of(context)
+//                         .textTheme
+//                         .titleMedium
+//                         ?.copyWith(fontWeight: FontWeight.bold),
+//                   ),
+//                   const SizedBox(height: 4),
+//                   Text('Type: ${duty.dutyType ?? "N/A"}'),
+//                   Text('Pattern: ${duty.patternCode ?? "N/A"}'),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+// }
 
 String formatTime(String? timeString) {
   if (timeString == null) return '';
