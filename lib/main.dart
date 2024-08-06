@@ -60,7 +60,7 @@ class MainApp extends StatelessWidget {
       child: MaterialApp.router(
         theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(
-                seedColor: Colors.black38, background: Colors.grey[300]),
+                seedColor: Colors.black38, surface: Colors.grey[300]),
             useMaterial3: true),
         // home: const LoginPage(),
         routerConfig: router,
@@ -78,14 +78,14 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         elevation: 0.5,
         title: const Text('Home'),
         actions: const [
           AuthStatusIcon(),
         ],
       ),
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: BlocBuilder<AuthStatusBloc, AuthStatusState>(
           builder: (context, state) {
         if (state is AuthStatusInitial) {
@@ -174,6 +174,13 @@ class HomePage extends StatelessWidget {
                     context.go('/profile');
                   },
                   child: const Text('Profile')),
+              ElevatedButton(
+                  onPressed: () async {
+                    MyFullRoster dutiesFull =
+                        await loadSelfDutiesFullFromAsset();
+                    context.go('/roster', extra: dutiesFull);
+                  },
+                  child: const Text('My Roster')),
               ElevatedButton(
                   onPressed: () async => context.go('/seniority'),
                   child: const Text('Seniority List')),
