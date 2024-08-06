@@ -44,3 +44,6 @@ app.*.map.json
 /android/app/release
 pubspec.lock
 .vscode/settings.json
+macos/Flutter/GeneratedPluginRegistrant.swift
+.fvm/flutter_sdk
+pubspec.lock
