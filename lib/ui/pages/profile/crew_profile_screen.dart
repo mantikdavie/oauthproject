@@ -74,7 +74,7 @@ class _CrewProfileScreenState extends State<CrewProfileScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.background,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           actions: [
             IconButton(
                 icon: const AuthStatusIcon(),
@@ -83,7 +83,7 @@ class _CrewProfileScreenState extends State<CrewProfileScreen> {
                 })
           ],
         ),
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         body: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(

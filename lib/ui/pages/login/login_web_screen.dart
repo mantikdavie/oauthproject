@@ -30,9 +30,8 @@ class _LoginWebScreenState extends State<LoginWebScreen> {
         }
       },
       child: Scaffold(
-        appBar:
-            AppBar(backgroundColor: Theme.of(context).colorScheme.background),
-        backgroundColor: Theme.of(context).colorScheme.background,
+        appBar: AppBar(backgroundColor: Theme.of(context).colorScheme.surface),
+        backgroundColor: Theme.of(context).colorScheme.surface,
         body: Column(
           children: [
             const Text('Enter the id Token:'),

@@ -21,9 +21,9 @@ class RosterTestScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.background,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           actions: const [AuthStatusIcon()]),
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: BlocBuilder<CrewRosterBloc, CrewRosterState>(
           builder: (context, state) {
         if (state is CrewRosterLoading) {

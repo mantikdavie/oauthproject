@@ -17,7 +17,7 @@ class _JsonDisplayScreenState extends State<JsonDisplayScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('JSON Viewer'),
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
       ),
       body: Column(
         children: [

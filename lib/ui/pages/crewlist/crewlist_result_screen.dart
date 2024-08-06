@@ -13,7 +13,7 @@ class CrewlistResultScreen extends StatelessWidget {
     print('CrewlistResultScreen build: ${crewList.flightNumber}');
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.background,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           actions: [
             IconButton(
                 icon: const AuthStatusIcon(),
@@ -22,7 +22,7 @@ class CrewlistResultScreen extends StatelessWidget {
                 })
           ],
         ),
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         body: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
