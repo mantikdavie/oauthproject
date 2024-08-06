@@ -1,14 +1,65 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:oauthproject/model/public_roster_crew_results/duty_list.dart';
+import 'package:oauthproject/model/public_roster_crew_results/credit_info.dart';
 
 const dateShowFlex = 2;
 const containerFlex = 11;
 
+abstract class DutyInterface {
+  String? get dutyCode;
+  String? get dutyType;
+  String? get dutyStartLocal;
+  String? get dutyEndLocal;
+  String? get dutyDesc;
+  String? get patternCode;
+  FlightInterface get flight;
+  List<String>? get specialDutyCode;
+}
+
+abstract class FlightInterface {
+  String? get carrierCode;
+  int? get flightNumber;
+  String? get scheduledFlightDate;
+  String? get departurePort;
+  String? get arrivalPort;
+  int? get sectorSequenceNumber;
+  String? get cancelled;
+  String? get aircraftType;
+  String? get stdUtc;
+  String? get stdLocal;
+  dynamic get etdUtc;
+  dynamic get etdLocal;
+  String? get atdUtc;
+  String? get atdLocal;
+  String? get staUtc;
+  String? get staLocal;
+  dynamic get etaUtc;
+  dynamic get etaLocal;
+  String? get ataUtc;
+  String? get ataLocal;
+  double? get blockHours;
+  int? get itemSequenceWithinDuty;
+  String? get lastDutyItem;
+  String? get itemWorkCode;
+  dynamic get sectorConnector;
+  dynamic get dutyTypeCode;
+  String? get ltdLocal;
+  String? get ltaLocal;
+  String? get ltdUtc;
+  String? get ltaUtc;
+  List<dynamic>? get specialDutyCode;
+  String? get flightRef;
+  String? get sectorRef;
+  bool? get isFirstDutyItem;
+  bool? get isLastDutyItem;
+
+  FlightInterface.fromJson(Map<String, dynamic> json);
+}
+
 class FlightDutyContainer extends StatelessWidget {
-  final DutyList duty;
+  final DutyInterface duty;
   final bool showDate;
-  final Function(DutyList)? onTap;
+  final Function(DutyInterface)? onTap;
 
   const FlightDutyContainer({
     super.key,
@@ -134,7 +185,7 @@ class FlightDutyContainer extends StatelessWidget {
 }
 
 class OffDutyContainer extends StatelessWidget {
-  final DutyList duty;
+  final DutyInterface duty;
   final bool showDate;
 
   const OffDutyContainer(
@@ -205,9 +256,9 @@ class OffDutyContainer extends StatelessWidget {
 }
 
 class SimDutyContainer extends StatelessWidget {
-  final DutyList duty;
+  final DutyInterface duty;
   final bool showDate;
-  final Function(DutyList)? onTap;
+  final Function(DutyInterface)? onTap;
 
   const SimDutyContainer(
       {super.key, required this.duty, required this.showDate, this.onTap});
@@ -282,7 +333,7 @@ class SimDutyContainer extends StatelessWidget {
 }
 
 class OtherDutyContainer extends StatelessWidget {
-  final DutyList duty;
+  final DutyInterface duty;
   final bool showDate;
 
   const OtherDutyContainer(
@@ -347,13 +398,13 @@ class OtherDutyContainer extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Text(
-                            'Start: ${formatTime(duty.patternStartLocal)}',
+                            'Start: ${formatTime(duty.dutyStartLocal)}',
                             style: Theme.of(context).textTheme.bodySmall,
                           ),
                         ),
                         Expanded(
                           child: Text(
-                            'End: ${formatTime(duty.patternEndLocal)}',
+                            'End: ${formatTime(duty.dutyEndLocal)}',
                             style: Theme.of(context).textTheme.bodySmall,
                           ),
                         ),

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:oauthproject/model/my_full_roster/credit_info.dart';
+import 'package:oauthproject/model/my_full_roster/crew.dart';
+import 'package:oauthproject/model/my_full_roster/flight.dart';
 import 'package:oauthproject/model/my_full_roster/my_full_roster.dart';
 import 'package:oauthproject/model/my_full_roster/duty_list.dart';
+import 'package:oauthproject/model/public_roster_crew_results/credit_info.dart';
 import 'package:oauthproject/ui/widgets/duty_container_widgets.dart';
 
 class MyFullRosterScreen extends StatelessWidget {
@@ -56,13 +60,13 @@ class MonthlyRosterTabView extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       itemCount: duties.length,
       itemBuilder: (context, index) {
-        final duty = duties[index];
+        final duty = duties[index] as SelfDutyList;
         return _buildDutyContainer(context, duty);
       },
     );
   }
 
-  Widget _buildDutyContainer(BuildContext context, DutyList duty) {
+  Widget _buildDutyContainer(BuildContext context, SelfDutyList duty) {
     if (duty.dutyCode == "TRIP") {
       return FlightDutyContainer(duty: duty, showDate: true);
     } else if (duty.dutyCode == "ACY") {
@@ -73,6 +77,203 @@ class MonthlyRosterTabView extends StatelessWidget {
       }
     }
     return OtherDutyContainer(duty: duty, showDate: true);
+  }
+}
+
+class SelfDutyList implements DutyInterface {
+  final FlightInterface flight;
+  final String dutyCode;
+  final String dutyStartLocal;
+  final String dutyEndLocal;
+  final String? dutyType;
+  final String? dutyDesc;
+  final String patternCode;
+  final List<String> specialDutyCode;
+
+  SelfDutyList({
+    required this.flight,
+    required this.dutyCode,
+    required this.dutyStartLocal,
+    required this.dutyEndLocal,
+    this.dutyType,
+    this.dutyDesc,
+    required this.patternCode,
+    required this.specialDutyCode,
+  });
+
+  factory SelfDutyList.fromDutyList(DutyList dutyList) {
+    return SelfDutyList(
+      flight: FlightInterface.fromJson(dutyList.flight),
+      dutyCode: dutyList.dutyCode.toString(),
+      dutyStartLocal: dutyList.dutyStartLocal.toString(),
+      dutyEndLocal: dutyList.dutyEndLocal.toString(),
+      dutyType: dutyList.dutyType,
+      dutyDesc: dutyList.dutyDesc,
+      patternCode: dutyList.patternCode.toString(),
+      specialDutyCode: dutyList.specialDutyCode,
+    );
+  }
+
+  factory SelfDutyList.fromJson(Map<String, dynamic> json) {
+    return SelfDutyList(
+      flight: SelfFlight.fromJson(json['flight']),
+      dutyCode: json['dutyCode'],
+      dutyStartLocal: json['dutyStartLocal'],
+      dutyEndLocal: json['dutyEndLocal'],
+      dutyType: json['dutyType'],
+      dutyDesc: json['dutyDesc'],
+      patternCode: json['patternCode'],
+      specialDutyCode: List<String>.from(json['specialDutyCode']),
+    );
+  }
+}
+
+class SelfFlight implements FlightInterface {
+  final String carrierCode;
+  final int flightNumber;
+  final String scheduledFlightDate;
+  final String departurePort;
+  final String arrivalPort;
+  final int sectorSequenceNumber;
+  final String cancelled;
+  final String aircraftType;
+  final String stdUtc;
+  final String stdLocal;
+  final String? etdUtc;
+  final String? etdLocal;
+  final String? atdUtc;
+  final String? atdLocal;
+  final String staUtc;
+  final String staLocal;
+  final String? etaUtc;
+  final String? etaLocal;
+  final String? ataUtc;
+  final String? ataLocal;
+  final double blockHours;
+  final int itemSequenceWithinDuty;
+  final String lastDutyItem;
+  final String itemWorkCode;
+  final String? sectorConnector;
+  final String? dutyTypeCode;
+  final String ltdLocal;
+  final String ltaLocal;
+  final String ltdUtc;
+  final String ltaUtc;
+  final List<String> specialDutyCode;
+  final String flightRef;
+  final String sectorRef;
+  final bool isFirstDutyItem;
+  final bool isLastDutyItem;
+  final List<Crew> crews;
+  final int actBlkMins;
+  final int pubBlkMins;
+  final String pubStartTmUtc;
+  final String pubEndTmUtc;
+  final String pubStartTmLoc;
+  final String pubEndTmLoc;
+  final String actStartTmUtc;
+  final String actEndTmUtc;
+  final String actStartTmLoc;
+  final String actEndTmLoc;
+
+  SelfFlight({
+    required this.carrierCode,
+    required this.flightNumber,
+    required this.scheduledFlightDate,
+    required this.departurePort,
+    required this.arrivalPort,
+    required this.sectorSequenceNumber,
+    required this.cancelled,
+    required this.aircraftType,
+    required this.stdUtc,
+    required this.stdLocal,
+    this.etdUtc,
+    this.etdLocal,
+    this.atdUtc,
+    this.atdLocal,
+    required this.staUtc,
+    required this.staLocal,
+    this.etaUtc,
+    this.etaLocal,
+    this.ataUtc,
+    this.ataLocal,
+    required this.blockHours,
+    required this.itemSequenceWithinDuty,
+    required this.lastDutyItem,
+    required this.itemWorkCode,
+    this.sectorConnector,
+    this.dutyTypeCode,
+    required this.ltdLocal,
+    required this.ltaLocal,
+    required this.ltdUtc,
+    required this.ltaUtc,
+    required this.specialDutyCode,
+    required this.flightRef,
+    required this.sectorRef,
+    required this.isFirstDutyItem,
+    required this.isLastDutyItem,
+    required this.crews,
+    required this.actBlkMins,
+    required this.pubBlkMins,
+    required this.pubStartTmUtc,
+    required this.pubEndTmUtc,
+    required this.pubStartTmLoc,
+    required this.pubEndTmLoc,
+    required this.actStartTmUtc,
+    required this.actEndTmUtc,
+    required this.actStartTmLoc,
+    required this.actEndTmLoc,
+  });
+
+  factory SelfFlight.fromJson(Map<String, dynamic> json) {
+    return SelfFlight(
+      carrierCode: json['carrierCode'],
+      flightNumber: json['flightNumber'],
+      scheduledFlightDate: json['scheduledFlightDate'],
+      departurePort: json['departurePort'],
+      arrivalPort: json['arrivalPort'],
+      sectorSequenceNumber: json['sectorSequenceNumber'],
+      cancelled: json['cancelled'],
+      aircraftType: json['aircraftType'],
+      stdUtc: json['stdUtc'],
+      stdLocal: json['stdLocal'],
+      etdUtc: json['etdUtc'],
+      etdLocal: json['etdLocal'],
+      atdUtc: json['atdUtc'],
+      atdLocal: json['atdLocal'],
+      staUtc: json['staUtc'],
+      staLocal: json['staLocal'],
+      etaUtc: json['etaUtc'],
+      etaLocal: json['etaLocal'],
+      ataUtc: json['ataUtc'],
+      ataLocal: json['ataLocal'],
+      blockHours: json['blockHours'],
+      itemSequenceWithinDuty: json['itemSequenceWithinDuty'],
+      lastDutyItem: json['lastDutyItem'],
+      itemWorkCode: json['itemWorkCode'],
+      sectorConnector: json['sectorConnector'],
+      dutyTypeCode: json['dutyTypeCode'],
+      ltdLocal: json['ltdLocal'],
+      ltaLocal: json['ltaLocal'],
+      ltdUtc: json['ltdUtc'],
+      ltaUtc: json['ltaUtc'],
+      specialDutyCode: List<String>.from(json['specialDutyCode']),
+      flightRef: json['flightRef'],
+      sectorRef: json['sectorRef'],
+      isFirstDutyItem: json['_isFirstDutyItem'],
+      isLastDutyItem: json['_isLastDutyItem'],
+      crews: (json['crews'] as List).map((crew) => Crew.fromMap(crew)).toList(),
+      actBlkMins: json['actBlkMins'],
+      pubBlkMins: json['pubBlkMins'],
+      pubStartTmUtc: json['pubStartTmUtc'],
+      pubEndTmUtc: json['pubEndTmUtc'],
+      pubStartTmLoc: json['pubStartTmLoc'],
+      pubEndTmLoc: json['pubEndTmLoc'],
+      actStartTmUtc: json['actStartTmUtc'],
+      actEndTmUtc: json['actEndTmUtc'],
+      actStartTmLoc: json['actStartTmLoc'],
+      actEndTmLoc: json['actEndTmLoc'],
+    );
   }
 }
 
