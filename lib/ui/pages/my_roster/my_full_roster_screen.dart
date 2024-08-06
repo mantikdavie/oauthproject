@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:oauthproject/model/my_full_roster/credit_info.dart';
 import 'package:oauthproject/model/my_full_roster/crew.dart';
 import 'package:oauthproject/model/my_full_roster/flight.dart';
 import 'package:oauthproject/model/my_full_roster/my_full_roster.dart';
 import 'package:oauthproject/model/my_full_roster/duty_list.dart';
-import 'package:oauthproject/model/public_roster_crew_results/credit_info.dart';
 import 'package:oauthproject/ui/widgets/duty_container_widgets.dart';
 
 class MyFullRosterScreen extends StatelessWidget {
@@ -20,6 +18,7 @@ class MyFullRosterScreen extends StatelessWidget {
 
     return DefaultTabController(
       length: months.length,
+      initialIndex: _getCurrentMonthIndex(months),
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Self Roster'),
@@ -60,7 +59,7 @@ class MonthlyRosterTabView extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       itemCount: duties.length,
       itemBuilder: (context, index) {
-        final duty = duties[index] as SelfDutyList;
+        final duty = SelfDutyList.fromDutyList(duties[index]);
         return _buildDutyContainer(context, duty);
       },
     );
@@ -80,14 +79,27 @@ class MonthlyRosterTabView extends StatelessWidget {
   }
 }
 
+int _getCurrentMonthIndex(List<String> months) {
+  final currentMonth = DateFormat('MMMM yyyy').format(DateTime.now());
+  return months.indexOf(currentMonth);
+}
+
 class SelfDutyList implements DutyInterface {
-  final FlightInterface flight;
+  @override
+  final SelfFlight flight;
+  @override
   final String dutyCode;
+  @override
   final String dutyStartLocal;
+  @override
   final String dutyEndLocal;
+  @override
   final String? dutyType;
+  @override
   final String? dutyDesc;
+  @override
   final String patternCode;
+  @override
   final List<String> specialDutyCode;
 
   SelfDutyList({
@@ -103,66 +115,88 @@ class SelfDutyList implements DutyInterface {
 
   factory SelfDutyList.fromDutyList(DutyList dutyList) {
     return SelfDutyList(
-      flight: FlightInterface.fromJson(dutyList.flight),
+      flight: SelfFlight.fromFlight(dutyList.flight ?? Flight()),
       dutyCode: dutyList.dutyCode.toString(),
       dutyStartLocal: dutyList.dutyStartLocal.toString(),
       dutyEndLocal: dutyList.dutyEndLocal.toString(),
       dutyType: dutyList.dutyType,
       dutyDesc: dutyList.dutyDesc,
       patternCode: dutyList.patternCode.toString(),
-      specialDutyCode: dutyList.specialDutyCode,
-    );
-  }
-
-  factory SelfDutyList.fromJson(Map<String, dynamic> json) {
-    return SelfDutyList(
-      flight: SelfFlight.fromJson(json['flight']),
-      dutyCode: json['dutyCode'],
-      dutyStartLocal: json['dutyStartLocal'],
-      dutyEndLocal: json['dutyEndLocal'],
-      dutyType: json['dutyType'],
-      dutyDesc: json['dutyDesc'],
-      patternCode: json['patternCode'],
-      specialDutyCode: List<String>.from(json['specialDutyCode']),
+      specialDutyCode: (dutyList.specialDutyCode ?? []).cast<String>(),
     );
   }
 }
 
 class SelfFlight implements FlightInterface {
+  @override
   final String carrierCode;
+  @override
   final int flightNumber;
+  @override
   final String scheduledFlightDate;
+  @override
   final String departurePort;
+  @override
   final String arrivalPort;
+  @override
   final int sectorSequenceNumber;
+  @override
   final String cancelled;
+  @override
   final String aircraftType;
+  @override
   final String stdUtc;
+  @override
   final String stdLocal;
+  @override
   final String? etdUtc;
+  @override
   final String? etdLocal;
+  @override
   final String? atdUtc;
+  @override
   final String? atdLocal;
+  @override
   final String staUtc;
+  @override
   final String staLocal;
+  @override
   final String? etaUtc;
+  @override
   final String? etaLocal;
+  @override
   final String? ataUtc;
+  @override
   final String? ataLocal;
+  @override
   final double blockHours;
+  @override
   final int itemSequenceWithinDuty;
+  @override
   final String lastDutyItem;
+  @override
   final String itemWorkCode;
+  @override
   final String? sectorConnector;
+  @override
   final String? dutyTypeCode;
+  @override
   final String ltdLocal;
+  @override
   final String ltaLocal;
+  @override
   final String ltdUtc;
+  @override
   final String ltaUtc;
+  @override
   final List<String> specialDutyCode;
+  @override
   final String flightRef;
+  @override
   final String sectorRef;
+  @override
   final bool isFirstDutyItem;
+  @override
   final bool isLastDutyItem;
   final List<Crew> crews;
   final int actBlkMins;
@@ -225,54 +259,54 @@ class SelfFlight implements FlightInterface {
     required this.actEndTmLoc,
   });
 
-  factory SelfFlight.fromJson(Map<String, dynamic> json) {
+  factory SelfFlight.fromFlight(Flight flight) {
     return SelfFlight(
-      carrierCode: json['carrierCode'],
-      flightNumber: json['flightNumber'],
-      scheduledFlightDate: json['scheduledFlightDate'],
-      departurePort: json['departurePort'],
-      arrivalPort: json['arrivalPort'],
-      sectorSequenceNumber: json['sectorSequenceNumber'],
-      cancelled: json['cancelled'],
-      aircraftType: json['aircraftType'],
-      stdUtc: json['stdUtc'],
-      stdLocal: json['stdLocal'],
-      etdUtc: json['etdUtc'],
-      etdLocal: json['etdLocal'],
-      atdUtc: json['atdUtc'],
-      atdLocal: json['atdLocal'],
-      staUtc: json['staUtc'],
-      staLocal: json['staLocal'],
-      etaUtc: json['etaUtc'],
-      etaLocal: json['etaLocal'],
-      ataUtc: json['ataUtc'],
-      ataLocal: json['ataLocal'],
-      blockHours: json['blockHours'],
-      itemSequenceWithinDuty: json['itemSequenceWithinDuty'],
-      lastDutyItem: json['lastDutyItem'],
-      itemWorkCode: json['itemWorkCode'],
-      sectorConnector: json['sectorConnector'],
-      dutyTypeCode: json['dutyTypeCode'],
-      ltdLocal: json['ltdLocal'],
-      ltaLocal: json['ltaLocal'],
-      ltdUtc: json['ltdUtc'],
-      ltaUtc: json['ltaUtc'],
-      specialDutyCode: List<String>.from(json['specialDutyCode']),
-      flightRef: json['flightRef'],
-      sectorRef: json['sectorRef'],
-      isFirstDutyItem: json['_isFirstDutyItem'],
-      isLastDutyItem: json['_isLastDutyItem'],
-      crews: (json['crews'] as List).map((crew) => Crew.fromMap(crew)).toList(),
-      actBlkMins: json['actBlkMins'],
-      pubBlkMins: json['pubBlkMins'],
-      pubStartTmUtc: json['pubStartTmUtc'],
-      pubEndTmUtc: json['pubEndTmUtc'],
-      pubStartTmLoc: json['pubStartTmLoc'],
-      pubEndTmLoc: json['pubEndTmLoc'],
-      actStartTmUtc: json['actStartTmUtc'],
-      actEndTmUtc: json['actEndTmUtc'],
-      actStartTmLoc: json['actStartTmLoc'],
-      actEndTmLoc: json['actEndTmLoc'],
+      carrierCode: flight.carrierCode ?? "",
+      flightNumber: flight.flightNumber ?? 0,
+      scheduledFlightDate: flight.scheduledFlightDate ?? "",
+      departurePort: flight.departurePort ?? "",
+      arrivalPort: flight.arrivalPort ?? "",
+      sectorSequenceNumber: flight.sectorSequenceNumber ?? 0,
+      cancelled: flight.cancelled ?? "",
+      aircraftType: flight.aircraftType ?? "",
+      stdUtc: flight.stdUtc ?? "",
+      stdLocal: flight.stdLocal ?? "",
+      etdUtc: flight.etdUtc ?? "",
+      etdLocal: flight.etdLocal ?? "",
+      atdUtc: flight.atdUtc ?? "",
+      atdLocal: flight.atdLocal ?? "",
+      staUtc: flight.staUtc ?? "",
+      staLocal: flight.staLocal ?? "",
+      etaUtc: flight.etaUtc ?? "",
+      etaLocal: flight.etaLocal ?? "",
+      ataUtc: flight.ataUtc ?? "",
+      ataLocal: flight.ataLocal ?? "",
+      blockHours: flight.blockHours ?? 0.0,
+      itemSequenceWithinDuty: flight.itemSequenceWithinDuty ?? 0,
+      lastDutyItem: flight.lastDutyItem ?? "",
+      itemWorkCode: flight.itemWorkCode ?? "",
+      sectorConnector: flight.sectorConnector ?? "",
+      dutyTypeCode: flight.dutyTypeCode ?? "",
+      ltdLocal: flight.ltaLocal ?? "",
+      ltaLocal: flight.ltaLocal ?? "",
+      ltdUtc: flight.ltdUtc ?? "",
+      ltaUtc: flight.ltaUtc ?? "",
+      specialDutyCode: List<String>.from(flight.specialDutyCode ?? []),
+      flightRef: flight.flightRef ?? "",
+      sectorRef: flight.sectorRef ?? "",
+      isFirstDutyItem: flight.isFirstDutyItem ?? false,
+      isLastDutyItem: flight.isLastDutyItem ?? false,
+      crews: flight.crews ?? [],
+      actBlkMins: flight.actBlkMins ?? 0,
+      pubBlkMins: flight.pubBlkMins ?? 0,
+      pubStartTmUtc: flight.pubStartTmUtc ?? "",
+      pubEndTmUtc: flight.pubEndTmUtc ?? "",
+      pubStartTmLoc: flight.pubStartTmLoc ?? "",
+      pubEndTmLoc: flight.pubEndTmLoc ?? "",
+      actStartTmUtc: flight.actStartTmUtc ?? "",
+      actEndTmUtc: flight.actEndTmUtc ?? "",
+      actStartTmLoc: flight.actStartTmLoc ?? "",
+      actEndTmLoc: flight.actEndTmLoc ?? "",
     );
   }
 }

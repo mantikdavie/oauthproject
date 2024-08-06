@@ -54,6 +54,7 @@ abstract class FlightInterface {
   bool? get isLastDutyItem;
 
   FlightInterface.fromJson(Map<String, dynamic> json);
+  FlightInterface.fromFlight(dynamic flight);
 }
 
 class FlightDutyContainer extends StatelessWidget {
@@ -115,14 +116,14 @@ class FlightDutyContainer extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '${duty.flight?.carrierCode} ${duty.flight?.flightNumber}',
+                          '${duty.flight.carrierCode} ${duty.flight.flightNumber}',
                           style: Theme.of(context)
                               .textTheme
                               .titleLarge
                               ?.copyWith(fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          '${duty.flight?.aircraftType}',
+                          '${duty.flight.aircraftType}',
                           style: Theme.of(context).textTheme.titleMedium,
                         ),
                       ],
@@ -134,9 +135,9 @@ class FlightDutyContainer extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('${duty.flight?.departurePort}',
+                            Text('${duty.flight.departurePort}',
                                 style: Theme.of(context).textTheme.titleMedium),
-                            Text(formatTime(duty.flight?.stdLocal),
+                            Text(formatTime(duty.flight.stdLocal),
                                 style: Theme.of(context).textTheme.bodySmall),
                           ],
                         ),
@@ -145,9 +146,9 @@ class FlightDutyContainer extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Text('${duty.flight?.arrivalPort}',
+                            Text('${duty.flight.arrivalPort}',
                                 style: Theme.of(context).textTheme.titleMedium),
-                            Text(formatTime(duty.flight?.staLocal),
+                            Text(formatTime(duty.flight.staLocal),
                                 style: Theme.of(context).textTheme.bodySmall),
                           ],
                         ),
@@ -158,7 +159,7 @@ class FlightDutyContainer extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Block: ${duty.flight?.blockHours?.toStringAsFixed(2)} hrs',
+                          'Block: ${duty.flight.blockHours?.toStringAsFixed(2)} hrs',
                           style: Theme.of(context).textTheme.bodyMedium,
                         ),
                         if (duty.specialDutyCode != null &&
