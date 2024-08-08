@@ -85,7 +85,7 @@ class FlightDutyContainer extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
-                    DateFormat('MMM d')
+                    DateFormat('E\ndd')
                         .format(DateTime.parse(duty.dutyStartLocal!)),
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(

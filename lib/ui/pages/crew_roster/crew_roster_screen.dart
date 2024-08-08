@@ -143,7 +143,7 @@ class RosterListColumn extends StatelessWidget {
                     onTap: (duty) => context.read<FlightCrewlistBloc>().add(
                         RequestSimEvent(
                             dutyCode: '${duty.patternCode}',
-                            dutyStartDate: DateFormat('E\ndd').format(
+                            dutyStartDate: DateFormat('yyyyMMdd').format(
                                 DateTime.parse(
                                     duty.dutyStartLocal.toString())))),
                   );
