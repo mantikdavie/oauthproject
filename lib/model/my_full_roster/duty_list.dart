@@ -105,7 +105,7 @@ class DutyList {
   Map<String, dynamic> toMap() => {
         'key': key,
         '_oldKey': oldKey,
-        'flight': flight,
+        'flight': flight?.toMap(),
         'dutyCode': dutyCode,
         'dutyStartUTC': dutyStartUtc,
         'dutyStartLocal': dutyStartLocal,
