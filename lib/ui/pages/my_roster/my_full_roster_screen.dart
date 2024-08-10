@@ -66,16 +66,26 @@ class MonthlyRosterTabView extends StatelessWidget {
   }
 
   Widget _buildDutyContainer(BuildContext context, SelfDutyList duty) {
+    String? lastShownDate;
+    final currentDate = DateFormat('E\ndd')
+        .format(DateTime.parse(duty.dutyStartLocal.toString()));
+    bool showDate;
     if (duty.dutyCode == "TRIP") {
-      return FlightDutyContainer(duty: duty, showDate: true);
+      showDate = duty.flight.itemSequenceWithinDuty == 1;
+    } else {
+      showDate = currentDate != lastShownDate;
+    }
+
+    if (duty.dutyCode == "TRIP") {
+      return FlightDutyContainer(duty: duty, showDate: showDate);
     } else if (duty.dutyCode == "ACY") {
       if (duty.dutyType == "OFF" || duty.dutyType == "LVE") {
-        return OffDutyContainer(duty: duty, showDate: true);
+        return OffDutyContainer(duty: duty, showDate: showDate);
       } else if (duty.dutyType == "SIM") {
-        return SimDutyContainer(duty: duty, showDate: true);
+        return SimDutyContainer(duty: duty, showDate: showDate);
       }
     }
-    return OtherDutyContainer(duty: duty, showDate: true);
+    return OtherDutyContainer(duty: duty, showDate: showDate);
   }
 }
 
