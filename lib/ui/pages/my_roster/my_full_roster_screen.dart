@@ -1,42 +1,84 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:oauthproject/bloc/auth/auth_status_bloc.dart';
 import 'package:oauthproject/model/my_full_roster/crew.dart';
 import 'package:oauthproject/model/my_full_roster/flight.dart';
 import 'package:oauthproject/model/my_full_roster/my_full_roster.dart';
 import 'package:oauthproject/model/my_full_roster/duty_list.dart';
+import 'package:oauthproject/ui/widgets/auth_status_icon_widget.dart';
 import 'package:oauthproject/ui/widgets/duty_container_widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oauthproject/ui/pages/my_roster/bloc/my_full_roster_bloc.dart';
 
 class MyFullRosterScreen extends StatelessWidget {
-  final MyFullRoster myFullRoster;
-
-  const MyFullRosterScreen({super.key, required this.myFullRoster});
+  const MyFullRosterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final rosters = _groupDutiesByMonth();
-    final months = rosters.keys.toList();
-
-    return DefaultTabController(
-      length: months.length,
-      initialIndex: _getCurrentMonthIndex(months),
+    return BlocProvider<MyFullRosterBloc>(
+      create: (context) =>
+          MyFullRosterBloc()..add(FetchMyFullRosterFromLocal()),
       child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: AppBar(
           title: const Text('Self Roster'),
-          bottom: TabBar(
-            isScrollable: true,
-            tabs: months.map((month) => Tab(text: month)).toList(),
-          ),
+          actions: const [
+            MyFullRosterRefreshButton(),
+            AuthStatusIcon(), // Assuming you also have this widget
+          ],
         ),
-        body: TabBarView(
-          children: months.map((month) {
-            return MonthlyRosterTabView(duties: rosters[month]!);
-          }).toList(),
+        body: BlocConsumer<MyFullRosterBloc, MyFullRosterState>(
+          listener: (context, state) {
+            if (state is MyFullRosterRemoteFetchFailedLoadingLocal) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                    content: Text(
+                        'Unable to fetch from remote. Loading from cache...')),
+              );
+            }
+            if (state is MyFullRosterNoLocalCache) {
+              context
+                  .read<MyFullRosterBloc>()
+                  .add(FetchMyFullRosterFromRemote());
+            }
+          },
+          builder: (context, state) {
+            if (state is MyFullRosterLoading) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is MyFullRosterLoaded) {
+              final rosters = _groupDutiesByMonth(state.myFullRoster);
+              final months = rosters.keys.toList();
+              return DefaultTabController(
+                length: months.length,
+                initialIndex: _getCurrentMonthIndex(months),
+                child: Column(
+                  children: [
+                    TabBar(
+                      isScrollable: true,
+                      tabs: months.map((month) => Tab(text: month)).toList(),
+                    ),
+                    Expanded(
+                      child: TabBarView(
+                        children: months.map((month) {
+                          return MonthlyRosterTabView(duties: rosters[month]!);
+                        }).toList(),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            } else if (state is MyFullRosterError) {
+              return Center(child: Text('Error: ${state.errorMessage}'));
+            } else {
+              return const Center(child: Text('Something went wrong'));
+            }
+          },
         ),
       ),
     );
   }
 
-  Map<String, List<DutyList>> _groupDutiesByMonth() {
+  Map<String, List<DutyList>> _groupDutiesByMonth(MyFullRoster myFullRoster) {
     Map<String, List<DutyList>> groupedDuties = {};
     for (var duty in myFullRoster.dutyList ?? []) {
       String month =
@@ -85,7 +127,26 @@ class MonthlyRosterTabView extends StatelessWidget {
         return SimDutyContainer(duty: duty, showDate: showDate);
       }
     }
-    return OtherDutyContainer(duty: duty, showDate: showDate);
+    return OtherDutyContainer(duty: duty, showDate: true);
+  }
+}
+
+class MyFullRosterRefreshButton extends StatelessWidget {
+  const MyFullRosterRefreshButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final authState = context.read<AuthStatusBloc>().state;
+    return IconButton(
+      onPressed: authState is AuthStatusAuthenticated
+          ? () {
+              context
+                  .read<MyFullRosterBloc>()
+                  .add(FetchMyFullRosterFromRemote());
+            }
+          : null, // Disable if not authenticated
+      icon: const Icon(Icons.refresh),
+    );
   }
 }
 

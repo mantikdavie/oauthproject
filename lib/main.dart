@@ -131,11 +131,7 @@ class HomePage extends StatelessWidget {
                   onPressed: () => context.go('/profile'),
                   child: const Text('Profile')),
               ElevatedButton(
-                  onPressed: () async {
-                    MyFullRoster dutiesFull =
-                        await loadSelfDutiesFullFromAsset();
-                    context.go('/roster', extra: dutiesFull);
-                  },
+                  onPressed: () => context.go('/roster'),
                   child: const Text('My Roster')),
               ElevatedButton(
                   onPressed: () => context.go('/crewlist-search'),
@@ -175,11 +171,7 @@ class HomePage extends StatelessWidget {
                   },
                   child: const Text('Profile')),
               ElevatedButton(
-                  onPressed: () async {
-                    MyFullRoster dutiesFull =
-                        await loadSelfDutiesFullFromAsset();
-                    context.go('/roster', extra: dutiesFull);
-                  },
+                  onPressed: () => context.go('/roster'),
                   child: const Text('My Roster')),
               ElevatedButton(
                   onPressed: () async => context.go('/seniority'),
@@ -194,11 +186,4 @@ class HomePage extends StatelessWidget {
       }),
     );
   }
-}
-
-Future<MyFullRoster> loadSelfDutiesFullFromAsset() async {
-  final String jsonString =
-      await rootBundle.loadString('assets/mockup/full_self_roster.json');
-  final Map<String, dynamic> jsonMap = json.decode(jsonString);
-  return MyFullRoster.fromMap(jsonMap);
 }
