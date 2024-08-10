@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:oauthproject/bloc/auth/auth_status_bloc.dart';
 import 'package:oauthproject/model/my_full_roster/crew.dart';
@@ -22,10 +23,7 @@ class MyFullRosterScreen extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: AppBar(
           title: const Text('Self Roster'),
-          actions: const [
-            MyFullRosterRefreshButton(),
-            AuthStatusIcon(), // Assuming you also have this widget
-          ],
+          actions: const [MyFullRosterRefreshButton(), RawJsonIcon()],
         ),
         body: BlocConsumer<MyFullRosterBloc, MyFullRosterState>(
           listener: (context, state) {
@@ -86,6 +84,28 @@ class MyFullRosterScreen extends StatelessWidget {
       groupedDuties.putIfAbsent(month, () => []).add(duty);
     }
     return groupedDuties;
+  }
+}
+
+class RawJsonIcon extends StatelessWidget {
+  const RawJsonIcon({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<MyFullRosterBloc, MyFullRosterState>(
+      builder: (context, state) {
+        return IconButton(
+          icon: const AuthStatusIcon(),
+          onPressed: () {
+            if (state is MyFullRosterLoaded) {
+              context.push('/json-display', extra: state.myFullRoster.toMap());
+            }
+          },
+        );
+      },
+    );
   }
 }
 

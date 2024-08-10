@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:oauthproject/model/flight_crew_list/crew_profile.dart';
-import 'package:oauthproject/model/flight_crew_list/flight_crew.dart';
 import 'package:oauthproject/model/public_roster_crew_results/public_roster_crew_results.dart';
 import 'package:oauthproject/ui/pages/crew_roster/bloc/crew_roster_bloc.dart';
 import 'package:oauthproject/ui/widgets/auth_status_icon_widget.dart';
