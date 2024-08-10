@@ -69,7 +69,7 @@ class MonthlyRosterTabView extends StatelessWidget {
     if (duty.dutyCode == "TRIP") {
       return FlightDutyContainer(duty: duty, showDate: true);
     } else if (duty.dutyCode == "ACY") {
-      if (duty.dutyType == "OFF") {
+      if (duty.dutyType == "OFF" || duty.dutyType == "LVE") {
         return OffDutyContainer(duty: duty, showDate: true);
       } else if (duty.dutyType == "SIM") {
         return SimDutyContainer(duty: duty, showDate: true);
