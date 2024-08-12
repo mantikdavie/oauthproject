@@ -132,7 +132,7 @@ class RosterListColumn extends StatelessWidget {
                             dutyCode: '${duty.flight.flightNumber}',
                             dutyStartDate: DateFormat('yyyyMMdd').format(
                                 DateTime.parse(
-                                    duty.dutyStartLocal.toString())))));
+                                    duty.flight.stdLocal.toString())))));
               } else if (duty.dutyCode == "ACY") {
                 if (duty.dutyType == "OFF") {
                   return OffDutyContainer(duty: duty, showDate: showDate);
