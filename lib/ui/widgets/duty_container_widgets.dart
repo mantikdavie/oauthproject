@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:oauthproject/model/public_roster_crew_results/credit_info.dart';
 
 const dateShowFlex = 2;
 const containerFlex = 11;

@@ -1,11 +1,9 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:oauthproject/utility/constants.dart';
 import 'package:oauthproject/utility/local_storage.dart';
-import 'service_locator.dart';
 import 'package:http/http.dart' as http;
 
 // final dio = sl<Dio>();

@@ -3,7 +3,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:oauthproject/bloc/auth/auth_status_bloc.dart';
 import 'package:oauthproject/model/self_profile/self_profile.dart';
 import 'package:oauthproject/ui/pages/profile/bloc/self_profile_bloc.dart';
 import 'package:oauthproject/ui/widgets/auth_status_icon_widget.dart';
