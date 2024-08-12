@@ -70,6 +70,10 @@ class AuthStatusBloc extends Bloc<AuthStatusEvent, AuthStatusState> {
     saveStringToCache('id_token', idToken);
     saveStringToCache('refresh_token', refreshToken);
 
+    final decodeToken = JwtDecoder.decode(idToken.toString());
+    saveStringToCache('ern', decodeToken['cpaern']);
+    saveStringToCache('crew_id', decodeToken['sAMAccountName']);
+
     if (!JwtDecoder.isExpired(idToken)) emit(AuthStatusAuthenticated());
   }
 
