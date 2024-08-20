@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-
 import 'cosmic_radiation.dart';
 import 'cumulative_block_hour.dart';
 import 'privacy.dart';

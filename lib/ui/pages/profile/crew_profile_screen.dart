@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:oauthproject/model/flight_crew_list/crew_profile.dart';
-import 'package:oauthproject/model/flight_crew_list/flight_crew.dart';
 import 'package:oauthproject/model/public_roster_crew_results/public_roster_crew_results.dart';
 import 'package:oauthproject/ui/pages/crew_roster/bloc/crew_roster_bloc.dart';
 import 'package:oauthproject/ui/widgets/auth_status_icon_widget.dart';
@@ -74,7 +73,7 @@ class _CrewProfileScreenState extends State<CrewProfileScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.background,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           actions: [
             IconButton(
                 icon: const AuthStatusIcon(),
@@ -83,7 +82,7 @@ class _CrewProfileScreenState extends State<CrewProfileScreen> {
                 })
           ],
         ),
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         body: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(

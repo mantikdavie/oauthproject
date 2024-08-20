@@ -45,10 +45,10 @@ class _SeniorityListScreenState extends State<SeniorityListScreen> {
             //   saveStringToCache('seniority_list', '');
             // }),
             appBar: AppBar(
-              backgroundColor: Theme.of(context).colorScheme.background,
+              backgroundColor: Theme.of(context).colorScheme.surface,
               actions: const [SeniorityListRefreshButton(), AuthStatusIcon()],
             ),
-            backgroundColor: Theme.of(context).colorScheme.background,
+            backgroundColor: Theme.of(context).colorScheme.surface,
             body: const SeniorityListColumn()),
       ),
     );

@@ -1,13 +1,8 @@
-import 'dart:convert';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:oauthproject/model/public_roster_crew_results/duty_date_time_model.dart';
 import 'package:oauthproject/model/public_roster_crew_results/duty_list.dart';
-import 'package:oauthproject/model/public_roster_crew_results/public_roster_crew_results.dart';
 import 'package:oauthproject/ui/pages/crew_roster/bloc/crew_roster_bloc.dart';
 import 'package:oauthproject/ui/pages/crewlist/bloc/flight_crewlist_bloc.dart';
 import 'package:oauthproject/ui/widgets/auth_status_icon_widget.dart';
@@ -22,9 +17,9 @@ class RosterTestScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.background,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           actions: const [AuthStatusIcon()]),
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: BlocBuilder<CrewRosterBloc, CrewRosterState>(
           builder: (context, state) {
         if (state is CrewRosterLoading) {

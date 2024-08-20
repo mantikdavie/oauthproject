@@ -1,9 +1,7 @@
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:meta/meta.dart';
 import 'package:oauthproject/model/self_profile/self_profile.dart';
 import 'package:oauthproject/utility/api.dart';

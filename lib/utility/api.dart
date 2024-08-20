@@ -1,11 +1,9 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:oauthproject/utility/constants.dart';
 import 'package:oauthproject/utility/local_storage.dart';
-import 'service_locator.dart';
 import 'package:http/http.dart' as http;
 
 // final dio = sl<Dio>();
@@ -20,11 +18,21 @@ Future<dynamic> getBaseRequest(
 
     final token = await readFromCache('id_token');
     debugPrint('token: ${token.toString()}');
-    final resp = await dio.getUri(uri,
-        options: Options(headers: {
-          "Authorization": "Bearer $token",
-          HttpHeaders.userAgentHeader: "okhttp/4.9.2"
-        }));
+    final Response resp;
+    if (kIsWeb) {
+      resp = await dio.get("http://localhost:5002/${uri.toString()}",
+          options: Options(headers: {
+            "Authorization": "Bearer $token",
+            HttpHeaders.userAgentHeader: "okhttp/4.9.2",
+            "X-Requested-With": "XMLHttpRequest"
+          }));
+    } else {
+      resp = await dio.getUri(uri,
+          options: Options(headers: {
+            "Authorization": "Bearer $token",
+            HttpHeaders.userAgentHeader: "okhttp/4.9.2"
+          }));
+    }
 
     final dynamic respData = resp.data;
 
@@ -59,7 +67,6 @@ Future<dynamic> dioPostRequest(
     debugPrint('Dio API Post Error caught: ${e.error}');
   }
 }
-
 
 //http Request not using Dio
 Future<dynamic> httpPostRequest(

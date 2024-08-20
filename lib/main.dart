@@ -1,12 +1,17 @@
+import 'dart:convert';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:oauthproject/bloc/auth/auth_status_bloc.dart';
 import 'package:oauthproject/firebase_options.dart';
+import 'package:oauthproject/model/my_full_roster/my_full_roster.dart';
+import 'package:oauthproject/model/self_duties_full/self_duties_full.dart';
 import 'package:oauthproject/ui/navigation_route.dart';
 import 'package:oauthproject/ui/pages/crew_roster/bloc/crew_roster_bloc.dart';
 import 'package:oauthproject/ui/pages/crewlist/bloc/flight_crewlist_bloc.dart';
@@ -55,7 +60,7 @@ class MainApp extends StatelessWidget {
       child: MaterialApp.router(
         theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(
-                seedColor: Colors.black38, background: Colors.grey[300]),
+                seedColor: Colors.black38, surface: Colors.grey[300]),
             useMaterial3: true),
         // home: const LoginPage(),
         routerConfig: router,
@@ -73,14 +78,14 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         elevation: 0.5,
         title: const Text('Home'),
         actions: const [
           AuthStatusIcon(),
         ],
       ),
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: BlocBuilder<AuthStatusBloc, AuthStatusState>(
           builder: (context, state) {
         if (state is AuthStatusInitial) {
@@ -123,13 +128,16 @@ class HomePage extends StatelessWidget {
                       .add(AuthStatusRefreshToken()),
                   child: const Text('Refresh Token')),
               ElevatedButton(
-                  onPressed: () async => context.go('/profile'),
+                  onPressed: () => context.go('/profile'),
                   child: const Text('Profile')),
               ElevatedButton(
-                  onPressed: () async => context.go('/crewlist-search'),
+                  onPressed: () => context.go('/roster'),
+                  child: const Text('My Roster')),
+              ElevatedButton(
+                  onPressed: () => context.go('/crewlist-search'),
                   child: const Text('Crewlist')),
               ElevatedButton(
-                  onPressed: () async => context.go('/seniority'),
+                  onPressed: () => context.go('/seniority'),
                   child: const Text('Seniority List')),
               const SizedBox(height: 20),
               ElevatedButton(
@@ -162,6 +170,9 @@ class HomePage extends StatelessWidget {
                     context.go('/profile');
                   },
                   child: const Text('Profile')),
+              ElevatedButton(
+                  onPressed: () => context.go('/roster'),
+                  child: const Text('My Roster')),
               ElevatedButton(
                   onPressed: () async => context.go('/seniority'),
                   child: const Text('Seniority List')),
