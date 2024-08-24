@@ -1,6 +1,6 @@
 import 'package:isar/isar.dart';
 import 'package:oauthproject/collection/collection.dart';
-import 'package:oauthproject/collection/logbook.dart';
+import 'package:oauthproject/collection/duty_record.dart';
 import 'package:path_provider/path_provider.dart';
 
 class IsarService {
@@ -13,7 +13,7 @@ class IsarService {
   Future<Isar> openDB() async {
     final dir = await getApplicationDocumentsDirectory();
     return await Isar.open(
-      [FlightRecordSchema, CrewMemberSchema, LogbookSchema],
+      [FlightRecordSchema, CrewMemberSchema, DutyRecordSchema],
       directory: dir.path,
     );
   }
@@ -57,7 +57,7 @@ class IsarService {
 
     await isar.writeTxn(() async {
       for (var entry in jsonData) {
-        final logbook = Logbook()
+        final dutyRecord = DutyRecord()
           ..cxLogbookId = entry['_id']
           ..fopErn = entry['fopErn']
           ..acftSvcType = entry['acftSvcType']
@@ -70,7 +70,7 @@ class IsarService {
           ..svcCompany = entry['svcCompany'];
 
         if (entry['dutyType'] == 'SIM') {
-          logbook
+          dutyRecord
             ..dutyType = entry['dutyType']
             ..dutyStartDtmLoc = entry['dutyStartDtmLoc'] != null
                 ? DateTime.parse(entry['dutyStartDtmLoc'])
@@ -100,7 +100,7 @@ class IsarService {
             ..acType = entry['acType']
             ..catg = entry['catg'];
         } else {
-          logbook
+          dutyRecord
             ..carrier = entry['carrier']
             ..fltDate = entry['fltDate'] != null
                 ? DateTime.parse(entry['fltDate'])
@@ -141,7 +141,7 @@ class IsarService {
                 : null;
         }
 
-        await isar.logbooks.put(logbook);
+        await isar.dutyRecords.put(dutyRecord);
       }
     });
   }

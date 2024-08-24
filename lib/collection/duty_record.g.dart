@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'logbook.dart';
+part of 'duty_record.dart';
 
 // **************************************************************************
 // IsarCollectionGenerator
@@ -9,13 +9,13 @@ part of 'logbook.dart';
 // coverage:ignore-file
 // ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters, always_specify_types
 
-extension GetLogbookCollection on Isar {
-  IsarCollection<Logbook> get logbooks => this.collection();
+extension GetDutyRecordCollection on Isar {
+  IsarCollection<DutyRecord> get dutyRecords => this.collection();
 }
 
-const LogbookSchema = CollectionSchema(
-  name: r'Logbook',
-  id: -4796740647223753524,
+const DutyRecordSchema = CollectionSchema(
+  name: r'DutyRecord',
+  id: 8353442734531254622,
   properties: {
     r'acType': PropertySchema(
       id: 0,
@@ -228,10 +228,10 @@ const LogbookSchema = CollectionSchema(
       type: IsarType.string,
     )
   },
-  estimateSize: _logbookEstimateSize,
-  serialize: _logbookSerialize,
-  deserialize: _logbookDeserialize,
-  deserializeProp: _logbookDeserializeProp,
+  estimateSize: _dutyRecordEstimateSize,
+  serialize: _dutyRecordSerialize,
+  deserialize: _dutyRecordDeserialize,
+  deserializeProp: _dutyRecordDeserializeProp,
   idName: r'id',
   indexes: {
     r'cxLogbookId': IndexSchema(
@@ -302,14 +302,14 @@ const LogbookSchema = CollectionSchema(
   },
   links: {},
   embeddedSchemas: {},
-  getId: _logbookGetId,
-  getLinks: _logbookGetLinks,
-  attach: _logbookAttach,
+  getId: _dutyRecordGetId,
+  getLinks: _dutyRecordGetLinks,
+  attach: _dutyRecordAttach,
   version: '3.1.0+1',
 );
 
-int _logbookEstimateSize(
-  Logbook object,
+int _dutyRecordEstimateSize(
+  DutyRecord object,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
@@ -467,8 +467,8 @@ int _logbookEstimateSize(
   return bytesCount;
 }
 
-void _logbookSerialize(
-  Logbook object,
+void _dutyRecordSerialize(
+  DutyRecord object,
   IsarWriter writer,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
@@ -517,13 +517,13 @@ void _logbookSerialize(
   writer.writeString(offsets[41], object.svcCompany);
 }
 
-Logbook _logbookDeserialize(
+DutyRecord _dutyRecordDeserialize(
   Id id,
   IsarReader reader,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  final object = Logbook();
+  final object = DutyRecord();
   object.acType = reader.readStringOrNull(offsets[0]);
   object.acftReg = reader.readStringOrNull(offsets[1]);
   object.acftSvcType = reader.readStringOrNull(offsets[2]);
@@ -570,7 +570,7 @@ Logbook _logbookDeserialize(
   return object;
 }
 
-P _logbookDeserializeProp<P>(
+P _dutyRecordDeserializeProp<P>(
   IsarReader reader,
   int propertyId,
   int offset,
@@ -666,26 +666,27 @@ P _logbookDeserializeProp<P>(
   }
 }
 
-Id _logbookGetId(Logbook object) {
+Id _dutyRecordGetId(DutyRecord object) {
   return object.id;
 }
 
-List<IsarLinkBase<dynamic>> _logbookGetLinks(Logbook object) {
+List<IsarLinkBase<dynamic>> _dutyRecordGetLinks(DutyRecord object) {
   return [];
 }
 
-void _logbookAttach(IsarCollection<dynamic> col, Id id, Logbook object) {
+void _dutyRecordAttach(IsarCollection<dynamic> col, Id id, DutyRecord object) {
   object.id = id;
 }
 
-extension LogbookQueryWhereSort on QueryBuilder<Logbook, Logbook, QWhere> {
-  QueryBuilder<Logbook, Logbook, QAfterWhere> anyId() {
+extension DutyRecordQueryWhereSort
+    on QueryBuilder<DutyRecord, DutyRecord, QWhere> {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhere> anyId() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(const IdWhereClause.any());
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhere> anyCxLogbookId() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhere> anyCxLogbookId() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         const IndexWhereClause.any(indexName: r'cxLogbookId'),
@@ -693,7 +694,7 @@ extension LogbookQueryWhereSort on QueryBuilder<Logbook, Logbook, QWhere> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhere> anyFltDate() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhere> anyFltDate() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         const IndexWhereClause.any(indexName: r'fltDate'),
@@ -701,7 +702,7 @@ extension LogbookQueryWhereSort on QueryBuilder<Logbook, Logbook, QWhere> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhere> anyAcftReg() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhere> anyAcftReg() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         const IndexWhereClause.any(indexName: r'acftReg'),
@@ -709,7 +710,7 @@ extension LogbookQueryWhereSort on QueryBuilder<Logbook, Logbook, QWhere> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhere> anyAcftTypeFr() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhere> anyAcftTypeFr() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         const IndexWhereClause.any(indexName: r'acftTypeFr'),
@@ -717,7 +718,7 @@ extension LogbookQueryWhereSort on QueryBuilder<Logbook, Logbook, QWhere> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhere> anyDutyStartDtmLoc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhere> anyDutyStartDtmLoc() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         const IndexWhereClause.any(indexName: r'dutyStartDtmLoc'),
@@ -726,8 +727,9 @@ extension LogbookQueryWhereSort on QueryBuilder<Logbook, Logbook, QWhere> {
   }
 }
 
-extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> idEqualTo(Id id) {
+extension DutyRecordQueryWhere
+    on QueryBuilder<DutyRecord, DutyRecord, QWhereClause> {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> idEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
         lower: id,
@@ -736,7 +738,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> idNotEqualTo(Id id) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> idNotEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -758,7 +760,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> idGreaterThan(Id id,
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> idGreaterThan(Id id,
       {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
@@ -767,7 +769,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> idLessThan(Id id,
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> idLessThan(Id id,
       {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
@@ -776,7 +778,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> idBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> idBetween(
     Id lowerId,
     Id upperId, {
     bool includeLower = true,
@@ -792,7 +794,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> cxLogbookIdIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> cxLogbookIdIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.equalTo(
         indexName: r'cxLogbookId',
@@ -801,7 +803,8 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> cxLogbookIdIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause>
+      cxLogbookIdIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.between(
         indexName: r'cxLogbookId',
@@ -812,7 +815,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> cxLogbookIdEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> cxLogbookIdEqualTo(
       String? cxLogbookId) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.equalTo(
@@ -822,7 +825,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> cxLogbookIdNotEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> cxLogbookIdNotEqualTo(
       String? cxLogbookId) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
@@ -857,7 +860,8 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> cxLogbookIdGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause>
+      cxLogbookIdGreaterThan(
     String? cxLogbookId, {
     bool include = false,
   }) {
@@ -871,7 +875,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> cxLogbookIdLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> cxLogbookIdLessThan(
     String? cxLogbookId, {
     bool include = false,
   }) {
@@ -885,7 +889,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> cxLogbookIdBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> cxLogbookIdBetween(
     String? lowerCxLogbookId,
     String? upperCxLogbookId, {
     bool includeLower = true,
@@ -902,7 +906,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> cxLogbookIdStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> cxLogbookIdStartsWith(
       String CxLogbookIdPrefix) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.between(
@@ -913,7 +917,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> cxLogbookIdIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> cxLogbookIdIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.equalTo(
         indexName: r'cxLogbookId',
@@ -922,7 +926,8 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> cxLogbookIdIsNotEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause>
+      cxLogbookIdIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -948,7 +953,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> fltDateIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> fltDateIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.equalTo(
         indexName: r'fltDate',
@@ -957,7 +962,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> fltDateIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> fltDateIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.between(
         indexName: r'fltDate',
@@ -968,7 +973,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> fltDateEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> fltDateEqualTo(
       DateTime? fltDate) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.equalTo(
@@ -978,7 +983,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> fltDateNotEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> fltDateNotEqualTo(
       DateTime? fltDate) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
@@ -1013,7 +1018,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> fltDateGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> fltDateGreaterThan(
     DateTime? fltDate, {
     bool include = false,
   }) {
@@ -1027,7 +1032,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> fltDateLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> fltDateLessThan(
     DateTime? fltDate, {
     bool include = false,
   }) {
@@ -1041,7 +1046,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> fltDateBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> fltDateBetween(
     DateTime? lowerFltDate,
     DateTime? upperFltDate, {
     bool includeLower = true,
@@ -1058,7 +1063,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> acftRegIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> acftRegIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.equalTo(
         indexName: r'acftReg',
@@ -1067,7 +1072,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> acftRegIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> acftRegIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.between(
         indexName: r'acftReg',
@@ -1078,7 +1083,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> acftRegEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> acftRegEqualTo(
       String? acftReg) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.equalTo(
@@ -1088,7 +1093,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> acftRegNotEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> acftRegNotEqualTo(
       String? acftReg) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
@@ -1123,7 +1128,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> acftRegGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> acftRegGreaterThan(
     String? acftReg, {
     bool include = false,
   }) {
@@ -1137,7 +1142,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> acftRegLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> acftRegLessThan(
     String? acftReg, {
     bool include = false,
   }) {
@@ -1151,7 +1156,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> acftRegBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> acftRegBetween(
     String? lowerAcftReg,
     String? upperAcftReg, {
     bool includeLower = true,
@@ -1168,7 +1173,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> acftRegStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> acftRegStartsWith(
       String AcftRegPrefix) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.between(
@@ -1179,7 +1184,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> acftRegIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> acftRegIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.equalTo(
         indexName: r'acftReg',
@@ -1188,7 +1193,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> acftRegIsNotEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> acftRegIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -1214,7 +1219,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> acftTypeFrIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> acftTypeFrIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.equalTo(
         indexName: r'acftTypeFr',
@@ -1223,7 +1228,8 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> acftTypeFrIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause>
+      acftTypeFrIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.between(
         indexName: r'acftTypeFr',
@@ -1234,7 +1240,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> acftTypeFrEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> acftTypeFrEqualTo(
       String? acftTypeFr) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.equalTo(
@@ -1244,7 +1250,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> acftTypeFrNotEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> acftTypeFrNotEqualTo(
       String? acftTypeFr) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
@@ -1279,7 +1285,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> acftTypeFrGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> acftTypeFrGreaterThan(
     String? acftTypeFr, {
     bool include = false,
   }) {
@@ -1293,7 +1299,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> acftTypeFrLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> acftTypeFrLessThan(
     String? acftTypeFr, {
     bool include = false,
   }) {
@@ -1307,7 +1313,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> acftTypeFrBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> acftTypeFrBetween(
     String? lowerAcftTypeFr,
     String? upperAcftTypeFr, {
     bool includeLower = true,
@@ -1324,7 +1330,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> acftTypeFrStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> acftTypeFrStartsWith(
       String AcftTypeFrPrefix) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.between(
@@ -1335,7 +1341,7 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> acftTypeFrIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause> acftTypeFrIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.equalTo(
         indexName: r'acftTypeFr',
@@ -1344,7 +1350,8 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> acftTypeFrIsNotEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause>
+      acftTypeFrIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -1370,7 +1377,8 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> dutyStartDtmLocIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause>
+      dutyStartDtmLocIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.equalTo(
         indexName: r'dutyStartDtmLoc',
@@ -1379,7 +1387,8 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> dutyStartDtmLocIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause>
+      dutyStartDtmLocIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.between(
         indexName: r'dutyStartDtmLoc',
@@ -1390,8 +1399,8 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> dutyStartDtmLocEqualTo(
-      DateTime? dutyStartDtmLoc) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause>
+      dutyStartDtmLocEqualTo(DateTime? dutyStartDtmLoc) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.equalTo(
         indexName: r'dutyStartDtmLoc',
@@ -1400,8 +1409,8 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> dutyStartDtmLocNotEqualTo(
-      DateTime? dutyStartDtmLoc) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause>
+      dutyStartDtmLocNotEqualTo(DateTime? dutyStartDtmLoc) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -1435,7 +1444,8 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> dutyStartDtmLocGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause>
+      dutyStartDtmLocGreaterThan(
     DateTime? dutyStartDtmLoc, {
     bool include = false,
   }) {
@@ -1449,7 +1459,8 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> dutyStartDtmLocLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause>
+      dutyStartDtmLocLessThan(
     DateTime? dutyStartDtmLoc, {
     bool include = false,
   }) {
@@ -1463,7 +1474,8 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterWhereClause> dutyStartDtmLocBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterWhereClause>
+      dutyStartDtmLocBetween(
     DateTime? lowerDutyStartDtmLoc,
     DateTime? upperDutyStartDtmLoc, {
     bool includeLower = true,
@@ -1481,9 +1493,9 @@ extension LogbookQueryWhere on QueryBuilder<Logbook, Logbook, QWhereClause> {
   }
 }
 
-extension LogbookQueryFilter
-    on QueryBuilder<Logbook, Logbook, QFilterCondition> {
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acTypeIsNull() {
+extension DutyRecordQueryFilter
+    on QueryBuilder<DutyRecord, DutyRecord, QFilterCondition> {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> acTypeIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'acType',
@@ -1491,7 +1503,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acTypeIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acTypeIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'acType',
@@ -1499,7 +1512,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acTypeEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> acTypeEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -1512,7 +1525,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acTypeGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> acTypeGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1527,7 +1540,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acTypeLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> acTypeLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1542,7 +1555,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acTypeBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> acTypeBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -1561,7 +1574,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acTypeStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> acTypeStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1574,7 +1587,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acTypeEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> acTypeEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1587,7 +1600,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acTypeContains(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> acTypeContains(
       String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -1599,7 +1612,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acTypeMatches(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> acTypeMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -1611,7 +1624,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acTypeIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> acTypeIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'acType',
@@ -1620,7 +1633,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acTypeIsNotEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acTypeIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'acType',
@@ -1629,7 +1643,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftRegIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> acftRegIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'acftReg',
@@ -1637,7 +1651,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftRegIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftRegIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'acftReg',
@@ -1645,7 +1660,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftRegEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> acftRegEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -1658,7 +1673,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftRegGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftRegGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1673,7 +1689,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftRegLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> acftRegLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1688,7 +1704,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftRegBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> acftRegBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -1707,7 +1723,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftRegStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> acftRegStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1720,7 +1736,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftRegEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> acftRegEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1733,7 +1749,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftRegContains(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> acftRegContains(
       String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -1745,7 +1761,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftRegMatches(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> acftRegMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -1757,7 +1773,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftRegIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> acftRegIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'acftReg',
@@ -1766,7 +1782,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftRegIsNotEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftRegIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'acftReg',
@@ -1775,7 +1792,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftSvcTypeIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftSvcTypeIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'acftSvcType',
@@ -1783,7 +1801,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftSvcTypeIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftSvcTypeIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'acftSvcType',
@@ -1791,7 +1810,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftSvcTypeEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftSvcTypeEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -1804,7 +1824,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftSvcTypeGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftSvcTypeGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1819,7 +1840,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftSvcTypeLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftSvcTypeLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1834,7 +1856,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftSvcTypeBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftSvcTypeBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -1853,7 +1876,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftSvcTypeStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftSvcTypeStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1866,7 +1890,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftSvcTypeEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftSvcTypeEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1879,9 +1904,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftSvcTypeContains(
-      String value,
-      {bool caseSensitive = true}) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftSvcTypeContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'acftSvcType',
@@ -1891,9 +1915,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftSvcTypeMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftSvcTypeMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'acftSvcType',
@@ -1903,7 +1926,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftSvcTypeIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftSvcTypeIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'acftSvcType',
@@ -1912,7 +1936,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       acftSvcTypeIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
@@ -1922,7 +1946,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftTypeCodeIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftTypeCodeIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'acftTypeCode',
@@ -1930,7 +1955,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       acftTypeCodeIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -1939,7 +1964,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftTypeCodeEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftTypeCodeEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -1952,7 +1978,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftTypeCodeGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftTypeCodeGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1967,7 +1994,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftTypeCodeLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftTypeCodeLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1982,7 +2010,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftTypeCodeBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftTypeCodeBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -2001,7 +2030,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftTypeCodeStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftTypeCodeStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -2014,7 +2044,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftTypeCodeEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftTypeCodeEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -2027,9 +2058,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftTypeCodeContains(
-      String value,
-      {bool caseSensitive = true}) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftTypeCodeContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'acftTypeCode',
@@ -2039,9 +2069,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftTypeCodeMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftTypeCodeMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'acftTypeCode',
@@ -2051,7 +2080,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftTypeCodeIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftTypeCodeIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'acftTypeCode',
@@ -2060,7 +2090,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       acftTypeCodeIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
@@ -2070,7 +2100,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftTypeFrIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftTypeFrIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'acftTypeFr',
@@ -2078,7 +2109,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftTypeFrIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftTypeFrIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'acftTypeFr',
@@ -2086,7 +2118,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftTypeFrEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> acftTypeFrEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -2099,7 +2131,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftTypeFrGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftTypeFrGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -2114,7 +2147,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftTypeFrLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftTypeFrLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -2129,7 +2163,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftTypeFrBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> acftTypeFrBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -2148,7 +2182,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftTypeFrStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftTypeFrStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -2161,7 +2196,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftTypeFrEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftTypeFrEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -2174,9 +2210,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftTypeFrContains(
-      String value,
-      {bool caseSensitive = true}) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftTypeFrContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'acftTypeFr',
@@ -2186,7 +2221,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftTypeFrMatches(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> acftTypeFrMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -2198,7 +2233,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftTypeFrIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftTypeFrIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'acftTypeFr',
@@ -2207,7 +2243,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> acftTypeFrIsNotEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      acftTypeFrIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'acftTypeFr',
@@ -2216,7 +2253,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       actLandingDtmUtcIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -2225,7 +2262,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       actLandingDtmUtcIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -2234,8 +2271,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> actLandingDtmUtcEqualTo(
-      DateTime? value) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      actLandingDtmUtcEqualTo(DateTime? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'actLandingDtmUtc',
@@ -2244,7 +2281,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       actLandingDtmUtcGreaterThan(
     DateTime? value, {
     bool include = false,
@@ -2258,7 +2295,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       actLandingDtmUtcLessThan(
     DateTime? value, {
     bool include = false,
@@ -2272,7 +2309,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> actLandingDtmUtcBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      actLandingDtmUtcBetween(
     DateTime? lower,
     DateTime? upper, {
     bool includeLower = true,
@@ -2289,7 +2327,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       actTakeoffDtmUtcIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -2298,7 +2336,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       actTakeoffDtmUtcIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -2307,8 +2345,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> actTakeoffDtmUtcEqualTo(
-      DateTime? value) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      actTakeoffDtmUtcEqualTo(DateTime? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'actTakeoffDtmUtc',
@@ -2317,7 +2355,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       actTakeoffDtmUtcGreaterThan(
     DateTime? value, {
     bool include = false,
@@ -2331,7 +2369,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       actTakeoffDtmUtcLessThan(
     DateTime? value, {
     bool include = false,
@@ -2345,7 +2383,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> actTakeoffDtmUtcBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      actTakeoffDtmUtcBetween(
     DateTime? lower,
     DateTime? upper, {
     bool includeLower = true,
@@ -2362,7 +2401,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> airbourneGmtIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      airbourneGmtIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'airbourneGmt',
@@ -2370,7 +2410,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       airbourneGmtIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -2379,8 +2419,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> airbourneGmtEqualTo(
-      DateTime? value) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      airbourneGmtEqualTo(DateTime? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'airbourneGmt',
@@ -2389,7 +2429,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> airbourneGmtGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      airbourneGmtGreaterThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -2402,7 +2443,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> airbourneGmtLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      airbourneGmtLessThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -2415,7 +2457,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> airbourneGmtBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      airbourneGmtBetween(
     DateTime? lower,
     DateTime? upper, {
     bool includeLower = true,
@@ -2432,7 +2475,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> arrDtmLocIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      arrDtmLocIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'arrDtmLoc',
@@ -2440,7 +2484,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> arrDtmLocIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      arrDtmLocIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'arrDtmLoc',
@@ -2448,7 +2493,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> arrDtmLocEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> arrDtmLocEqualTo(
       DateTime? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -2458,7 +2503,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> arrDtmLocGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      arrDtmLocGreaterThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -2471,7 +2517,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> arrDtmLocLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> arrDtmLocLessThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -2484,7 +2530,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> arrDtmLocBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> arrDtmLocBetween(
     DateTime? lower,
     DateTime? upper, {
     bool includeLower = true,
@@ -2501,7 +2547,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> arrDtmUtcIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      arrDtmUtcIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'arrDtmUtc',
@@ -2509,7 +2556,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> arrDtmUtcIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      arrDtmUtcIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'arrDtmUtc',
@@ -2517,7 +2565,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> arrDtmUtcEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> arrDtmUtcEqualTo(
       DateTime? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -2527,7 +2575,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> arrDtmUtcGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      arrDtmUtcGreaterThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -2540,7 +2589,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> arrDtmUtcLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> arrDtmUtcLessThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -2553,7 +2602,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> arrDtmUtcBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> arrDtmUtcBetween(
     DateTime? lower,
     DateTime? upper, {
     bool includeLower = true,
@@ -2570,7 +2619,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> autoLandIndIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      autoLandIndIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'autoLandInd',
@@ -2578,7 +2628,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> autoLandIndIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      autoLandIndIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'autoLandInd',
@@ -2586,7 +2637,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> autoLandIndEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      autoLandIndEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -2599,7 +2651,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> autoLandIndGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      autoLandIndGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -2614,7 +2667,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> autoLandIndLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      autoLandIndLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -2629,7 +2683,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> autoLandIndBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      autoLandIndBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -2648,7 +2703,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> autoLandIndStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      autoLandIndStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -2661,7 +2717,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> autoLandIndEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      autoLandIndEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -2674,9 +2731,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> autoLandIndContains(
-      String value,
-      {bool caseSensitive = true}) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      autoLandIndContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'autoLandInd',
@@ -2686,9 +2742,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> autoLandIndMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      autoLandIndMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'autoLandInd',
@@ -2698,7 +2753,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> autoLandIndIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      autoLandIndIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'autoLandInd',
@@ -2707,7 +2763,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       autoLandIndIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
@@ -2717,7 +2773,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> blockMinsIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      blockMinsIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'blockMins',
@@ -2725,7 +2782,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> blockMinsIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      blockMinsIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'blockMins',
@@ -2733,7 +2791,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> blockMinsEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> blockMinsEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -2746,7 +2804,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> blockMinsGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      blockMinsGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -2761,7 +2820,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> blockMinsLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> blockMinsLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -2776,7 +2835,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> blockMinsBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> blockMinsBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -2795,7 +2854,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> blockMinsStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      blockMinsStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -2808,7 +2868,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> blockMinsEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> blockMinsEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -2821,7 +2881,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> blockMinsContains(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> blockMinsContains(
       String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -2833,7 +2893,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> blockMinsMatches(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> blockMinsMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -2845,7 +2905,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> blockMinsIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      blockMinsIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'blockMins',
@@ -2854,7 +2915,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> blockMinsIsNotEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      blockMinsIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'blockMins',
@@ -2863,7 +2925,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> carrierIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> carrierIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'carrier',
@@ -2871,7 +2933,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> carrierIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      carrierIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'carrier',
@@ -2879,7 +2942,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> carrierEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> carrierEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -2892,7 +2955,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> carrierGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      carrierGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -2907,7 +2971,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> carrierLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> carrierLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -2922,7 +2986,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> carrierBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> carrierBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -2941,7 +3005,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> carrierStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> carrierStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -2954,7 +3018,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> carrierEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> carrierEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -2967,7 +3031,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> carrierContains(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> carrierContains(
       String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -2979,7 +3043,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> carrierMatches(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> carrierMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -2991,7 +3055,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> carrierIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> carrierIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'carrier',
@@ -3000,7 +3064,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> carrierIsNotEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      carrierIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'carrier',
@@ -3009,7 +3074,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> catgIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> catgIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'catg',
@@ -3017,7 +3082,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> catgIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> catgIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'catg',
@@ -3025,7 +3090,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> catgEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> catgEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -3038,7 +3103,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> catgGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> catgGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -3053,7 +3118,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> catgLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> catgLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -3068,7 +3133,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> catgBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> catgBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -3087,7 +3152,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> catgStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> catgStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -3100,7 +3165,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> catgEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> catgEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -3113,7 +3178,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> catgContains(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> catgContains(
       String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -3125,7 +3190,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> catgMatches(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> catgMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -3137,7 +3202,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> catgIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> catgIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'catg',
@@ -3146,7 +3211,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> catgIsNotEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> catgIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'catg',
@@ -3155,7 +3220,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> cmdrNameIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> cmdrNameIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'cmdrName',
@@ -3163,7 +3228,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> cmdrNameIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      cmdrNameIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'cmdrName',
@@ -3171,7 +3237,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> cmdrNameEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> cmdrNameEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -3184,7 +3250,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> cmdrNameGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      cmdrNameGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -3199,7 +3266,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> cmdrNameLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> cmdrNameLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -3214,7 +3281,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> cmdrNameBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> cmdrNameBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -3233,7 +3300,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> cmdrNameStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      cmdrNameStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -3246,7 +3314,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> cmdrNameEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> cmdrNameEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -3259,7 +3327,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> cmdrNameContains(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> cmdrNameContains(
       String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -3271,7 +3339,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> cmdrNameMatches(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> cmdrNameMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -3283,7 +3351,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> cmdrNameIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      cmdrNameIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'cmdrName',
@@ -3292,7 +3361,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> cmdrNameIsNotEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      cmdrNameIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'cmdrName',
@@ -3301,7 +3371,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwBaseIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> crwBaseIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'crwBase',
@@ -3309,7 +3379,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwBaseIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwBaseIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'crwBase',
@@ -3317,7 +3388,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwBaseEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> crwBaseEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -3330,7 +3401,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwBaseGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwBaseGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -3345,7 +3417,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwBaseLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> crwBaseLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -3360,7 +3432,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwBaseBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> crwBaseBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -3379,7 +3451,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwBaseStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> crwBaseStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -3392,7 +3464,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwBaseEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> crwBaseEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -3405,7 +3477,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwBaseContains(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> crwBaseContains(
       String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -3417,7 +3489,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwBaseMatches(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> crwBaseMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -3429,7 +3501,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwBaseIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> crwBaseIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'crwBase',
@@ -3438,7 +3510,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwBaseIsNotEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwBaseIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'crwBase',
@@ -3447,7 +3520,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwCatgIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> crwCatgIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'crwCatg',
@@ -3455,7 +3528,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwCatgIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwCatgIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'crwCatg',
@@ -3463,7 +3537,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwCatgEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> crwCatgEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -3476,7 +3550,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwCatgGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwCatgGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -3491,7 +3566,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwCatgLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> crwCatgLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -3506,7 +3581,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwCatgBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> crwCatgBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -3525,7 +3600,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwCatgStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> crwCatgStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -3538,7 +3613,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwCatgEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> crwCatgEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -3551,7 +3626,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwCatgContains(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> crwCatgContains(
       String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -3563,7 +3638,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwCatgMatches(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> crwCatgMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -3575,7 +3650,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwCatgIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> crwCatgIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'crwCatg',
@@ -3584,7 +3659,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwCatgIsNotEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwCatgIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'crwCatg',
@@ -3593,7 +3669,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwCatgSenrtyIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwCatgSenrtyIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'crwCatgSenrty',
@@ -3601,7 +3678,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       crwCatgSenrtyIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -3610,7 +3687,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwCatgSenrtyEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwCatgSenrtyEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -3623,7 +3701,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       crwCatgSenrtyGreaterThan(
     String? value, {
     bool include = false,
@@ -3639,7 +3717,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwCatgSenrtyLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwCatgSenrtyLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -3654,7 +3733,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwCatgSenrtyBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwCatgSenrtyBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -3673,7 +3753,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwCatgSenrtyStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwCatgSenrtyStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -3686,7 +3767,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwCatgSenrtyEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwCatgSenrtyEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -3699,9 +3781,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwCatgSenrtyContains(
-      String value,
-      {bool caseSensitive = true}) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwCatgSenrtyContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'crwCatgSenrty',
@@ -3711,9 +3792,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwCatgSenrtyMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwCatgSenrtyMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'crwCatgSenrty',
@@ -3723,7 +3803,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwCatgSenrtyIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwCatgSenrtyIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'crwCatgSenrty',
@@ -3732,7 +3813,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       crwCatgSenrtyIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
@@ -3742,7 +3823,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwQualSenrtyIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwQualSenrtyIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'crwQualSenrty',
@@ -3750,7 +3832,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       crwQualSenrtyIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -3759,7 +3841,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwQualSenrtyEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwQualSenrtyEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -3772,7 +3855,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       crwQualSenrtyGreaterThan(
     String? value, {
     bool include = false,
@@ -3788,7 +3871,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwQualSenrtyLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwQualSenrtyLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -3803,7 +3887,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwQualSenrtyBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwQualSenrtyBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -3822,7 +3907,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwQualSenrtyStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwQualSenrtyStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -3835,7 +3921,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwQualSenrtyEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwQualSenrtyEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -3848,9 +3935,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwQualSenrtyContains(
-      String value,
-      {bool caseSensitive = true}) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwQualSenrtyContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'crwQualSenrty',
@@ -3860,9 +3946,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwQualSenrtyMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwQualSenrtyMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'crwQualSenrty',
@@ -3872,7 +3957,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> crwQualSenrtyIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crwQualSenrtyIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'crwQualSenrty',
@@ -3881,7 +3967,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       crwQualSenrtyIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
@@ -3891,7 +3977,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> cxLogbookIdIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      cxLogbookIdIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'cxLogbookId',
@@ -3899,7 +3986,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> cxLogbookIdIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      cxLogbookIdIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'cxLogbookId',
@@ -3907,7 +3995,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> cxLogbookIdEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      cxLogbookIdEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -3920,7 +4009,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> cxLogbookIdGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      cxLogbookIdGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -3935,7 +4025,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> cxLogbookIdLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      cxLogbookIdLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -3950,7 +4041,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> cxLogbookIdBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      cxLogbookIdBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -3969,7 +4061,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> cxLogbookIdStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      cxLogbookIdStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -3982,7 +4075,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> cxLogbookIdEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      cxLogbookIdEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -3995,9 +4089,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> cxLogbookIdContains(
-      String value,
-      {bool caseSensitive = true}) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      cxLogbookIdContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'cxLogbookId',
@@ -4007,9 +4100,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> cxLogbookIdMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      cxLogbookIdMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'cxLogbookId',
@@ -4019,7 +4111,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> cxLogbookIdIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      cxLogbookIdIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'cxLogbookId',
@@ -4028,7 +4121,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       cxLogbookIdIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
@@ -4038,7 +4131,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> deptrDtmLocIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      deptrDtmLocIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'deptrDtmLoc',
@@ -4046,7 +4140,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> deptrDtmLocIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      deptrDtmLocIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'deptrDtmLoc',
@@ -4054,8 +4149,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> deptrDtmLocEqualTo(
-      DateTime? value) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      deptrDtmLocEqualTo(DateTime? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'deptrDtmLoc',
@@ -4064,7 +4159,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> deptrDtmLocGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      deptrDtmLocGreaterThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -4077,7 +4173,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> deptrDtmLocLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      deptrDtmLocLessThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -4090,7 +4187,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> deptrDtmLocBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      deptrDtmLocBetween(
     DateTime? lower,
     DateTime? upper, {
     bool includeLower = true,
@@ -4107,7 +4205,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> deptrDtmUtcIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      deptrDtmUtcIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'deptrDtmUtc',
@@ -4115,7 +4214,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> deptrDtmUtcIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      deptrDtmUtcIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'deptrDtmUtc',
@@ -4123,8 +4223,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> deptrDtmUtcEqualTo(
-      DateTime? value) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      deptrDtmUtcEqualTo(DateTime? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'deptrDtmUtc',
@@ -4133,7 +4233,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> deptrDtmUtcGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      deptrDtmUtcGreaterThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -4146,7 +4247,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> deptrDtmUtcLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      deptrDtmUtcLessThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -4159,7 +4261,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> deptrDtmUtcBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      deptrDtmUtcBetween(
     DateTime? lower,
     DateTime? upper, {
     bool includeLower = true,
@@ -4176,7 +4279,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyEndDtmLocIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      dutyEndDtmLocIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'dutyEndDtmLoc',
@@ -4184,7 +4288,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       dutyEndDtmLocIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -4193,8 +4297,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyEndDtmLocEqualTo(
-      DateTime? value) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      dutyEndDtmLocEqualTo(DateTime? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'dutyEndDtmLoc',
@@ -4203,7 +4307,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       dutyEndDtmLocGreaterThan(
     DateTime? value, {
     bool include = false,
@@ -4217,7 +4321,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyEndDtmLocLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      dutyEndDtmLocLessThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -4230,7 +4335,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyEndDtmLocBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      dutyEndDtmLocBetween(
     DateTime? lower,
     DateTime? upper, {
     bool includeLower = true,
@@ -4247,7 +4353,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyEndDtmUtcIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      dutyEndDtmUtcIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'dutyEndDtmUtc',
@@ -4255,7 +4362,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       dutyEndDtmUtcIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -4264,8 +4371,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyEndDtmUtcEqualTo(
-      DateTime? value) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      dutyEndDtmUtcEqualTo(DateTime? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'dutyEndDtmUtc',
@@ -4274,7 +4381,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       dutyEndDtmUtcGreaterThan(
     DateTime? value, {
     bool include = false,
@@ -4288,7 +4395,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyEndDtmUtcLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      dutyEndDtmUtcLessThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -4301,7 +4409,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyEndDtmUtcBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      dutyEndDtmUtcBetween(
     DateTime? lower,
     DateTime? upper, {
     bool includeLower = true,
@@ -4318,7 +4427,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       dutyStartDtmLocIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -4327,7 +4436,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       dutyStartDtmLocIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -4336,8 +4445,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyStartDtmLocEqualTo(
-      DateTime? value) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      dutyStartDtmLocEqualTo(DateTime? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'dutyStartDtmLoc',
@@ -4346,7 +4455,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       dutyStartDtmLocGreaterThan(
     DateTime? value, {
     bool include = false,
@@ -4360,7 +4469,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyStartDtmLocLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      dutyStartDtmLocLessThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -4373,7 +4483,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyStartDtmLocBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      dutyStartDtmLocBetween(
     DateTime? lower,
     DateTime? upper, {
     bool includeLower = true,
@@ -4390,7 +4501,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       dutyStartDtmUtcIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -4399,7 +4510,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       dutyStartDtmUtcIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -4408,8 +4519,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyStartDtmUtcEqualTo(
-      DateTime? value) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      dutyStartDtmUtcEqualTo(DateTime? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'dutyStartDtmUtc',
@@ -4418,7 +4529,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       dutyStartDtmUtcGreaterThan(
     DateTime? value, {
     bool include = false,
@@ -4432,7 +4543,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyStartDtmUtcLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      dutyStartDtmUtcLessThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -4445,7 +4557,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyStartDtmUtcBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      dutyStartDtmUtcBetween(
     DateTime? lower,
     DateTime? upper, {
     bool includeLower = true,
@@ -4462,7 +4575,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyTypeIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> dutyTypeIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'dutyType',
@@ -4470,7 +4583,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyTypeIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      dutyTypeIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'dutyType',
@@ -4478,7 +4592,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyTypeEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> dutyTypeEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -4491,7 +4605,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyTypeGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      dutyTypeGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -4506,7 +4621,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyTypeLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> dutyTypeLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -4521,7 +4636,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyTypeBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> dutyTypeBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -4540,7 +4655,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyTypeStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      dutyTypeStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -4553,7 +4669,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyTypeEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> dutyTypeEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -4566,7 +4682,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyTypeContains(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> dutyTypeContains(
       String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -4578,7 +4694,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyTypeMatches(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> dutyTypeMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -4590,7 +4706,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyTypeIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      dutyTypeIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'dutyType',
@@ -4599,7 +4716,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> dutyTypeIsNotEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      dutyTypeIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'dutyType',
@@ -4608,7 +4726,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fltDateIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fltDateIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'fltDate',
@@ -4616,7 +4734,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fltDateIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      fltDateIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'fltDate',
@@ -4624,7 +4743,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fltDateEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fltDateEqualTo(
       DateTime? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -4634,7 +4753,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fltDateGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      fltDateGreaterThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -4647,7 +4767,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fltDateLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fltDateLessThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -4660,7 +4780,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fltDateBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fltDateBetween(
     DateTime? lower,
     DateTime? upper, {
     bool includeLower = true,
@@ -4677,7 +4797,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fltNoIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fltNoIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'fltNo',
@@ -4685,7 +4805,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fltNoIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fltNoIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'fltNo',
@@ -4693,7 +4813,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fltNoEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fltNoEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -4706,7 +4826,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fltNoGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fltNoGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -4721,7 +4841,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fltNoLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fltNoLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -4736,7 +4856,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fltNoBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fltNoBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -4755,7 +4875,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fltNoStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fltNoStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -4768,7 +4888,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fltNoEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fltNoEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -4781,7 +4901,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fltNoContains(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fltNoContains(
       String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -4793,7 +4913,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fltNoMatches(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fltNoMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -4805,7 +4925,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fltNoIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fltNoIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'fltNo',
@@ -4814,7 +4934,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fltNoIsNotEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      fltNoIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'fltNo',
@@ -4823,7 +4944,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fopErnIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fopErnIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'fopErn',
@@ -4831,7 +4952,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fopErnIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      fopErnIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'fopErn',
@@ -4839,7 +4961,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fopErnEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fopErnEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -4852,7 +4974,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fopErnGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fopErnGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -4867,7 +4989,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fopErnLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fopErnLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -4882,7 +5004,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fopErnBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fopErnBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -4901,7 +5023,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fopErnStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fopErnStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -4914,7 +5036,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fopErnEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fopErnEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -4927,7 +5049,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fopErnContains(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fopErnContains(
       String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -4939,7 +5061,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fopErnMatches(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fopErnMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -4951,7 +5073,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fopErnIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> fopErnIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'fopErn',
@@ -4960,7 +5082,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> fopErnIsNotEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      fopErnIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'fopErn',
@@ -4969,7 +5092,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> gdDutyCodeIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      gdDutyCodeIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'gdDutyCode',
@@ -4977,7 +5101,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> gdDutyCodeIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      gdDutyCodeIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'gdDutyCode',
@@ -4985,7 +5110,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> gdDutyCodeEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> gdDutyCodeEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -4998,7 +5123,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> gdDutyCodeGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      gdDutyCodeGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -5013,7 +5139,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> gdDutyCodeLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      gdDutyCodeLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -5028,7 +5155,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> gdDutyCodeBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> gdDutyCodeBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -5047,7 +5174,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> gdDutyCodeStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      gdDutyCodeStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -5060,7 +5188,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> gdDutyCodeEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      gdDutyCodeEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -5073,9 +5202,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> gdDutyCodeContains(
-      String value,
-      {bool caseSensitive = true}) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      gdDutyCodeContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'gdDutyCode',
@@ -5085,7 +5213,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> gdDutyCodeMatches(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> gdDutyCodeMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -5097,7 +5225,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> gdDutyCodeIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      gdDutyCodeIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'gdDutyCode',
@@ -5106,7 +5235,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> gdDutyCodeIsNotEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      gdDutyCodeIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'gdDutyCode',
@@ -5115,7 +5245,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> idEqualTo(Id value) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> idEqualTo(
+      Id value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'id',
@@ -5124,7 +5255,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> idGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> idGreaterThan(
     Id value, {
     bool include = false,
   }) {
@@ -5137,7 +5268,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> idLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> idLessThan(
     Id value, {
     bool include = false,
   }) {
@@ -5150,7 +5281,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> idBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> idBetween(
     Id lower,
     Id upper, {
     bool includeLower = true,
@@ -5167,7 +5298,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> landingGmtIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      landingGmtIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'landingGmt',
@@ -5175,7 +5307,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> landingGmtIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      landingGmtIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'landingGmt',
@@ -5183,7 +5316,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> landingGmtEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> landingGmtEqualTo(
       DateTime? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -5193,7 +5326,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> landingGmtGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      landingGmtGreaterThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -5206,7 +5340,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> landingGmtLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      landingGmtLessThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -5219,7 +5354,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> landingGmtBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> landingGmtBetween(
     DateTime? lower,
     DateTime? upper, {
     bool includeLower = true,
@@ -5236,7 +5371,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> noOfLandingIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      noOfLandingIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'noOfLanding',
@@ -5244,7 +5380,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> noOfLandingIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      noOfLandingIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'noOfLanding',
@@ -5252,7 +5389,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> noOfLandingEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      noOfLandingEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -5265,7 +5403,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> noOfLandingGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      noOfLandingGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -5280,7 +5419,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> noOfLandingLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      noOfLandingLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -5295,7 +5435,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> noOfLandingBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      noOfLandingBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -5314,7 +5455,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> noOfLandingStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      noOfLandingStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -5327,7 +5469,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> noOfLandingEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      noOfLandingEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -5340,9 +5483,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> noOfLandingContains(
-      String value,
-      {bool caseSensitive = true}) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      noOfLandingContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'noOfLanding',
@@ -5352,9 +5494,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> noOfLandingMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      noOfLandingMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'noOfLanding',
@@ -5364,7 +5505,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> noOfLandingIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      noOfLandingIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'noOfLanding',
@@ -5373,7 +5515,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       noOfLandingIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
@@ -5383,7 +5525,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> noOfTakeoffIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      noOfTakeoffIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'noOfTakeoff',
@@ -5391,7 +5534,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> noOfTakeoffIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      noOfTakeoffIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'noOfTakeoff',
@@ -5399,7 +5543,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> noOfTakeoffEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      noOfTakeoffEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -5412,7 +5557,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> noOfTakeoffGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      noOfTakeoffGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -5427,7 +5573,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> noOfTakeoffLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      noOfTakeoffLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -5442,7 +5589,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> noOfTakeoffBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      noOfTakeoffBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -5461,7 +5609,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> noOfTakeoffStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      noOfTakeoffStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -5474,7 +5623,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> noOfTakeoffEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      noOfTakeoffEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -5487,9 +5637,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> noOfTakeoffContains(
-      String value,
-      {bool caseSensitive = true}) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      noOfTakeoffContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'noOfTakeoff',
@@ -5499,9 +5648,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> noOfTakeoffMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      noOfTakeoffMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'noOfTakeoff',
@@ -5511,7 +5659,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> noOfTakeoffIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      noOfTakeoffIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'noOfTakeoff',
@@ -5520,7 +5669,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       noOfTakeoffIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
@@ -5530,7 +5679,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctDstnIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> sctDstnIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'sctDstn',
@@ -5538,7 +5687,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctDstnIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      sctDstnIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'sctDstn',
@@ -5546,7 +5696,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctDstnEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> sctDstnEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -5559,7 +5709,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctDstnGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      sctDstnGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -5574,7 +5725,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctDstnLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> sctDstnLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -5589,7 +5740,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctDstnBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> sctDstnBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -5608,7 +5759,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctDstnStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> sctDstnStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -5621,7 +5772,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctDstnEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> sctDstnEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -5634,7 +5785,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctDstnContains(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> sctDstnContains(
       String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -5646,7 +5797,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctDstnMatches(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> sctDstnMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -5658,7 +5809,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctDstnIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> sctDstnIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'sctDstn',
@@ -5667,7 +5818,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctDstnIsNotEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      sctDstnIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'sctDstn',
@@ -5676,7 +5828,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctOriIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> sctOriIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'sctOri',
@@ -5684,7 +5836,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctOriIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      sctOriIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'sctOri',
@@ -5692,7 +5845,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctOriEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> sctOriEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -5705,7 +5858,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctOriGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> sctOriGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -5720,7 +5873,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctOriLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> sctOriLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -5735,7 +5888,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctOriBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> sctOriBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -5754,7 +5907,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctOriStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> sctOriStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -5767,7 +5920,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctOriEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> sctOriEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -5780,7 +5933,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctOriContains(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> sctOriContains(
       String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -5792,7 +5945,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctOriMatches(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> sctOriMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -5804,7 +5957,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctOriIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> sctOriIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'sctOri',
@@ -5813,7 +5966,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> sctOriIsNotEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      sctOriIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'sctOri',
@@ -5822,7 +5976,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> simEndDtmLocIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      simEndDtmLocIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'simEndDtmLoc',
@@ -5830,7 +5985,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       simEndDtmLocIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -5839,8 +5994,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> simEndDtmLocEqualTo(
-      DateTime? value) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      simEndDtmLocEqualTo(DateTime? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'simEndDtmLoc',
@@ -5849,7 +6004,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> simEndDtmLocGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      simEndDtmLocGreaterThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -5862,7 +6018,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> simEndDtmLocLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      simEndDtmLocLessThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -5875,7 +6032,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> simEndDtmLocBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      simEndDtmLocBetween(
     DateTime? lower,
     DateTime? upper, {
     bool includeLower = true,
@@ -5892,7 +6050,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> simEndDtmUtcIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      simEndDtmUtcIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'simEndDtmUtc',
@@ -5900,7 +6059,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       simEndDtmUtcIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -5909,8 +6068,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> simEndDtmUtcEqualTo(
-      DateTime? value) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      simEndDtmUtcEqualTo(DateTime? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'simEndDtmUtc',
@@ -5919,7 +6078,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> simEndDtmUtcGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      simEndDtmUtcGreaterThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -5932,7 +6092,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> simEndDtmUtcLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      simEndDtmUtcLessThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -5945,7 +6106,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> simEndDtmUtcBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      simEndDtmUtcBetween(
     DateTime? lower,
     DateTime? upper, {
     bool includeLower = true,
@@ -5962,7 +6124,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> simStartDtmLocIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      simStartDtmLocIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'simStartDtmLoc',
@@ -5970,7 +6133,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       simStartDtmLocIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -5979,8 +6142,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> simStartDtmLocEqualTo(
-      DateTime? value) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      simStartDtmLocEqualTo(DateTime? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'simStartDtmLoc',
@@ -5989,7 +6152,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       simStartDtmLocGreaterThan(
     DateTime? value, {
     bool include = false,
@@ -6003,7 +6166,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> simStartDtmLocLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      simStartDtmLocLessThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -6016,7 +6180,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> simStartDtmLocBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      simStartDtmLocBetween(
     DateTime? lower,
     DateTime? upper, {
     bool includeLower = true,
@@ -6033,7 +6198,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> simStartDtmUtcIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      simStartDtmUtcIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'simStartDtmUtc',
@@ -6041,7 +6207,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       simStartDtmUtcIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -6050,8 +6216,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> simStartDtmUtcEqualTo(
-      DateTime? value) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      simStartDtmUtcEqualTo(DateTime? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'simStartDtmUtc',
@@ -6060,7 +6226,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       simStartDtmUtcGreaterThan(
     DateTime? value, {
     bool include = false,
@@ -6074,7 +6240,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> simStartDtmUtcLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      simStartDtmUtcLessThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -6087,7 +6254,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> simStartDtmUtcBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      simStartDtmUtcBetween(
     DateTime? lower,
     DateTime? upper, {
     bool includeLower = true,
@@ -6104,7 +6272,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> speclDutyCodeIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      speclDutyCodeIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'speclDutyCode',
@@ -6112,7 +6281,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       speclDutyCodeIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -6121,7 +6290,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> speclDutyCodeEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      speclDutyCodeEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -6134,7 +6304,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       speclDutyCodeGreaterThan(
     String? value, {
     bool include = false,
@@ -6150,7 +6320,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> speclDutyCodeLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      speclDutyCodeLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -6165,7 +6336,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> speclDutyCodeBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      speclDutyCodeBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -6184,7 +6356,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> speclDutyCodeStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      speclDutyCodeStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -6197,7 +6370,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> speclDutyCodeEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      speclDutyCodeEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -6210,9 +6384,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> speclDutyCodeContains(
-      String value,
-      {bool caseSensitive = true}) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      speclDutyCodeContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'speclDutyCode',
@@ -6222,9 +6395,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> speclDutyCodeMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      speclDutyCodeMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'speclDutyCode',
@@ -6234,7 +6406,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> speclDutyCodeIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      speclDutyCodeIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'speclDutyCode',
@@ -6243,7 +6416,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition>
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
       speclDutyCodeIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
@@ -6253,7 +6426,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> svcCompanyIsNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      svcCompanyIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'svcCompany',
@@ -6261,7 +6435,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> svcCompanyIsNotNull() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      svcCompanyIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'svcCompany',
@@ -6269,7 +6444,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> svcCompanyEqualTo(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> svcCompanyEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -6282,7 +6457,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> svcCompanyGreaterThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      svcCompanyGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -6297,7 +6473,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> svcCompanyLessThan(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      svcCompanyLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -6312,7 +6489,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> svcCompanyBetween(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> svcCompanyBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -6331,7 +6508,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> svcCompanyStartsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      svcCompanyStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -6344,7 +6522,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> svcCompanyEndsWith(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      svcCompanyEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -6357,9 +6536,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> svcCompanyContains(
-      String value,
-      {bool caseSensitive = true}) {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      svcCompanyContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'svcCompany',
@@ -6369,7 +6547,7 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> svcCompanyMatches(
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition> svcCompanyMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -6381,7 +6559,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> svcCompanyIsEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      svcCompanyIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'svcCompany',
@@ -6390,7 +6569,8 @@ extension LogbookQueryFilter
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterFilterCondition> svcCompanyIsNotEmpty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      svcCompanyIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'svcCompany',
@@ -6400,1154 +6580,1167 @@ extension LogbookQueryFilter
   }
 }
 
-extension LogbookQueryObject
-    on QueryBuilder<Logbook, Logbook, QFilterCondition> {}
+extension DutyRecordQueryObject
+    on QueryBuilder<DutyRecord, DutyRecord, QFilterCondition> {}
 
-extension LogbookQueryLinks
-    on QueryBuilder<Logbook, Logbook, QFilterCondition> {}
+extension DutyRecordQueryLinks
+    on QueryBuilder<DutyRecord, DutyRecord, QFilterCondition> {}
 
-extension LogbookQuerySortBy on QueryBuilder<Logbook, Logbook, QSortBy> {
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByAcType() {
+extension DutyRecordQuerySortBy
+    on QueryBuilder<DutyRecord, DutyRecord, QSortBy> {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByAcType() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'acType', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByAcTypeDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByAcTypeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'acType', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByAcftReg() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByAcftReg() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'acftReg', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByAcftRegDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByAcftRegDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'acftReg', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByAcftSvcType() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByAcftSvcType() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'acftSvcType', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByAcftSvcTypeDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByAcftSvcTypeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'acftSvcType', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByAcftTypeCode() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByAcftTypeCode() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'acftTypeCode', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByAcftTypeCodeDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByAcftTypeCodeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'acftTypeCode', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByAcftTypeFr() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByAcftTypeFr() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'acftTypeFr', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByAcftTypeFrDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByAcftTypeFrDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'acftTypeFr', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByActLandingDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByActLandingDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'actLandingDtmUtc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByActLandingDtmUtcDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy>
+      sortByActLandingDtmUtcDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'actLandingDtmUtc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByActTakeoffDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByActTakeoffDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'actTakeoffDtmUtc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByActTakeoffDtmUtcDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy>
+      sortByActTakeoffDtmUtcDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'actTakeoffDtmUtc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByAirbourneGmt() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByAirbourneGmt() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'airbourneGmt', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByAirbourneGmtDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByAirbourneGmtDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'airbourneGmt', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByArrDtmLoc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByArrDtmLoc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'arrDtmLoc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByArrDtmLocDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByArrDtmLocDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'arrDtmLoc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByArrDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByArrDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'arrDtmUtc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByArrDtmUtcDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByArrDtmUtcDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'arrDtmUtc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByAutoLandInd() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByAutoLandInd() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'autoLandInd', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByAutoLandIndDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByAutoLandIndDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'autoLandInd', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByBlockMins() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByBlockMins() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'blockMins', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByBlockMinsDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByBlockMinsDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'blockMins', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByCarrier() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByCarrier() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'carrier', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByCarrierDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByCarrierDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'carrier', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByCatg() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByCatg() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'catg', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByCatgDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByCatgDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'catg', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByCmdrName() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByCmdrName() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'cmdrName', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByCmdrNameDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByCmdrNameDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'cmdrName', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByCrwBase() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByCrwBase() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'crwBase', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByCrwBaseDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByCrwBaseDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'crwBase', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByCrwCatg() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByCrwCatg() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'crwCatg', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByCrwCatgDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByCrwCatgDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'crwCatg', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByCrwCatgSenrty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByCrwCatgSenrty() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'crwCatgSenrty', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByCrwCatgSenrtyDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByCrwCatgSenrtyDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'crwCatgSenrty', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByCrwQualSenrty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByCrwQualSenrty() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'crwQualSenrty', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByCrwQualSenrtyDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByCrwQualSenrtyDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'crwQualSenrty', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByCxLogbookId() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByCxLogbookId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'cxLogbookId', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByCxLogbookIdDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByCxLogbookIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'cxLogbookId', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByDeptrDtmLoc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByDeptrDtmLoc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'deptrDtmLoc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByDeptrDtmLocDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByDeptrDtmLocDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'deptrDtmLoc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByDeptrDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByDeptrDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'deptrDtmUtc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByDeptrDtmUtcDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByDeptrDtmUtcDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'deptrDtmUtc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByDutyEndDtmLoc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByDutyEndDtmLoc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dutyEndDtmLoc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByDutyEndDtmLocDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByDutyEndDtmLocDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dutyEndDtmLoc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByDutyEndDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByDutyEndDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dutyEndDtmUtc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByDutyEndDtmUtcDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByDutyEndDtmUtcDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dutyEndDtmUtc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByDutyStartDtmLoc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByDutyStartDtmLoc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dutyStartDtmLoc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByDutyStartDtmLocDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy>
+      sortByDutyStartDtmLocDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dutyStartDtmLoc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByDutyStartDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByDutyStartDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dutyStartDtmUtc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByDutyStartDtmUtcDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy>
+      sortByDutyStartDtmUtcDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dutyStartDtmUtc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByDutyType() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByDutyType() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dutyType', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByDutyTypeDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByDutyTypeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dutyType', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByFltDate() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByFltDate() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'fltDate', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByFltDateDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByFltDateDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'fltDate', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByFltNo() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByFltNo() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'fltNo', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByFltNoDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByFltNoDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'fltNo', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByFopErn() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByFopErn() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'fopErn', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByFopErnDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByFopErnDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'fopErn', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByGdDutyCode() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByGdDutyCode() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'gdDutyCode', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByGdDutyCodeDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByGdDutyCodeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'gdDutyCode', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByLandingGmt() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByLandingGmt() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'landingGmt', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByLandingGmtDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByLandingGmtDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'landingGmt', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByNoOfLanding() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByNoOfLanding() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'noOfLanding', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByNoOfLandingDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByNoOfLandingDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'noOfLanding', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByNoOfTakeoff() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByNoOfTakeoff() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'noOfTakeoff', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortByNoOfTakeoffDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByNoOfTakeoffDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'noOfTakeoff', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortBySctDstn() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortBySctDstn() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sctDstn', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortBySctDstnDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortBySctDstnDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sctDstn', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortBySctOri() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortBySctOri() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sctOri', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortBySctOriDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortBySctOriDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sctOri', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortBySimEndDtmLoc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortBySimEndDtmLoc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'simEndDtmLoc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortBySimEndDtmLocDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortBySimEndDtmLocDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'simEndDtmLoc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortBySimEndDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortBySimEndDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'simEndDtmUtc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortBySimEndDtmUtcDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortBySimEndDtmUtcDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'simEndDtmUtc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortBySimStartDtmLoc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortBySimStartDtmLoc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'simStartDtmLoc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortBySimStartDtmLocDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy>
+      sortBySimStartDtmLocDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'simStartDtmLoc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortBySimStartDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortBySimStartDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'simStartDtmUtc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortBySimStartDtmUtcDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy>
+      sortBySimStartDtmUtcDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'simStartDtmUtc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortBySpeclDutyCode() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortBySpeclDutyCode() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'speclDutyCode', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortBySpeclDutyCodeDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortBySpeclDutyCodeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'speclDutyCode', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortBySvcCompany() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortBySvcCompany() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'svcCompany', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> sortBySvcCompanyDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortBySvcCompanyDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'svcCompany', Sort.desc);
     });
   }
 }
 
-extension LogbookQuerySortThenBy
-    on QueryBuilder<Logbook, Logbook, QSortThenBy> {
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByAcType() {
+extension DutyRecordQuerySortThenBy
+    on QueryBuilder<DutyRecord, DutyRecord, QSortThenBy> {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByAcType() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'acType', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByAcTypeDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByAcTypeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'acType', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByAcftReg() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByAcftReg() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'acftReg', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByAcftRegDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByAcftRegDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'acftReg', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByAcftSvcType() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByAcftSvcType() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'acftSvcType', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByAcftSvcTypeDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByAcftSvcTypeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'acftSvcType', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByAcftTypeCode() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByAcftTypeCode() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'acftTypeCode', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByAcftTypeCodeDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByAcftTypeCodeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'acftTypeCode', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByAcftTypeFr() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByAcftTypeFr() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'acftTypeFr', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByAcftTypeFrDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByAcftTypeFrDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'acftTypeFr', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByActLandingDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByActLandingDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'actLandingDtmUtc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByActLandingDtmUtcDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy>
+      thenByActLandingDtmUtcDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'actLandingDtmUtc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByActTakeoffDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByActTakeoffDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'actTakeoffDtmUtc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByActTakeoffDtmUtcDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy>
+      thenByActTakeoffDtmUtcDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'actTakeoffDtmUtc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByAirbourneGmt() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByAirbourneGmt() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'airbourneGmt', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByAirbourneGmtDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByAirbourneGmtDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'airbourneGmt', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByArrDtmLoc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByArrDtmLoc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'arrDtmLoc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByArrDtmLocDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByArrDtmLocDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'arrDtmLoc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByArrDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByArrDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'arrDtmUtc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByArrDtmUtcDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByArrDtmUtcDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'arrDtmUtc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByAutoLandInd() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByAutoLandInd() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'autoLandInd', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByAutoLandIndDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByAutoLandIndDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'autoLandInd', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByBlockMins() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByBlockMins() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'blockMins', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByBlockMinsDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByBlockMinsDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'blockMins', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByCarrier() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByCarrier() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'carrier', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByCarrierDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByCarrierDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'carrier', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByCatg() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByCatg() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'catg', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByCatgDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByCatgDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'catg', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByCmdrName() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByCmdrName() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'cmdrName', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByCmdrNameDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByCmdrNameDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'cmdrName', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByCrwBase() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByCrwBase() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'crwBase', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByCrwBaseDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByCrwBaseDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'crwBase', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByCrwCatg() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByCrwCatg() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'crwCatg', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByCrwCatgDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByCrwCatgDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'crwCatg', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByCrwCatgSenrty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByCrwCatgSenrty() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'crwCatgSenrty', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByCrwCatgSenrtyDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByCrwCatgSenrtyDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'crwCatgSenrty', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByCrwQualSenrty() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByCrwQualSenrty() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'crwQualSenrty', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByCrwQualSenrtyDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByCrwQualSenrtyDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'crwQualSenrty', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByCxLogbookId() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByCxLogbookId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'cxLogbookId', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByCxLogbookIdDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByCxLogbookIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'cxLogbookId', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByDeptrDtmLoc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByDeptrDtmLoc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'deptrDtmLoc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByDeptrDtmLocDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByDeptrDtmLocDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'deptrDtmLoc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByDeptrDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByDeptrDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'deptrDtmUtc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByDeptrDtmUtcDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByDeptrDtmUtcDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'deptrDtmUtc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByDutyEndDtmLoc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByDutyEndDtmLoc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dutyEndDtmLoc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByDutyEndDtmLocDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByDutyEndDtmLocDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dutyEndDtmLoc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByDutyEndDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByDutyEndDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dutyEndDtmUtc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByDutyEndDtmUtcDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByDutyEndDtmUtcDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dutyEndDtmUtc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByDutyStartDtmLoc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByDutyStartDtmLoc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dutyStartDtmLoc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByDutyStartDtmLocDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy>
+      thenByDutyStartDtmLocDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dutyStartDtmLoc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByDutyStartDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByDutyStartDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dutyStartDtmUtc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByDutyStartDtmUtcDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy>
+      thenByDutyStartDtmUtcDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dutyStartDtmUtc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByDutyType() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByDutyType() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dutyType', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByDutyTypeDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByDutyTypeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dutyType', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByFltDate() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByFltDate() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'fltDate', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByFltDateDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByFltDateDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'fltDate', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByFltNo() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByFltNo() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'fltNo', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByFltNoDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByFltNoDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'fltNo', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByFopErn() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByFopErn() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'fopErn', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByFopErnDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByFopErnDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'fopErn', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByGdDutyCode() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByGdDutyCode() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'gdDutyCode', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByGdDutyCodeDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByGdDutyCodeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'gdDutyCode', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenById() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByIdDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByLandingGmt() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByLandingGmt() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'landingGmt', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByLandingGmtDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByLandingGmtDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'landingGmt', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByNoOfLanding() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByNoOfLanding() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'noOfLanding', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByNoOfLandingDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByNoOfLandingDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'noOfLanding', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByNoOfTakeoff() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByNoOfTakeoff() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'noOfTakeoff', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenByNoOfTakeoffDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByNoOfTakeoffDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'noOfTakeoff', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenBySctDstn() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenBySctDstn() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sctDstn', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenBySctDstnDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenBySctDstnDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sctDstn', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenBySctOri() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenBySctOri() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sctOri', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenBySctOriDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenBySctOriDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sctOri', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenBySimEndDtmLoc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenBySimEndDtmLoc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'simEndDtmLoc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenBySimEndDtmLocDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenBySimEndDtmLocDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'simEndDtmLoc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenBySimEndDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenBySimEndDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'simEndDtmUtc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenBySimEndDtmUtcDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenBySimEndDtmUtcDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'simEndDtmUtc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenBySimStartDtmLoc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenBySimStartDtmLoc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'simStartDtmLoc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenBySimStartDtmLocDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy>
+      thenBySimStartDtmLocDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'simStartDtmLoc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenBySimStartDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenBySimStartDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'simStartDtmUtc', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenBySimStartDtmUtcDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy>
+      thenBySimStartDtmUtcDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'simStartDtmUtc', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenBySpeclDutyCode() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenBySpeclDutyCode() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'speclDutyCode', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenBySpeclDutyCodeDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenBySpeclDutyCodeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'speclDutyCode', Sort.desc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenBySvcCompany() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenBySvcCompany() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'svcCompany', Sort.asc);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QAfterSortBy> thenBySvcCompanyDesc() {
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenBySvcCompanyDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'svcCompany', Sort.desc);
     });
   }
 }
 
-extension LogbookQueryWhereDistinct
-    on QueryBuilder<Logbook, Logbook, QDistinct> {
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByAcType(
+extension DutyRecordQueryWhereDistinct
+    on QueryBuilder<DutyRecord, DutyRecord, QDistinct> {
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByAcType(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'acType', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByAcftReg(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByAcftReg(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'acftReg', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByAcftSvcType(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByAcftSvcType(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'acftSvcType', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByAcftTypeCode(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByAcftTypeCode(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'acftTypeCode', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByAcftTypeFr(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByAcftTypeFr(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'acftTypeFr', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByActLandingDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByActLandingDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'actLandingDtmUtc');
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByActTakeoffDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByActTakeoffDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'actTakeoffDtmUtc');
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByAirbourneGmt() {
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByAirbourneGmt() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'airbourneGmt');
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByArrDtmLoc() {
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByArrDtmLoc() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'arrDtmLoc');
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByArrDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByArrDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'arrDtmUtc');
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByAutoLandInd(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByAutoLandInd(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'autoLandInd', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByBlockMins(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByBlockMins(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'blockMins', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByCarrier(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByCarrier(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'carrier', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByCatg(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByCatg(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'catg', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByCmdrName(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByCmdrName(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'cmdrName', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByCrwBase(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByCrwBase(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'crwBase', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByCrwCatg(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByCrwCatg(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'crwCatg', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByCrwCatgSenrty(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByCrwCatgSenrty(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'crwCatgSenrty',
@@ -7555,7 +7748,7 @@ extension LogbookQueryWhereDistinct
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByCrwQualSenrty(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByCrwQualSenrty(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'crwQualSenrty',
@@ -7563,142 +7756,142 @@ extension LogbookQueryWhereDistinct
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByCxLogbookId(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByCxLogbookId(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'cxLogbookId', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByDeptrDtmLoc() {
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByDeptrDtmLoc() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'deptrDtmLoc');
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByDeptrDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByDeptrDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'deptrDtmUtc');
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByDutyEndDtmLoc() {
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByDutyEndDtmLoc() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'dutyEndDtmLoc');
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByDutyEndDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByDutyEndDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'dutyEndDtmUtc');
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByDutyStartDtmLoc() {
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByDutyStartDtmLoc() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'dutyStartDtmLoc');
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByDutyStartDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByDutyStartDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'dutyStartDtmUtc');
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByDutyType(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByDutyType(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'dutyType', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByFltDate() {
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByFltDate() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'fltDate');
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByFltNo(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByFltNo(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'fltNo', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByFopErn(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByFopErn(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'fopErn', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByGdDutyCode(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByGdDutyCode(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'gdDutyCode', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByLandingGmt() {
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByLandingGmt() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'landingGmt');
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByNoOfLanding(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByNoOfLanding(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'noOfLanding', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctByNoOfTakeoff(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByNoOfTakeoff(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'noOfTakeoff', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctBySctDstn(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctBySctDstn(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'sctDstn', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctBySctOri(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctBySctOri(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'sctOri', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctBySimEndDtmLoc() {
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctBySimEndDtmLoc() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'simEndDtmLoc');
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctBySimEndDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctBySimEndDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'simEndDtmUtc');
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctBySimStartDtmLoc() {
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctBySimStartDtmLoc() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'simStartDtmLoc');
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctBySimStartDtmUtc() {
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctBySimStartDtmUtc() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'simStartDtmUtc');
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctBySpeclDutyCode(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctBySpeclDutyCode(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'speclDutyCode',
@@ -7706,7 +7899,7 @@ extension LogbookQueryWhereDistinct
     });
   }
 
-  QueryBuilder<Logbook, Logbook, QDistinct> distinctBySvcCompany(
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctBySvcCompany(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'svcCompany', caseSensitive: caseSensitive);
@@ -7714,263 +7907,269 @@ extension LogbookQueryWhereDistinct
   }
 }
 
-extension LogbookQueryProperty
-    on QueryBuilder<Logbook, Logbook, QQueryProperty> {
-  QueryBuilder<Logbook, int, QQueryOperations> idProperty() {
+extension DutyRecordQueryProperty
+    on QueryBuilder<DutyRecord, DutyRecord, QQueryProperty> {
+  QueryBuilder<DutyRecord, int, QQueryOperations> idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'id');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> acTypeProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> acTypeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'acType');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> acftRegProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> acftRegProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'acftReg');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> acftSvcTypeProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> acftSvcTypeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'acftSvcType');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> acftTypeCodeProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> acftTypeCodeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'acftTypeCode');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> acftTypeFrProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> acftTypeFrProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'acftTypeFr');
     });
   }
 
-  QueryBuilder<Logbook, DateTime?, QQueryOperations>
+  QueryBuilder<DutyRecord, DateTime?, QQueryOperations>
       actLandingDtmUtcProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'actLandingDtmUtc');
     });
   }
 
-  QueryBuilder<Logbook, DateTime?, QQueryOperations>
+  QueryBuilder<DutyRecord, DateTime?, QQueryOperations>
       actTakeoffDtmUtcProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'actTakeoffDtmUtc');
     });
   }
 
-  QueryBuilder<Logbook, DateTime?, QQueryOperations> airbourneGmtProperty() {
+  QueryBuilder<DutyRecord, DateTime?, QQueryOperations> airbourneGmtProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'airbourneGmt');
     });
   }
 
-  QueryBuilder<Logbook, DateTime?, QQueryOperations> arrDtmLocProperty() {
+  QueryBuilder<DutyRecord, DateTime?, QQueryOperations> arrDtmLocProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'arrDtmLoc');
     });
   }
 
-  QueryBuilder<Logbook, DateTime?, QQueryOperations> arrDtmUtcProperty() {
+  QueryBuilder<DutyRecord, DateTime?, QQueryOperations> arrDtmUtcProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'arrDtmUtc');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> autoLandIndProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> autoLandIndProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'autoLandInd');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> blockMinsProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> blockMinsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'blockMins');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> carrierProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> carrierProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'carrier');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> catgProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> catgProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'catg');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> cmdrNameProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> cmdrNameProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'cmdrName');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> crwBaseProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> crwBaseProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'crwBase');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> crwCatgProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> crwCatgProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'crwCatg');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> crwCatgSenrtyProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> crwCatgSenrtyProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'crwCatgSenrty');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> crwQualSenrtyProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> crwQualSenrtyProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'crwQualSenrty');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> cxLogbookIdProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> cxLogbookIdProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'cxLogbookId');
     });
   }
 
-  QueryBuilder<Logbook, DateTime?, QQueryOperations> deptrDtmLocProperty() {
+  QueryBuilder<DutyRecord, DateTime?, QQueryOperations> deptrDtmLocProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'deptrDtmLoc');
     });
   }
 
-  QueryBuilder<Logbook, DateTime?, QQueryOperations> deptrDtmUtcProperty() {
+  QueryBuilder<DutyRecord, DateTime?, QQueryOperations> deptrDtmUtcProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'deptrDtmUtc');
     });
   }
 
-  QueryBuilder<Logbook, DateTime?, QQueryOperations> dutyEndDtmLocProperty() {
+  QueryBuilder<DutyRecord, DateTime?, QQueryOperations>
+      dutyEndDtmLocProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'dutyEndDtmLoc');
     });
   }
 
-  QueryBuilder<Logbook, DateTime?, QQueryOperations> dutyEndDtmUtcProperty() {
+  QueryBuilder<DutyRecord, DateTime?, QQueryOperations>
+      dutyEndDtmUtcProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'dutyEndDtmUtc');
     });
   }
 
-  QueryBuilder<Logbook, DateTime?, QQueryOperations> dutyStartDtmLocProperty() {
+  QueryBuilder<DutyRecord, DateTime?, QQueryOperations>
+      dutyStartDtmLocProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'dutyStartDtmLoc');
     });
   }
 
-  QueryBuilder<Logbook, DateTime?, QQueryOperations> dutyStartDtmUtcProperty() {
+  QueryBuilder<DutyRecord, DateTime?, QQueryOperations>
+      dutyStartDtmUtcProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'dutyStartDtmUtc');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> dutyTypeProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> dutyTypeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'dutyType');
     });
   }
 
-  QueryBuilder<Logbook, DateTime?, QQueryOperations> fltDateProperty() {
+  QueryBuilder<DutyRecord, DateTime?, QQueryOperations> fltDateProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'fltDate');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> fltNoProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> fltNoProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'fltNo');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> fopErnProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> fopErnProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'fopErn');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> gdDutyCodeProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> gdDutyCodeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'gdDutyCode');
     });
   }
 
-  QueryBuilder<Logbook, DateTime?, QQueryOperations> landingGmtProperty() {
+  QueryBuilder<DutyRecord, DateTime?, QQueryOperations> landingGmtProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'landingGmt');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> noOfLandingProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> noOfLandingProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'noOfLanding');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> noOfTakeoffProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> noOfTakeoffProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'noOfTakeoff');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> sctDstnProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> sctDstnProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'sctDstn');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> sctOriProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> sctOriProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'sctOri');
     });
   }
 
-  QueryBuilder<Logbook, DateTime?, QQueryOperations> simEndDtmLocProperty() {
+  QueryBuilder<DutyRecord, DateTime?, QQueryOperations> simEndDtmLocProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'simEndDtmLoc');
     });
   }
 
-  QueryBuilder<Logbook, DateTime?, QQueryOperations> simEndDtmUtcProperty() {
+  QueryBuilder<DutyRecord, DateTime?, QQueryOperations> simEndDtmUtcProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'simEndDtmUtc');
     });
   }
 
-  QueryBuilder<Logbook, DateTime?, QQueryOperations> simStartDtmLocProperty() {
+  QueryBuilder<DutyRecord, DateTime?, QQueryOperations>
+      simStartDtmLocProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'simStartDtmLoc');
     });
   }
 
-  QueryBuilder<Logbook, DateTime?, QQueryOperations> simStartDtmUtcProperty() {
+  QueryBuilder<DutyRecord, DateTime?, QQueryOperations>
+      simStartDtmUtcProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'simStartDtmUtc');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> speclDutyCodeProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> speclDutyCodeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'speclDutyCode');
     });
   }
 
-  QueryBuilder<Logbook, String?, QQueryOperations> svcCompanyProperty() {
+  QueryBuilder<DutyRecord, String?, QQueryOperations> svcCompanyProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'svcCompany');
     });

@@ -1,9 +1,9 @@
 import 'package:isar/isar.dart';
 
-part 'logbook.g.dart';
+part 'duty_record.g.dart';
 
 @collection
-class Logbook {
+class DutyRecord {
   Id id = Isar.autoIncrement;
 
   @Index(type: IndexType.value)
