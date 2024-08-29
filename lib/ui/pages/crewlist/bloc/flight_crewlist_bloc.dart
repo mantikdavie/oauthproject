@@ -34,21 +34,14 @@ class FlightCrewlistBloc
       final ern = await readFromCache('ern');
       const isFlightCrewListSearch = 'Y';
 
-      final resp = event.dep != null
-          ? await getBaseRequest(apiEndpointFlightCrewList, {
-              'ern': ern,
-              'dutyStartDate': dutyStartDate,
-              'dutyCode': dutyCode,
-              'flightCrewList': isFlightCrewListSearch,
-              'departurePort': event.dep.toString(),
-              'arrivalPort': event.arr.toString()
-            })
-          : await getBaseRequest(apiEndpointFlightCrewList, {
-              'ern': ern,
-              'dutyStartDate': dutyStartDate,
-              'dutyCode': dutyCode,
-              'flightCrewList': isFlightCrewListSearch,
-            });
+      final resp = await getBaseRequest(apiEndpointFlightCrewList, {
+        'ern': ern,
+        'dutyStartDate': dutyStartDate,
+        'dutyCode': dutyCode,
+        'flightCrewList': isFlightCrewListSearch,
+        'departurePort': event.dep.toString(),
+        'arrivalPort': event.arr.toString()
+      });
 
       if (resp != null && resp['result']['respCode'] == "") {
         FlightCrewList flightCrewList = FlightCrewList.fromMap(resp['result']);
