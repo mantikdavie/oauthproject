@@ -129,6 +129,8 @@ class RosterListColumn extends StatelessWidget {
                     showDate: showDate,
                     onTap: (duty) => context.read<FlightCrewlistBloc>().add(
                         RequestFclEvent(
+                            dep: duty.flight.departurePort,
+                            arr: duty.flight.arrivalPort,
                             dutyCode: '${duty.flight.flightNumber}',
                             dutyStartDate: DateFormat('yyyyMMdd').format(
                                 DateTime.parse(

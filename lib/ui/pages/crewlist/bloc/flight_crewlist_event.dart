@@ -6,8 +6,11 @@ sealed class FlightCrewlistEvent {}
 final class RequestFclEvent extends FlightCrewlistEvent {
   final String dutyCode;
   final String dutyStartDate;
+  final String? dep;
+  final String? arr;
 
-  RequestFclEvent({required this.dutyCode, required this.dutyStartDate});
+  RequestFclEvent(
+      {required this.dutyCode, required this.dutyStartDate, this.dep, this.arr});
 }
 
 final class RequestSimEvent extends FlightCrewlistEvent {
