@@ -38,7 +38,9 @@ class FlightCrewlistBloc
         'ern': ern,
         'dutyStartDate': dutyStartDate,
         'dutyCode': dutyCode,
-        'flightCrewList': isFlightCrewListSearch
+        'flightCrewList': isFlightCrewListSearch,
+        'departurePort': event.dep.toString(),
+        'arrivalPort': event.arr.toString()
       });
 
       if (resp != null && resp['result']['respCode'] == "") {
