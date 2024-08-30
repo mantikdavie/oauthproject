@@ -133,14 +133,14 @@ class HomePage extends StatelessWidget {
                   onPressed: () => context.go('/roster'),
                   child: const Text('My Roster')),
               ElevatedButton(
+                  onPressed: () => context.go('/duty-records'),
+                  child: const Text('Duty Records')),
+              ElevatedButton(
                   onPressed: () => context.go('/crewlist-search'),
                   child: const Text('Crewlist')),
               ElevatedButton(
                   onPressed: () => context.go('/seniority'),
                   child: const Text('Seniority List')),
-              ElevatedButton(
-                  onPressed: () => context.go('/duty-records'),
-                  child: const Text('Duty Records')),
               const SizedBox(height: 20),
               ElevatedButton(
                   // onPressed: () =>
@@ -189,6 +189,9 @@ class HomePage extends StatelessWidget {
               ElevatedButton(
                   onPressed: () => context.go('/roster'),
                   child: const Text('My Roster')),
+              ElevatedButton(
+                  onPressed: () => context.go('/duty-records'),
+                  child: const Text('Duty Records')),
               ElevatedButton(
                   onPressed: () async => context.go('/seniority'),
                   child: const Text('Seniority List')),

@@ -17,7 +17,7 @@ class DutyRecordsBloc extends Bloc<DutyRecordsEvent, DutyRecordsState> {
   void _onLoadDutyRecords(
       LoadDutyRecords event, Emitter<DutyRecordsState> emit) async {
     emit(DutyRecordsLoading());
-    await Future.delayed(const Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 300));
     try {
       final years = await _isarService.getAvailableYears();
       final selectedYear = years.first;

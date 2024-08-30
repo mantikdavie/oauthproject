@@ -13,6 +13,8 @@ import 'package:oauthproject/ui/pages/crewlist/crewlist_result_screen.dart';
 import 'package:oauthproject/ui/pages/crewlist/flight_crewlist_screen.dart';
 import 'package:oauthproject/ui/pages/crewlist/simlist_result_screen.dart';
 import 'package:oauthproject/ui/pages/duty_records/duty_records_screen.dart';
+import 'package:oauthproject/ui/pages/duty_records/flight_details_screen.dart';
+import 'package:oauthproject/ui/pages/duty_records/sim_details_screen.dart';
 import 'package:oauthproject/ui/pages/json/json_screen.dart';
 import 'package:oauthproject/ui/pages/login/login_screen.dart';
 import 'package:oauthproject/ui/pages/login/login_web_screen.dart';
@@ -89,14 +91,14 @@ Future<GoRouter> initRouter() async {
                   path: 'flight-details',
                   builder: (context, state) {
                     final dutyRecord = state.extra as DutyRecord;
-                    return FlightDetailsScreen(dutyRecord: dutyRecord);
+                    return FlightDetailsScreen(record: dutyRecord);
                   },
                 ),
                 GoRoute(
                   path: 'sim-details',
                   builder: (context, state) {
                     final dutyRecord = state.extra as DutyRecord;
-                    return SimDetailsScreen(dutyRecord: dutyRecord);
+                    return SimDetailsScreen(record: dutyRecord);
                   },
                 ),
               ]),

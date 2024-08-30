@@ -153,7 +153,8 @@ class _DutyRecordsScreenState extends State<DutyRecordsScreen> {
                     const TextStyle(fontSize: 12, fontStyle: FontStyle.italic)),
           ],
         ),
-        onTap: () => context.push('/flight-details', extra: record),
+        onTap: () =>
+            context.push('/duty-records/flight-details', extra: record),
       );
     } else if (isSimDuty) {
       return ListTile(
@@ -162,7 +163,7 @@ class _DutyRecordsScreenState extends State<DutyRecordsScreen> {
         subtitle: Text(
             'Start: ${record.dutyStartDtmLoc?.toString().split(' ')[0] ?? 'N/A'}'),
         trailing: Text('Duty: ${record.speclDutyCode ?? 'N/A'}'),
-        onTap: () => context.push('/sim-details', extra: record),
+        onTap: () => context.push('/duty-records/sim-details', extra: record),
       );
     } else {
       return ListTile(
