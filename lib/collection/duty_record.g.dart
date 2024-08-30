@@ -237,7 +237,7 @@ const DutyRecordSchema = CollectionSchema(
     r'cxLogbookId': IndexSchema(
       id: -8419774140921474784,
       name: r'cxLogbookId',
-      unique: false,
+      unique: true,
       replace: false,
       properties: [
         IndexPropertySchema(
@@ -676,6 +676,62 @@ List<IsarLinkBase<dynamic>> _dutyRecordGetLinks(DutyRecord object) {
 
 void _dutyRecordAttach(IsarCollection<dynamic> col, Id id, DutyRecord object) {
   object.id = id;
+}
+
+extension DutyRecordByIndex on IsarCollection<DutyRecord> {
+  Future<DutyRecord?> getByCxLogbookId(String? cxLogbookId) {
+    return getByIndex(r'cxLogbookId', [cxLogbookId]);
+  }
+
+  DutyRecord? getByCxLogbookIdSync(String? cxLogbookId) {
+    return getByIndexSync(r'cxLogbookId', [cxLogbookId]);
+  }
+
+  Future<bool> deleteByCxLogbookId(String? cxLogbookId) {
+    return deleteByIndex(r'cxLogbookId', [cxLogbookId]);
+  }
+
+  bool deleteByCxLogbookIdSync(String? cxLogbookId) {
+    return deleteByIndexSync(r'cxLogbookId', [cxLogbookId]);
+  }
+
+  Future<List<DutyRecord?>> getAllByCxLogbookId(
+      List<String?> cxLogbookIdValues) {
+    final values = cxLogbookIdValues.map((e) => [e]).toList();
+    return getAllByIndex(r'cxLogbookId', values);
+  }
+
+  List<DutyRecord?> getAllByCxLogbookIdSync(List<String?> cxLogbookIdValues) {
+    final values = cxLogbookIdValues.map((e) => [e]).toList();
+    return getAllByIndexSync(r'cxLogbookId', values);
+  }
+
+  Future<int> deleteAllByCxLogbookId(List<String?> cxLogbookIdValues) {
+    final values = cxLogbookIdValues.map((e) => [e]).toList();
+    return deleteAllByIndex(r'cxLogbookId', values);
+  }
+
+  int deleteAllByCxLogbookIdSync(List<String?> cxLogbookIdValues) {
+    final values = cxLogbookIdValues.map((e) => [e]).toList();
+    return deleteAllByIndexSync(r'cxLogbookId', values);
+  }
+
+  Future<Id> putByCxLogbookId(DutyRecord object) {
+    return putByIndex(r'cxLogbookId', object);
+  }
+
+  Id putByCxLogbookIdSync(DutyRecord object, {bool saveLinks = true}) {
+    return putByIndexSync(r'cxLogbookId', object, saveLinks: saveLinks);
+  }
+
+  Future<List<Id>> putAllByCxLogbookId(List<DutyRecord> objects) {
+    return putAllByIndex(r'cxLogbookId', objects);
+  }
+
+  List<Id> putAllByCxLogbookIdSync(List<DutyRecord> objects,
+      {bool saveLinks = true}) {
+    return putAllByIndexSync(r'cxLogbookId', objects, saveLinks: saveLinks);
+  }
 }
 
 extension DutyRecordQueryWhereSort

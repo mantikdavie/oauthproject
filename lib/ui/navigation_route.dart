@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:oauthproject/collection/duty_record.dart';
 import 'package:oauthproject/main.dart';
 import 'package:oauthproject/model/flight_crew_list/crew_profile.dart';
 import 'package:oauthproject/model/flight_crew_list/flight_crew_list.dart';
@@ -11,6 +12,7 @@ import 'package:oauthproject/ui/pages/crew_roster/crew_roster_screen.dart';
 import 'package:oauthproject/ui/pages/crewlist/crewlist_result_screen.dart';
 import 'package:oauthproject/ui/pages/crewlist/flight_crewlist_screen.dart';
 import 'package:oauthproject/ui/pages/crewlist/simlist_result_screen.dart';
+import 'package:oauthproject/ui/pages/duty_records/duty_records_screen.dart';
 import 'package:oauthproject/ui/pages/json/json_screen.dart';
 import 'package:oauthproject/ui/pages/login/login_screen.dart';
 import 'package:oauthproject/ui/pages/login/login_web_screen.dart';
@@ -79,6 +81,25 @@ Future<GoRouter> initRouter() async {
               return const MyFullRosterScreen();
             },
           ),
+          GoRoute(
+              path: 'duty-records',
+              builder: (context, state) => const DutyRecordsScreen(),
+              routes: [
+                GoRoute(
+                  path: 'flight-details',
+                  builder: (context, state) {
+                    final dutyRecord = state.extra as DutyRecord;
+                    return FlightDetailsScreen(dutyRecord: dutyRecord);
+                  },
+                ),
+                GoRoute(
+                  path: 'sim-details',
+                  builder: (context, state) {
+                    final dutyRecord = state.extra as DutyRecord;
+                    return SimDetailsScreen(dutyRecord: dutyRecord);
+                  },
+                ),
+              ]),
           GoRoute(
             path: 'crew-roster',
             builder: (context, state) {

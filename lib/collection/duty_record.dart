@@ -6,7 +6,7 @@ part 'duty_record.g.dart';
 class DutyRecord {
   Id id = Isar.autoIncrement;
 
-  @Index(type: IndexType.value)
+  @Index(type: IndexType.value, unique: true)
   String? cxLogbookId;
 
   String? carrier;
