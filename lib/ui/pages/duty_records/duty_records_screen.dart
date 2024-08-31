@@ -93,7 +93,12 @@ class _DutyRecordsScreenState extends State<DutyRecordsScreen> {
                                 style: Theme.of(context).textTheme.titleMedium,
                               ),
                             ),
-                            ...filteredRecords.map(_buildDutyTile),
+                            ...filteredRecords.map((record) => Column(
+                                  children: [
+                                    _buildDutyTile(record),
+                                    const Divider(),
+                                  ],
+                                )),
                           ],
                         );
                       },
