@@ -21,9 +21,11 @@ class _DutyRecordsScreenState extends State<DutyRecordsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return BlocProvider(
       create: (context) => DutyRecordsBloc()..add(LoadDutyRecords()),
       child: Scaffold(
+        backgroundColor: theme.colorScheme.surface,
         appBar: AppBar(
           title: const Text('Duty Records'),
           actions: [
