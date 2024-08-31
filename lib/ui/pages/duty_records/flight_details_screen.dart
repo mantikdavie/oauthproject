@@ -30,6 +30,7 @@ class FlightDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
+      backgroundColor: theme.colorScheme.surface,
       appBar: AppBar(
         title:
             Text('Flight CX${record.fltNo?.replaceFirst(RegExp('^0+'), '')}'),
@@ -46,17 +47,13 @@ class FlightDetailsScreen extends StatelessWidget {
                 children: [
                   Text(
                     '${record.sctOri ?? 'N/A'} → ${record.sctDstn ?? 'N/A'}',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineMedium
+                    style: theme.textTheme.headlineMedium
                         ?.copyWith(color: Colors.white),
                   ),
                   Text(
                     DateFormat('dd MMM yyyy')
                         .format(record.fltDate ?? DateTime.now()),
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium
+                    style: theme.textTheme.titleMedium
                         ?.copyWith(color: Colors.white70),
                   ),
                 ],
@@ -84,6 +81,40 @@ class FlightDetailsScreen extends StatelessWidget {
                       _buildInfoRow('Aircraft',
                           '${record.acftTypeFr ?? 'N/A'} (${record.acftReg ?? 'N/A'})'),
                       _buildInfoRow('Commander', record.cmdrName ?? 'N/A'),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Card(
+                elevation: 4,
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Crew List',
+                        style: theme.textTheme.titleLarge,
+                      ),
+                      const SizedBox(height: 8),
+                      // if (record.crewList != null && record.crewList!.isNotEmpty)
+                      //   ListView.builder(
+                      //     shrinkWrap: true,
+                      //     physics: NeverScrollableScrollPhysics(),
+                      //     itemCount: record.crewList!.length,
+                      //     itemBuilder: (context, index) {
+                      //       final crewMember = record.crewList![index];
+                      //       return ListTile(
+                      //         title: Text(crewMember.name),
+                      //         subtitle: Text(crewMember.position),
+                      //       );
+                      //     },
+                      //   )
+                      // else
+                      const Text('No crew information available'),
                     ],
                   ),
                 ),
