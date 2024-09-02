@@ -6,7 +6,7 @@ part 'crew_list_record.g.dart';
 class CrewListRecord {
   Id id = Isar.autoIncrement;
 
-  @Index(type: IndexType.value)
+  @Index(type: IndexType.value, unique: true)
   int? dutyRecordId;
 
   @Index(type: IndexType.value)

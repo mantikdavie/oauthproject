@@ -69,7 +69,7 @@ const CrewListRecordSchema = CollectionSchema(
     r'dutyRecordId': IndexSchema(
       id: 4230248092622069486,
       name: r'dutyRecordId',
-      unique: false,
+      unique: true,
       replace: false,
       properties: [
         IndexPropertySchema(
@@ -278,6 +278,63 @@ List<IsarLinkBase<dynamic>> _crewListRecordGetLinks(CrewListRecord object) {
 void _crewListRecordAttach(
     IsarCollection<dynamic> col, Id id, CrewListRecord object) {
   object.id = id;
+}
+
+extension CrewListRecordByIndex on IsarCollection<CrewListRecord> {
+  Future<CrewListRecord?> getByDutyRecordId(int? dutyRecordId) {
+    return getByIndex(r'dutyRecordId', [dutyRecordId]);
+  }
+
+  CrewListRecord? getByDutyRecordIdSync(int? dutyRecordId) {
+    return getByIndexSync(r'dutyRecordId', [dutyRecordId]);
+  }
+
+  Future<bool> deleteByDutyRecordId(int? dutyRecordId) {
+    return deleteByIndex(r'dutyRecordId', [dutyRecordId]);
+  }
+
+  bool deleteByDutyRecordIdSync(int? dutyRecordId) {
+    return deleteByIndexSync(r'dutyRecordId', [dutyRecordId]);
+  }
+
+  Future<List<CrewListRecord?>> getAllByDutyRecordId(
+      List<int?> dutyRecordIdValues) {
+    final values = dutyRecordIdValues.map((e) => [e]).toList();
+    return getAllByIndex(r'dutyRecordId', values);
+  }
+
+  List<CrewListRecord?> getAllByDutyRecordIdSync(
+      List<int?> dutyRecordIdValues) {
+    final values = dutyRecordIdValues.map((e) => [e]).toList();
+    return getAllByIndexSync(r'dutyRecordId', values);
+  }
+
+  Future<int> deleteAllByDutyRecordId(List<int?> dutyRecordIdValues) {
+    final values = dutyRecordIdValues.map((e) => [e]).toList();
+    return deleteAllByIndex(r'dutyRecordId', values);
+  }
+
+  int deleteAllByDutyRecordIdSync(List<int?> dutyRecordIdValues) {
+    final values = dutyRecordIdValues.map((e) => [e]).toList();
+    return deleteAllByIndexSync(r'dutyRecordId', values);
+  }
+
+  Future<Id> putByDutyRecordId(CrewListRecord object) {
+    return putByIndex(r'dutyRecordId', object);
+  }
+
+  Id putByDutyRecordIdSync(CrewListRecord object, {bool saveLinks = true}) {
+    return putByIndexSync(r'dutyRecordId', object, saveLinks: saveLinks);
+  }
+
+  Future<List<Id>> putAllByDutyRecordId(List<CrewListRecord> objects) {
+    return putAllByIndex(r'dutyRecordId', objects);
+  }
+
+  List<Id> putAllByDutyRecordIdSync(List<CrewListRecord> objects,
+      {bool saveLinks = true}) {
+    return putAllByIndexSync(r'dutyRecordId', objects, saveLinks: saveLinks);
+  }
 }
 
 extension CrewListRecordQueryWhereSort

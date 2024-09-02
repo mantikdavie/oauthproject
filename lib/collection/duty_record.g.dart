@@ -92,138 +92,143 @@ const DutyRecordSchema = CollectionSchema(
       name: r'cmdrName',
       type: IsarType.string,
     ),
-    r'crwBase': PropertySchema(
+    r'crewListRecordId': PropertySchema(
       id: 15,
+      name: r'crewListRecordId',
+      type: IsarType.string,
+    ),
+    r'crwBase': PropertySchema(
+      id: 16,
       name: r'crwBase',
       type: IsarType.string,
     ),
     r'crwCatg': PropertySchema(
-      id: 16,
+      id: 17,
       name: r'crwCatg',
       type: IsarType.string,
     ),
     r'crwCatgSenrty': PropertySchema(
-      id: 17,
+      id: 18,
       name: r'crwCatgSenrty',
       type: IsarType.string,
     ),
     r'crwQualSenrty': PropertySchema(
-      id: 18,
+      id: 19,
       name: r'crwQualSenrty',
       type: IsarType.string,
     ),
     r'cxLogbookId': PropertySchema(
-      id: 19,
+      id: 20,
       name: r'cxLogbookId',
       type: IsarType.string,
     ),
     r'deptrDtmLoc': PropertySchema(
-      id: 20,
+      id: 21,
       name: r'deptrDtmLoc',
       type: IsarType.dateTime,
     ),
     r'deptrDtmUtc': PropertySchema(
-      id: 21,
+      id: 22,
       name: r'deptrDtmUtc',
       type: IsarType.dateTime,
     ),
     r'dutyEndDtmLoc': PropertySchema(
-      id: 22,
+      id: 23,
       name: r'dutyEndDtmLoc',
       type: IsarType.dateTime,
     ),
     r'dutyEndDtmUtc': PropertySchema(
-      id: 23,
+      id: 24,
       name: r'dutyEndDtmUtc',
       type: IsarType.dateTime,
     ),
     r'dutyStartDtmLoc': PropertySchema(
-      id: 24,
+      id: 25,
       name: r'dutyStartDtmLoc',
       type: IsarType.dateTime,
     ),
     r'dutyStartDtmUtc': PropertySchema(
-      id: 25,
+      id: 26,
       name: r'dutyStartDtmUtc',
       type: IsarType.dateTime,
     ),
     r'dutyType': PropertySchema(
-      id: 26,
+      id: 27,
       name: r'dutyType',
       type: IsarType.string,
     ),
     r'fltDate': PropertySchema(
-      id: 27,
+      id: 28,
       name: r'fltDate',
       type: IsarType.dateTime,
     ),
     r'fltNo': PropertySchema(
-      id: 28,
+      id: 29,
       name: r'fltNo',
       type: IsarType.string,
     ),
     r'fopErn': PropertySchema(
-      id: 29,
+      id: 30,
       name: r'fopErn',
       type: IsarType.string,
     ),
     r'gdDutyCode': PropertySchema(
-      id: 30,
+      id: 31,
       name: r'gdDutyCode',
       type: IsarType.string,
     ),
     r'landingGmt': PropertySchema(
-      id: 31,
+      id: 32,
       name: r'landingGmt',
       type: IsarType.dateTime,
     ),
     r'noOfLanding': PropertySchema(
-      id: 32,
+      id: 33,
       name: r'noOfLanding',
       type: IsarType.string,
     ),
     r'noOfTakeoff': PropertySchema(
-      id: 33,
+      id: 34,
       name: r'noOfTakeoff',
       type: IsarType.string,
     ),
     r'sctDstn': PropertySchema(
-      id: 34,
+      id: 35,
       name: r'sctDstn',
       type: IsarType.string,
     ),
     r'sctOri': PropertySchema(
-      id: 35,
+      id: 36,
       name: r'sctOri',
       type: IsarType.string,
     ),
     r'simEndDtmLoc': PropertySchema(
-      id: 36,
+      id: 37,
       name: r'simEndDtmLoc',
       type: IsarType.dateTime,
     ),
     r'simEndDtmUtc': PropertySchema(
-      id: 37,
+      id: 38,
       name: r'simEndDtmUtc',
       type: IsarType.dateTime,
     ),
     r'simStartDtmLoc': PropertySchema(
-      id: 38,
+      id: 39,
       name: r'simStartDtmLoc',
       type: IsarType.dateTime,
     ),
     r'simStartDtmUtc': PropertySchema(
-      id: 39,
+      id: 40,
       name: r'simStartDtmUtc',
       type: IsarType.dateTime,
     ),
     r'speclDutyCode': PropertySchema(
-      id: 40,
+      id: 41,
       name: r'speclDutyCode',
       type: IsarType.string,
     ),
     r'svcCompany': PropertySchema(
-      id: 41,
+      id: 42,
       name: r'svcCompany',
       type: IsarType.string,
     )
@@ -375,6 +380,12 @@ int _dutyRecordEstimateSize(
     }
   }
   {
+    final value = object.crewListRecordId;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
+  {
     final value = object.crwBase;
     if (value != null) {
       bytesCount += 3 + value.length * 3;
@@ -488,33 +499,34 @@ void _dutyRecordSerialize(
   writer.writeString(offsets[12], object.carrier);
   writer.writeString(offsets[13], object.catg);
   writer.writeString(offsets[14], object.cmdrName);
-  writer.writeString(offsets[15], object.crwBase);
-  writer.writeString(offsets[16], object.crwCatg);
-  writer.writeString(offsets[17], object.crwCatgSenrty);
-  writer.writeString(offsets[18], object.crwQualSenrty);
-  writer.writeString(offsets[19], object.cxLogbookId);
-  writer.writeDateTime(offsets[20], object.deptrDtmLoc);
-  writer.writeDateTime(offsets[21], object.deptrDtmUtc);
-  writer.writeDateTime(offsets[22], object.dutyEndDtmLoc);
-  writer.writeDateTime(offsets[23], object.dutyEndDtmUtc);
-  writer.writeDateTime(offsets[24], object.dutyStartDtmLoc);
-  writer.writeDateTime(offsets[25], object.dutyStartDtmUtc);
-  writer.writeString(offsets[26], object.dutyType);
-  writer.writeDateTime(offsets[27], object.fltDate);
-  writer.writeString(offsets[28], object.fltNo);
-  writer.writeString(offsets[29], object.fopErn);
-  writer.writeString(offsets[30], object.gdDutyCode);
-  writer.writeDateTime(offsets[31], object.landingGmt);
-  writer.writeString(offsets[32], object.noOfLanding);
-  writer.writeString(offsets[33], object.noOfTakeoff);
-  writer.writeString(offsets[34], object.sctDstn);
-  writer.writeString(offsets[35], object.sctOri);
-  writer.writeDateTime(offsets[36], object.simEndDtmLoc);
-  writer.writeDateTime(offsets[37], object.simEndDtmUtc);
-  writer.writeDateTime(offsets[38], object.simStartDtmLoc);
-  writer.writeDateTime(offsets[39], object.simStartDtmUtc);
-  writer.writeString(offsets[40], object.speclDutyCode);
-  writer.writeString(offsets[41], object.svcCompany);
+  writer.writeString(offsets[15], object.crewListRecordId);
+  writer.writeString(offsets[16], object.crwBase);
+  writer.writeString(offsets[17], object.crwCatg);
+  writer.writeString(offsets[18], object.crwCatgSenrty);
+  writer.writeString(offsets[19], object.crwQualSenrty);
+  writer.writeString(offsets[20], object.cxLogbookId);
+  writer.writeDateTime(offsets[21], object.deptrDtmLoc);
+  writer.writeDateTime(offsets[22], object.deptrDtmUtc);
+  writer.writeDateTime(offsets[23], object.dutyEndDtmLoc);
+  writer.writeDateTime(offsets[24], object.dutyEndDtmUtc);
+  writer.writeDateTime(offsets[25], object.dutyStartDtmLoc);
+  writer.writeDateTime(offsets[26], object.dutyStartDtmUtc);
+  writer.writeString(offsets[27], object.dutyType);
+  writer.writeDateTime(offsets[28], object.fltDate);
+  writer.writeString(offsets[29], object.fltNo);
+  writer.writeString(offsets[30], object.fopErn);
+  writer.writeString(offsets[31], object.gdDutyCode);
+  writer.writeDateTime(offsets[32], object.landingGmt);
+  writer.writeString(offsets[33], object.noOfLanding);
+  writer.writeString(offsets[34], object.noOfTakeoff);
+  writer.writeString(offsets[35], object.sctDstn);
+  writer.writeString(offsets[36], object.sctOri);
+  writer.writeDateTime(offsets[37], object.simEndDtmLoc);
+  writer.writeDateTime(offsets[38], object.simEndDtmUtc);
+  writer.writeDateTime(offsets[39], object.simStartDtmLoc);
+  writer.writeDateTime(offsets[40], object.simStartDtmUtc);
+  writer.writeString(offsets[41], object.speclDutyCode);
+  writer.writeString(offsets[42], object.svcCompany);
 }
 
 DutyRecord _dutyRecordDeserialize(
@@ -539,34 +551,35 @@ DutyRecord _dutyRecordDeserialize(
   object.carrier = reader.readStringOrNull(offsets[12]);
   object.catg = reader.readStringOrNull(offsets[13]);
   object.cmdrName = reader.readStringOrNull(offsets[14]);
-  object.crwBase = reader.readStringOrNull(offsets[15]);
-  object.crwCatg = reader.readStringOrNull(offsets[16]);
-  object.crwCatgSenrty = reader.readStringOrNull(offsets[17]);
-  object.crwQualSenrty = reader.readStringOrNull(offsets[18]);
-  object.cxLogbookId = reader.readStringOrNull(offsets[19]);
-  object.deptrDtmLoc = reader.readDateTimeOrNull(offsets[20]);
-  object.deptrDtmUtc = reader.readDateTimeOrNull(offsets[21]);
-  object.dutyEndDtmLoc = reader.readDateTimeOrNull(offsets[22]);
-  object.dutyEndDtmUtc = reader.readDateTimeOrNull(offsets[23]);
-  object.dutyStartDtmLoc = reader.readDateTimeOrNull(offsets[24]);
-  object.dutyStartDtmUtc = reader.readDateTimeOrNull(offsets[25]);
-  object.dutyType = reader.readStringOrNull(offsets[26]);
-  object.fltDate = reader.readDateTimeOrNull(offsets[27]);
-  object.fltNo = reader.readStringOrNull(offsets[28]);
-  object.fopErn = reader.readStringOrNull(offsets[29]);
-  object.gdDutyCode = reader.readStringOrNull(offsets[30]);
+  object.crewListRecordId = reader.readStringOrNull(offsets[15]);
+  object.crwBase = reader.readStringOrNull(offsets[16]);
+  object.crwCatg = reader.readStringOrNull(offsets[17]);
+  object.crwCatgSenrty = reader.readStringOrNull(offsets[18]);
+  object.crwQualSenrty = reader.readStringOrNull(offsets[19]);
+  object.cxLogbookId = reader.readStringOrNull(offsets[20]);
+  object.deptrDtmLoc = reader.readDateTimeOrNull(offsets[21]);
+  object.deptrDtmUtc = reader.readDateTimeOrNull(offsets[22]);
+  object.dutyEndDtmLoc = reader.readDateTimeOrNull(offsets[23]);
+  object.dutyEndDtmUtc = reader.readDateTimeOrNull(offsets[24]);
+  object.dutyStartDtmLoc = reader.readDateTimeOrNull(offsets[25]);
+  object.dutyStartDtmUtc = reader.readDateTimeOrNull(offsets[26]);
+  object.dutyType = reader.readStringOrNull(offsets[27]);
+  object.fltDate = reader.readDateTimeOrNull(offsets[28]);
+  object.fltNo = reader.readStringOrNull(offsets[29]);
+  object.fopErn = reader.readStringOrNull(offsets[30]);
+  object.gdDutyCode = reader.readStringOrNull(offsets[31]);
   object.id = id;
-  object.landingGmt = reader.readDateTimeOrNull(offsets[31]);
-  object.noOfLanding = reader.readStringOrNull(offsets[32]);
-  object.noOfTakeoff = reader.readStringOrNull(offsets[33]);
-  object.sctDstn = reader.readStringOrNull(offsets[34]);
-  object.sctOri = reader.readStringOrNull(offsets[35]);
-  object.simEndDtmLoc = reader.readDateTimeOrNull(offsets[36]);
-  object.simEndDtmUtc = reader.readDateTimeOrNull(offsets[37]);
-  object.simStartDtmLoc = reader.readDateTimeOrNull(offsets[38]);
-  object.simStartDtmUtc = reader.readDateTimeOrNull(offsets[39]);
-  object.speclDutyCode = reader.readStringOrNull(offsets[40]);
-  object.svcCompany = reader.readStringOrNull(offsets[41]);
+  object.landingGmt = reader.readDateTimeOrNull(offsets[32]);
+  object.noOfLanding = reader.readStringOrNull(offsets[33]);
+  object.noOfTakeoff = reader.readStringOrNull(offsets[34]);
+  object.sctDstn = reader.readStringOrNull(offsets[35]);
+  object.sctOri = reader.readStringOrNull(offsets[36]);
+  object.simEndDtmLoc = reader.readDateTimeOrNull(offsets[37]);
+  object.simEndDtmUtc = reader.readDateTimeOrNull(offsets[38]);
+  object.simStartDtmLoc = reader.readDateTimeOrNull(offsets[39]);
+  object.simStartDtmUtc = reader.readDateTimeOrNull(offsets[40]);
+  object.speclDutyCode = reader.readStringOrNull(offsets[41]);
+  object.svcCompany = reader.readStringOrNull(offsets[42]);
   return object;
 }
 
@@ -618,7 +631,7 @@ P _dutyRecordDeserializeProp<P>(
     case 19:
       return (reader.readStringOrNull(offset)) as P;
     case 20:
-      return (reader.readDateTimeOrNull(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 21:
       return (reader.readDateTimeOrNull(offset)) as P;
     case 22:
@@ -630,19 +643,19 @@ P _dutyRecordDeserializeProp<P>(
     case 25:
       return (reader.readDateTimeOrNull(offset)) as P;
     case 26:
-      return (reader.readStringOrNull(offset)) as P;
-    case 27:
       return (reader.readDateTimeOrNull(offset)) as P;
-    case 28:
+    case 27:
       return (reader.readStringOrNull(offset)) as P;
+    case 28:
+      return (reader.readDateTimeOrNull(offset)) as P;
     case 29:
       return (reader.readStringOrNull(offset)) as P;
     case 30:
       return (reader.readStringOrNull(offset)) as P;
     case 31:
-      return (reader.readDateTimeOrNull(offset)) as P;
-    case 32:
       return (reader.readStringOrNull(offset)) as P;
+    case 32:
+      return (reader.readDateTimeOrNull(offset)) as P;
     case 33:
       return (reader.readStringOrNull(offset)) as P;
     case 34:
@@ -650,7 +663,7 @@ P _dutyRecordDeserializeProp<P>(
     case 35:
       return (reader.readStringOrNull(offset)) as P;
     case 36:
-      return (reader.readDateTimeOrNull(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 37:
       return (reader.readDateTimeOrNull(offset)) as P;
     case 38:
@@ -658,8 +671,10 @@ P _dutyRecordDeserializeProp<P>(
     case 39:
       return (reader.readDateTimeOrNull(offset)) as P;
     case 40:
-      return (reader.readStringOrNull(offset)) as P;
+      return (reader.readDateTimeOrNull(offset)) as P;
     case 41:
+      return (reader.readStringOrNull(offset)) as P;
+    case 42:
       return (reader.readStringOrNull(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -3422,6 +3437,160 @@ extension DutyRecordQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'cmdrName',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crewListRecordIdIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'crewListRecordId',
+      ));
+    });
+  }
+
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crewListRecordIdIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'crewListRecordId',
+      ));
+    });
+  }
+
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crewListRecordIdEqualTo(
+    String? value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'crewListRecordId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crewListRecordIdGreaterThan(
+    String? value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'crewListRecordId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crewListRecordIdLessThan(
+    String? value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'crewListRecordId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crewListRecordIdBetween(
+    String? lower,
+    String? upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'crewListRecordId',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crewListRecordIdStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'crewListRecordId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crewListRecordIdEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'crewListRecordId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crewListRecordIdContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'crewListRecordId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crewListRecordIdMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'crewListRecordId',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crewListRecordIdIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'crewListRecordId',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<DutyRecord, DutyRecord, QAfterFilterCondition>
+      crewListRecordIdIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'crewListRecordId',
         value: '',
       ));
     });
@@ -6826,6 +6995,19 @@ extension DutyRecordQuerySortBy
     });
   }
 
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByCrewListRecordId() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'crewListRecordId', Sort.asc);
+    });
+  }
+
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy>
+      sortByCrewListRecordIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'crewListRecordId', Sort.desc);
+    });
+  }
+
   QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> sortByCrwBase() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'crwBase', Sort.asc);
@@ -7339,6 +7521,19 @@ extension DutyRecordQuerySortThenBy
     });
   }
 
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByCrewListRecordId() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'crewListRecordId', Sort.asc);
+    });
+  }
+
+  QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy>
+      thenByCrewListRecordIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'crewListRecordId', Sort.desc);
+    });
+  }
+
   QueryBuilder<DutyRecord, DutyRecord, QAfterSortBy> thenByCrwBase() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'crwBase', Sort.asc);
@@ -7782,6 +7977,14 @@ extension DutyRecordQueryWhereDistinct
     });
   }
 
+  QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByCrewListRecordId(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'crewListRecordId',
+          caseSensitive: caseSensitive);
+    });
+  }
+
   QueryBuilder<DutyRecord, DutyRecord, QDistinct> distinctByCrwBase(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -8060,6 +8263,13 @@ extension DutyRecordQueryProperty
   QueryBuilder<DutyRecord, String?, QQueryOperations> cmdrNameProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'cmdrName');
+    });
+  }
+
+  QueryBuilder<DutyRecord, String?, QQueryOperations>
+      crewListRecordIdProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'crewListRecordId');
     });
   }
 

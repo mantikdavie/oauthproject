@@ -13,6 +13,7 @@ class DutyRecord {
   @Index(type: IndexType.value)
   DateTime? fltDate;
   String? fltNo;
+  String? crewListRecordId;
   String? fopErn;
   String? sctDstn;
   String? sctOri;
