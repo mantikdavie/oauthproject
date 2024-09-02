@@ -3,7 +3,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:oauthproject/model/self_profile/self_profile.dart';
+import 'package:oauthproject/ui/pages/crew_roster/bloc/crew_roster_bloc.dart';
 import 'package:oauthproject/ui/pages/profile/bloc/self_profile_bloc.dart';
 import 'package:oauthproject/ui/widgets/auth_status_icon_widget.dart';
 import 'package:oauthproject/utility/api.dart';
@@ -14,28 +16,35 @@ class SelfProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return BlocListener<CrewRosterBloc, CrewRosterState>(
+      listener: (context, state) {
+        if (state is CrewRosterLoaded) {
+          context.push('/crew-roster', extra: state.rosters);
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.surface,
+          actions: const [AuthStatusIcon()],
+        ),
         backgroundColor: Theme.of(context).colorScheme.surface,
-        actions: const [AuthStatusIcon()],
-      ),
-      backgroundColor: Theme.of(context).colorScheme.surface,
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: BlocBuilder<SelfProfileBloc, SelfProfileState>(
-          builder: (context, state) {
-            if (state is ProfileInitial) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (state is ProfileLoading) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (state is ProfileError) {
-              return Center(child: Text('Error Message: \n${state.message}'));
-            } else if (state is ProfileLoaded) {
-              return ProfileContent(profile: state.crewProfile);
-            } else {
-              return const Center(child: Text('Unknown Error '));
-            }
-          },
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: BlocBuilder<SelfProfileBloc, SelfProfileState>(
+            builder: (context, state) {
+              if (state is ProfileInitial) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (state is ProfileLoading) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (state is ProfileError) {
+                return Center(child: Text('Error Message: \n${state.message}'));
+              } else if (state is ProfileLoaded) {
+                return ProfileContent(profile: state.crewProfile);
+              } else {
+                return const Center(child: Text('Unknown Error '));
+              }
+            },
+          ),
         ),
       ),
     );
@@ -168,6 +177,17 @@ class ProfileContent extends StatelessWidget {
       children: [
         ProfileHeader(profile: profile),
         const SizedBox(height: 16),
+        ElevatedButton(
+          onPressed: () {
+            context.read<CrewRosterBloc>().add(
+                  RequestPublicRoster(
+                    crewErn: profile.currentErn.toString(),
+                  ),
+                );
+          },
+          child: const Text("Get My Roster"),
+        ),
+        const SizedBox(height: 16),
         PersonalInfoSection(profile: profile),
         const SizedBox(height: 16),
         ProfessionalInfoSection(profile: profile),
@@ -176,7 +196,7 @@ class ProfileContent extends StatelessWidget {
         const SizedBox(height: 16),
         EmploymentDetailsSection(profile: profile),
         const SizedBox(height: 16),
-        QualificationsSection(profile: profile)
+        QualificationsSection(profile: profile),
       ],
     );
   }

@@ -2,15 +2,12 @@ import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:oauthproject/model/flight_crew_list/crew_profile.dart';
-import 'package:oauthproject/model/public_roster_crew_results/public_roster_crew_results.dart';
 import 'package:oauthproject/ui/pages/crew_roster/bloc/crew_roster_bloc.dart';
 import 'package:oauthproject/ui/widgets/auth_status_icon_widget.dart';
 import 'package:oauthproject/utility/api.dart';
-import 'package:oauthproject/utility/local_storage.dart';
 
 class CrewProfileScreen extends StatefulWidget {
   // final FlightCrew flightCrew;
@@ -171,40 +168,4 @@ class CrewProfileItemsWidget extends StatelessWidget {
   }
 }
 
-Future<double> calculateTotalBlockHours(PublicRosterCrewResults rosters) async {
-  List<double> blockHours = [];
 
-  rosters.dutyList?.forEach((duty) {
-    if (duty.flight != null) {
-      blockHours.add(duty.flight!.blockHours!.toDouble());
-    }
-  });
-
-  debugPrint(blockHours.toString());
-
-  final double totalBlockHours;
-  if (blockHours.isNotEmpty) {
-    totalBlockHours = blockHours.reduce((value, element) => value + element);
-  } else {
-    totalBlockHours = 0;
-  }
-  return totalBlockHours;
-}
-
-Future<double> getPublicRosterApi({required String crewErn}) async {
-  final selfErn = await readFromCache('ern');
-  final respJson = await getBaseRequest(
-      'cls-api/v1/duties', {'ern': selfErn, 'publicRosterErn': crewErn});
-  // final resp =
-  //     await rootBundle.loadString("assets/mockup/public_roster_01.json");
-  // final respJson = json.decode(resp);
-  final PublicRosterCrewResults rosters =
-      PublicRosterCrewResults.fromMap(respJson);
-
-  if (respJson['status'] == "ok") {
-    return await calculateTotalBlockHours(rosters);
-  } else {
-    debugPrint(respJson['errorMessage']);
-    return -1.0;
-  }
-}
