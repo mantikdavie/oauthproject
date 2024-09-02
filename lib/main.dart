@@ -7,9 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:oauthproject/bloc/auth/auth_status_bloc.dart';
-import 'package:oauthproject/collection/collection.dart';
 import 'package:oauthproject/firebase_options.dart';
 import 'package:oauthproject/ui/navigation_route.dart';
 import 'package:oauthproject/ui/pages/crew_roster/bloc/crew_roster_bloc.dart';
@@ -17,9 +15,7 @@ import 'package:oauthproject/ui/pages/crewlist/bloc/flight_crewlist_bloc.dart';
 import 'package:oauthproject/ui/pages/profile/bloc/crew_profile_bloc.dart';
 import 'package:oauthproject/ui/pages/profile/bloc/self_profile_bloc.dart';
 import 'package:oauthproject/ui/widgets/auth_status_icon_widget.dart';
-import 'package:oauthproject/utility/api.dart';
 import 'package:oauthproject/utility/isar_service.dart';
-import 'package:oauthproject/utility/local_storage.dart';
 import 'package:oauthproject/utility/service_locator.dart';
 
 Future<void> main() async {
@@ -143,11 +139,11 @@ class HomePage extends StatelessWidget {
                   child: const Text('Seniority List')),
               const SizedBox(height: 20),
               ElevatedButton(
-                  // onPressed: () =>
-                  //     context.read<AuthStatusBloc>().add(AuthStatusVoidToken()),
-                  onPressed: () async {
-                    await sl<IsarService>().addPseudoRecord();
-                  },
+                  onPressed: () =>
+                      context.read<AuthStatusBloc>().add(AuthStatusVoidToken()),
+                  // onPressed: () async {
+                  //   await sl<IsarService>().addPseudoRecord();
+                  // },
                   child: const Text('expire the id token')),
               ElevatedButton(
                   onPressed: () async {
