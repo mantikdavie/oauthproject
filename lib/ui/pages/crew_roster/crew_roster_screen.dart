@@ -400,6 +400,9 @@ class CrewFlight implements FlightInterface {
       isLastDutyItem: flight.isLastDutyItem ?? false,
     );
   }
+
+  @override
+  String? get commanderName => null;
 }
 
 

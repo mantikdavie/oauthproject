@@ -54,6 +54,7 @@ abstract class FlightInterface {
 
   FlightInterface.fromJson(Map<String, dynamic> json);
   FlightInterface.fromFlight(dynamic flight);
+  String? get commanderName;
 }
 
 class FlightDutyContainer extends StatelessWidget {
@@ -161,11 +162,10 @@ class FlightDutyContainer extends StatelessWidget {
                           'Block: ${duty.flight.blockHours?.toStringAsFixed(2)} hrs',
                           style: Theme.of(context).textTheme.bodyMedium,
                         ),
-                        if (duty.specialDutyCode != null &&
-                            duty.specialDutyCode!.isNotEmpty)
+                        if (duty.flight.commanderName != null)
                           Expanded(
                             child: Text(
-                              'Special: ${duty.specialDutyCode!.join(", ")}',
+                              '${duty.flight.commanderName}',
                               style: Theme.of(context).textTheme.bodySmall,
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.end,

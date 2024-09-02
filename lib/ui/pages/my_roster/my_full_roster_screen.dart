@@ -400,8 +400,14 @@ class SelfFlight implements FlightInterface {
       actEndTmLoc: flight.actEndTmLoc ?? "",
     );
   }
-}
 
+  @override
+  String? get commanderName {
+    return crews
+        .firstWhere((crew) => crew.commander == 'Y', orElse: () => Crew())
+        .crewName;
+  }
+}
 // class FlightDutyContainer extends StatelessWidget {
 //   final DutyList duty;
 //   final bool showDate;
