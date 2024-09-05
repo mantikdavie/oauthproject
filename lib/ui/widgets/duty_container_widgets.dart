@@ -113,18 +113,32 @@ class FlightDutyContainer extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          '${duty.flight.carrierCode} ${duty.flight.flightNumber}',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleLarge
-                              ?.copyWith(fontWeight: FontWeight.bold),
+                        Expanded(
+                          flex: 2,
+                          child: Text(
+                            '${duty.flight.carrierCode} ${duty.flight.flightNumber}',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge
+                                ?.copyWith(fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.start,
+                          ),
                         ),
-                        Text(
-                          '${duty.flight.aircraftType}',
-                          style: Theme.of(context).textTheme.titleMedium,
+                        Expanded(
+                          flex: 4,
+                          child: Text(formatTime(duty.dutyStartLocal),
+                              style: Theme.of(context).textTheme.titleSmall,
+                              textAlign: TextAlign.center),
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: Text(
+                            '${duty.flight.aircraftType}',
+                            style: Theme.of(context).textTheme.titleMedium,
+                            textAlign: TextAlign.right,
+                          ),
                         ),
                       ],
                     ),
@@ -156,16 +170,41 @@ class FlightDutyContainer extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text(
-                          'Block: ${duty.flight.blockHours?.toStringAsFixed(2)} hrs',
-                          style: Theme.of(context).textTheme.bodyMedium,
+                        Expanded(
+                          flex: 2,
+                          child: Text(
+                            'Block: ${duty.flight.blockHours?.toStringAsFixed(2)}',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
                         ),
+                        if (duty.specialDutyCode != null &&
+                            duty.specialDutyCode!.isNotEmpty)
+                          Expanded(
+                            flex: 3,
+                            child: Text(
+                              duty.specialDutyCode!.join(", "),
+                              style: Theme.of(context).textTheme.bodySmall,
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
                         if (duty.flight.commanderName != null)
                           Expanded(
+                            flex: 2,
                             child: Text(
                               '${duty.flight.commanderName}',
+                              style: Theme.of(context).textTheme.bodySmall,
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.end,
+                            ),
+                          )
+                        else
+                          Expanded(
+                            flex: 2,
+                            child: Text(
+                              '',
                               style: Theme.of(context).textTheme.bodySmall,
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.end,
