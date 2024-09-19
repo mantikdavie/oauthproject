@@ -116,7 +116,7 @@ class FlightDutyContainer extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Expanded(
-                          flex: 2,
+                          flex: 1,
                           child: Text(
                             '${duty.flight.carrierCode} ${duty.flight.flightNumber}',
                             style: Theme.of(context)
@@ -127,13 +127,13 @@ class FlightDutyContainer extends StatelessWidget {
                           ),
                         ),
                         Expanded(
-                          flex: 4,
+                          flex: 1,
                           child: Text(formatTime(duty.dutyStartLocal),
                               style: Theme.of(context).textTheme.titleSmall,
                               textAlign: TextAlign.center),
                         ),
                         Expanded(
-                          flex: 2,
+                          flex: 1,
                           child: Text(
                             '${duty.flight.aircraftType}',
                             style: Theme.of(context).textTheme.titleMedium,
