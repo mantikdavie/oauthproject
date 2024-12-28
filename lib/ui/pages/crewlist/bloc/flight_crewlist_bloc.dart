@@ -9,6 +9,7 @@ import 'package:oauthproject/model/flight_crew_list/flight_crew_list.dart';
 import 'package:oauthproject/model/sim_crew_list/sim_crew_list.dart';
 import 'package:oauthproject/utility/api.dart';
 import 'package:oauthproject/utility/constants.dart';
+import 'package:oauthproject/utility/functions/fetch_crewlist.dart';
 import 'package:oauthproject/utility/local_storage.dart';
 
 part 'flight_crewlist_event.dart';
@@ -31,24 +32,12 @@ class FlightCrewlistBloc
     try {
       final dutyCode = event.dutyCode;
       final dutyStartDate = event.dutyStartDate;
-      final ern = await readFromCache('ern');
-      const isFlightCrewListSearch = 'Y';
 
-      final resp = event.dep != null
-          ? await getBaseRequest(apiEndpointFlightCrewList, {
-              'ern': ern,
-              'dutyStartDate': dutyStartDate,
-              'dutyCode': dutyCode,
-              'flightCrewList': isFlightCrewListSearch,
-              'departurePort': event.dep.toString(),
-              'arrivalPort': event.arr.toString()
-            })
-          : await getBaseRequest(apiEndpointFlightCrewList, {
-              'ern': ern,
-              'dutyStartDate': dutyStartDate,
-              'dutyCode': dutyCode,
-              'flightCrewList': isFlightCrewListSearch,
-            });
+      final resp = await fetchFiightCrewList(
+          dutyStartDate: dutyStartDate.toString(),
+          dutyCode: dutyCode.toString(),
+          dep: event.dep,
+          arr: event.arr);
 
       if (resp != null && resp['result']['respCode'] == "") {
         FlightCrewList flightCrewList = FlightCrewList.fromMap(resp['result']);
@@ -82,15 +71,10 @@ class FlightCrewlistBloc
     try {
       final dutyCode = event.dutyCode;
       final dutyStartDate = event.dutyStartDate;
-      final ern = await readFromCache('ern');
-      const isFlightCrewListSearch = 'N';
 
-      final resp = await getBaseRequest(apiEndpointFlightCrewList, {
-        'ern': ern,
-        'dutyStartDate': dutyStartDate,
-        'dutyCode': dutyCode,
-        'flightCrewList': isFlightCrewListSearch
-      });
+      final resp = await fetchSimCrewList(
+          dutyStartDate: dutyStartDate.toString(),
+          dutyCode: dutyCode.toString());
 
       if (resp != null && resp['result']['respCode'] == "") {
         SimCrewList simCrewList = SimCrewList.fromMap(resp['result']);
