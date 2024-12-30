@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oauthproject/collection/duty_record.dart';
 import 'package:intl/intl.dart';
+import 'package:oauthproject/ui/pages/duty_records/bloc/flight_detail_crewlist_bloc.dart';
 
 class FlightDetailsScreen extends StatelessWidget {
   final DutyRecord record;
@@ -29,103 +31,148 @@ class FlightDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Scaffold(
-      backgroundColor: theme.colorScheme.surface,
-      appBar: AppBar(
-        title:
-            Text('Flight CX${record.fltNo?.replaceFirst(RegExp('^0+'), '')}'),
-        backgroundColor: theme.primaryColor,
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(16),
-              color: theme.primaryColor,
-              child: Column(
-                children: [
-                  Text(
-                    '${record.sctOri ?? 'N/A'} → ${record.sctDstn ?? 'N/A'}',
-                    style: theme.textTheme.headlineMedium
-                        ?.copyWith(color: Colors.white),
-                  ),
-                  Text(
-                    DateFormat('dd MMM yyyy')
-                        .format(record.fltDate ?? DateTime.now()),
-                    style: theme.textTheme.titleMedium
-                        ?.copyWith(color: Colors.white70),
-                  ),
-                ],
+    final dutyStartDate = record.fltDate;
+    final dutyCode =
+        record.fltNo.toString(); // Add this line to define dutyCode
+    final formattedDutyStartDate =
+        DateFormat('yyyyMMdd').format(dutyStartDate ?? DateTime.now());
+    return BlocProvider(
+      create: (context) => FlightDetailCrewlistBloc()
+        ..add(FetchFlightDetailCrewlist(
+            dutyStartDate: formattedDutyStartDate, dutyCode: dutyCode)),
+      child: Scaffold(
+        backgroundColor: theme.colorScheme.surface,
+        appBar: AppBar(
+          title:
+              Text('Flight CX${record.fltNo?.replaceFirst(RegExp('^0+'), '')}'),
+          backgroundColor: theme.primaryColor,
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(16),
+                color: theme.primaryColor,
+                child: Column(
+                  children: [
+                    Text(
+                      '${record.sctOri ?? 'N/A'} → ${record.sctDstn ?? 'N/A'}',
+                      style: theme.textTheme.headlineMedium
+                          ?.copyWith(color: Colors.white),
+                    ),
+                    Text(
+                      DateFormat('dd MMM yyyy')
+                          .format(record.fltDate ?? DateTime.now()),
+                      style: theme.textTheme.titleMedium
+                          ?.copyWith(color: Colors.white70),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Card(
-                elevation: 4,
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    children: [
-                      _buildTimeRow('Scheduled (L)', record.deptrDtmUtc,
-                          record.deptrDtmLoc, record.arrDtmLoc),
-                      const Divider(),
-                      _buildTimeRow('Out/In (UTC)', record.deptrDtmUtc,
-                          record.deptrDtmUtc, record.arrDtmUtc),
-                      const Divider(),
-                      _buildTimeRow('Off/On (UTC)', record.deptrDtmUtc,
-                          record.actTakeoffDtmUtc, record.actLandingDtmUtc),
-                      const Divider(),
-                      _buildInfoRow(
-                          'Block Time', formatBlockTime(record.blockMins)),
-                      _buildInfoRow('Aircraft',
-                          '${record.acftTypeFr ?? 'N/A'} (${record.acftReg ?? 'N/A'})'),
-                      _buildInfoRow('Commander', record.cmdrName ?? 'N/A'),
-                    ],
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Card(
+                  elevation: 4,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      children: [
+                        _buildTimeRow('Scheduled (L)', record.deptrDtmUtc,
+                            record.deptrDtmLoc, record.arrDtmLoc),
+                        const Divider(),
+                        _buildTimeRow('Out/In (UTC)', record.deptrDtmUtc,
+                            record.deptrDtmUtc, record.arrDtmUtc),
+                        const Divider(),
+                        _buildTimeRow('Off/On (UTC)', record.deptrDtmUtc,
+                            record.actTakeoffDtmUtc, record.actLandingDtmUtc),
+                        const Divider(),
+                        _buildInfoRow(
+                            'Block Time', formatBlockTime(record.blockMins)),
+                        _buildInfoRow('Aircraft',
+                            '${record.acftTypeFr ?? 'N/A'} (${record.acftReg ?? 'N/A'})'),
+                        _buildInfoRow('Commander', record.cmdrName ?? 'N/A'),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Card(
-                elevation: 4,
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Crew List',
-                        style: theme.textTheme.titleLarge,
-                      ),
-                      const SizedBox(height: 8),
-                      // if (record.crewList != null && record.crewList!.isNotEmpty)
-                      //   ListView.builder(
-                      //     shrinkWrap: true,
-                      //     physics: NeverScrollableScrollPhysics(),
-                      //     itemCount: record.crewList!.length,
-                      //     itemBuilder: (context, index) {
-                      //       final crewMember = record.crewList![index];
-                      //       return ListTile(
-                      //         title: Text(crewMember.name),
-                      //         subtitle: Text(crewMember.position),
-                      //       );
-                      //     },
-                      //   )
-                      // else
-                      const Text('No crew information available'),
-                    ],
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Card(
+                  elevation: 4,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Crew List',
+                          style: theme.textTheme.titleLarge,
+                        ),
+                        const SizedBox(height: 8),
+                        BlocBuilder<FlightDetailCrewlistBloc, FlightDetailCrewlistState>(
+                    builder: (context, state) {
+                      if (state is FlightDetailCrewlistLoading) {
+                        return const CircularProgressIndicator();
+                      } else if (state is FlightDetailCrewlistError) {
+                        return Text('Error: ${state.message}');
+                      } else if (state is FlightDetailCrewlistLoaded) {
+                        final flightCrews = state.crewList.flightCrews;
+                        final cabinCrews = state.crewList.cabinCrews;
+
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            if (flightCrews.isNotEmpty) ...[
+                              Text('Flight Crews', style: Theme.of(context).textTheme.titleMedium),
+                              ListView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: flightCrews.length,
+                                itemBuilder: (context, index) {
+                                  final crewMember = flightCrews[index];
+                                  return ListTile(
+                                    title: Text(crewMember.crewBadgeName),
+                                    subtitle: Text('${crewMember.crewCategory} - ${crewMember.basePort}'),
+                                  );
+                                },
+                              ),
+                            ],
+                            if (cabinCrews.isNotEmpty) ...[
+                              const SizedBox(height: 16),
+                              Text('Cabin Crews', style: Theme.of(context).textTheme.titleMedium),
+                              ListView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: cabinCrews.length,
+                                itemBuilder: (context, index) {
+                                  final crewMember = cabinCrews[index];
+                                  return ListTile(
+                                    title: Text(crewMember.crewBadgeName),
+                                    subtitle: Text('${crewMember.crewCategory} - ${crewMember.basePort}'),
+                                  );
+                                },
+                              ),
+                            ],
+                          ],
+                        );
+                      } else {
+                        return const Text('No crew information available');
+                      }
+                    },
+                  ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
-
   Widget _buildTimeRow(
       String label, DateTime? referenceDate, DateTime? time1, DateTime? time2) {
     bool isScheduled = label.toLowerCase() == 'scheduled (l)';
