@@ -36,10 +36,15 @@ class FlightDetailsScreen extends StatelessWidget {
         record.fltNo.toString(); // Add this line to define dutyCode
     final formattedDutyStartDate =
         DateFormat('yyyyMMdd').format(dutyStartDate ?? DateTime.now());
+    final dep = record.sctOri ?? 'N/A'; // Add this line to define dep
+    final arr = record.sctDstn ?? 'N/A'; // Add this line to define arr
     return BlocProvider(
       create: (context) => FlightDetailCrewlistBloc()
         ..add(FetchFlightDetailCrewlist(
-            dutyStartDate: formattedDutyStartDate, dutyCode: dutyCode)),
+            dutyStartDate: formattedDutyStartDate,
+            dutyCode: dutyCode,
+            dep: dep,
+            arr: arr)),
       child: Scaffold(
         backgroundColor: theme.colorScheme.surface,
         appBar: AppBar(
@@ -111,57 +116,69 @@ class FlightDetailsScreen extends StatelessWidget {
                           style: theme.textTheme.titleLarge,
                         ),
                         const SizedBox(height: 8),
-                        BlocBuilder<FlightDetailCrewlistBloc, FlightDetailCrewlistState>(
-                    builder: (context, state) {
-                      if (state is FlightDetailCrewlistLoading) {
-                        return const CircularProgressIndicator();
-                      } else if (state is FlightDetailCrewlistError) {
-                        return Text('Error: ${state.message}');
-                      } else if (state is FlightDetailCrewlistLoaded) {
-                        final flightCrews = state.crewList.flightCrews;
-                        final cabinCrews = state.crewList.cabinCrews;
+                        BlocBuilder<FlightDetailCrewlistBloc,
+                            FlightDetailCrewlistState>(
+                          builder: (context, state) {
+                            if (state is FlightDetailCrewlistLoading) {
+                              return const CircularProgressIndicator();
+                            } else if (state is FlightDetailCrewlistError) {
+                              return Text('Error: ${state.message}');
+                            } else if (state is FlightDetailCrewlistLoaded) {
+                              final flightCrews = state.crewList.flightCrews;
+                              final cabinCrews = state.crewList.cabinCrews;
 
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            if (flightCrews.isNotEmpty) ...[
-                              Text('Flight Crews', style: Theme.of(context).textTheme.titleMedium),
-                              ListView.builder(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount: flightCrews.length,
-                                itemBuilder: (context, index) {
-                                  final crewMember = flightCrews[index];
-                                  return ListTile(
-                                    title: Text(crewMember.crewBadgeName),
-                                    subtitle: Text('${crewMember.crewCategory} - ${crewMember.basePort}'),
-                                  );
-                                },
-                              ),
-                            ],
-                            if (cabinCrews.isNotEmpty) ...[
-                              const SizedBox(height: 16),
-                              Text('Cabin Crews', style: Theme.of(context).textTheme.titleMedium),
-                              ListView.builder(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount: cabinCrews.length,
-                                itemBuilder: (context, index) {
-                                  final crewMember = cabinCrews[index];
-                                  return ListTile(
-                                    title: Text(crewMember.crewBadgeName),
-                                    subtitle: Text('${crewMember.crewCategory} - ${crewMember.basePort}'),
-                                  );
-                                },
-                              ),
-                            ],
-                          ],
-                        );
-                      } else {
-                        return const Text('No crew information available');
-                      }
-                    },
-                  ),
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  if (flightCrews.isNotEmpty) ...[
+                                    Text('Flight Crews',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleMedium),
+                                    ListView.builder(
+                                      shrinkWrap: true,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      itemCount: flightCrews.length,
+                                      itemBuilder: (context, index) {
+                                        final crewMember = flightCrews[index];
+                                        return ListTile(
+                                          title: Text(crewMember.crewBadgeName),
+                                          subtitle: Text(
+                                              '${crewMember.crewCategory} - ${crewMember.basePort}'),
+                                        );
+                                      },
+                                    ),
+                                  ],
+                                  if (cabinCrews.isNotEmpty) ...[
+                                    const SizedBox(height: 16),
+                                    Text('Cabin Crews',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleMedium),
+                                    ListView.builder(
+                                      shrinkWrap: true,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      itemCount: cabinCrews.length,
+                                      itemBuilder: (context, index) {
+                                        final crewMember = cabinCrews[index];
+                                        return ListTile(
+                                          title: Text(crewMember.crewBadgeName),
+                                          subtitle: Text(
+                                              '${crewMember.crewCategory} - ${crewMember.basePort}'),
+                                        );
+                                      },
+                                    ),
+                                  ],
+                                ],
+                              );
+                            } else {
+                              return const Text(
+                                  'No crew information available');
+                            }
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -173,6 +190,7 @@ class FlightDetailsScreen extends StatelessWidget {
       ),
     );
   }
+
   Widget _buildTimeRow(
       String label, DateTime? referenceDate, DateTime? time1, DateTime? time2) {
     bool isScheduled = label.toLowerCase() == 'scheduled (l)';
